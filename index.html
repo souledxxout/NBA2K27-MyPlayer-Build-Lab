@@ -940,7 +940,7 @@ body{color-scheme:dark}
 <section id="compare" class="page"><div class="card"><h2>Build Compare</h2><p class="muted">Select up to four saved builds and compare attributes, badges, takeovers, body ceilings and Cap Breaker previews side by side.</p><div id="comparePickers" class="cols"></div><div class="field"><button id="runCompare" class="btn primary">Compare Selected</button></div></div><div class="card" style="margin-top:14px"><div id="compareOutput" class="wideTable"><div class="muted">Save some builds first, then compare them here.</div></div></div></section>
 <section id="saved" class="page"><div class="card"><h2>My Builds</h2><div id="savedList" class="saved"></div></div></section>
 
-<div class="footer">Build Lab v10.1 • Extracted 2K27 tuning drives linked attributes, badges/takeovers, displayed OVR, and native max-potential body caps across every legal profile.</div></div>
+<div class="footer">Build Lab v10.3 • Extracted 2K27 tuning drives linked attributes, badges/takeovers, displayed OVR, and native max-potential body caps across every legal profile.</div></div>
 <script>
 console.log('NBA 2K27 Build Lab MOBILE BUILD 10.0');
 const attrGroups={Finishing:['ShotClose','DrivingLayup','DrivingDunk','StandingDunk','PostControl'],Shooting:['ShotMidrange','ShotThree','ShotFreeThrow'],Playmaking:['PassAccuracy','BallControl','SpeedWithBall'],Defense:['InteriorDefense','PerimeterDefense','Steal','Block','ReboundOffense','ReboundDefense'],Physicals:['Speed','Agility','Strength','Vertical']};
@@ -1073,7 +1073,7 @@ function initNav(){
 async function init(){await loadGameArtManifests();[rules,badges,takeovers,maxHeightMult,maxPotentialNative,validation,heightWeights,heightLerp,capResearch,ratingWeightScale,validatedCapsData,parityReport]=await Promise.all([
 fetch('./data/builder-rules.json?v=10.2').then(r=>r.json()),
 fetch('./data/badges.json?v=10.2').then(r=>r.json()),
-fetch('./data/takeovers.json?v=10.2').then(r=>r.json()),
+fetch('./data/takeovers.json?v=10.3').then(r=>r.json()),
 fetch('./data/max-potential-height-multipliers.json?v=10.2').then(r=>r.json()),
 fetch('./data/max-potential-native-tuning.json?v=10.2').then(r=>r.json()),
 fetch('./data/max-potential-validation.json?v=10.2').then(r=>r.json()),
@@ -1803,6 +1803,7 @@ function takeoverIconHTML(name,category,requirement=''){
 
 let badgeArtManifest=null;
 let takeoverArtManifest=null;
+const takeoverPixelCache=new Map();
 const astcSourceCache=new Map();
 const astcBytesCache=new Map();
 let astcDecoderPromise=null;
@@ -1810,11 +1811,11 @@ let astcDecoderPromise=null;
 async function loadGameArtManifests(){
   try{
     [badgeArtManifest,takeoverArtManifest]=await Promise.all([
-      fetch('./assets/badges/manifest.json?v=10.2').then(r=>{
+      fetch('./assets/badges/manifest.json?v=10.3').then(r=>{
         if(!r.ok)throw new Error('Badge art manifest failed');
         return r.json();
       }),
-      fetch('./assets/takeovers/manifest.json?v=10.2').then(r=>{
+      fetch('./assets/takeovers/manifest.json?v=10.3').then(r=>{
         if(!r.ok)throw new Error('Takeover art manifest failed');
         return r.json();
       })
@@ -2040,16 +2041,34 @@ async function paintTakeoverGameArt(canvas,name){
   const meta=takeoverArtManifest?.[name];
   if(!meta)return false;
 
-  const source=await getAstcSource(meta.file,meta.width,meta.height);
   const ctx=canvas.getContext('2d');
   const pad=2;
-
   ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  // Body-slider changes can rebuild the takeover DOM. Reusing the original
+  // WebGL-decoded ASTC canvas after that rebuild is unreliable in some
+  // browsers: the hit target survives, but the backing pixels can be blank.
+  // Cache the final 72x72 pixel result from the first successful paint and
+  // restore those pixels directly for every replacement canvas.
+  const cached=takeoverPixelCache.get(name);
+  if(cached && cached.width===canvas.width && cached.height===canvas.height){
+    ctx.putImageData(cached,0,0);
+    canvas.classList.add('loaded');
+    return true;
+  }
+
+  const source=await getAstcSource(meta.file,meta.width,meta.height);
   ctx.drawImage(
     source,
     0,0,meta.width,meta.height,
     pad,pad,canvas.width-pad*2,canvas.height-pad*2
   );
+
+  try{
+    takeoverPixelCache.set(name,ctx.getImageData(0,0,canvas.width,canvas.height));
+  }catch(err){
+    console.warn('Could not cache takeover pixels',name,err);
+  }
 
   canvas.classList.add('loaded');
   return true;
@@ -2583,7 +2602,7 @@ async function clearOldBuildLabCaches(){
 }
 hardClearBuildLabCaches().then(clearOldBuildLabCaches).finally(init);
 
-</script><div class="footer">Build Lab v10.1 • Reverse-engineered from the user-supplied NBA 2K HQ client for private build-planning use. Max-potential body caps use the decoded native NBA 2K HQ v1.1.3 tuning. Cap Breakers remain explicitly marked preview where parity is not yet proven.</div>
+</script><div class="footer">Build Lab v10.3 • Reverse-engineered from the user-supplied NBA 2K HQ client for private build-planning use. Max-potential body caps use the decoded native NBA 2K HQ v1.1.3 tuning. Cap Breakers remain explicitly marked preview where parity is not yet proven.</div>
 <div id="tapTooltip" aria-live="polite"></div>
 <div id="lockConflictModal" role="dialog" aria-modal="true" aria-labelledby="lockConflictTitle">
   <div class="lockModalCard">

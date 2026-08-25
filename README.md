@@ -1,3 +1,7 @@
+
+## v10.3
+- Fixed the remaining takeover-art disappearance during height/weight/wingspan changes.
+- Takeover artwork now caches the successfully rendered 72×72 pixel result and reuses it when slider changes rebuild the takeover list, avoiding blank WebGL/ASTC redraws while preserving click/details behavior.
 # NBA 2K27 Build Lab v10.2 — v7 Full Private Beta
 
 All-position web/PWA build planner based on the user-supplied NBA 2K HQ Android client and public badge/takeover data supplied in the conversation.
