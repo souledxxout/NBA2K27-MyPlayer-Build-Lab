@@ -871,9 +871,9 @@ body{color-scheme:dark}
     </div>
   </div>
 </div>
-<div class="footer">Build Lab v10.13 • Extracted 2K27 tuning drives linked attributes, badges/takeovers, displayed OVR, and native max-potential body caps across every legal profile.</div></div>
+<div class="footer">Build Lab v10.14 • Extracted 2K27 tuning drives linked attributes, badges/takeovers, displayed OVR, and native max-potential body caps across every legal profile.</div></div>
 <script>
-console.log('NBA 2K27 Build Lab v10.13');
+console.log('NBA 2K27 Build Lab v10.14');
 const attrGroups={Finishing:['ShotClose','DrivingLayup','DrivingDunk','StandingDunk','PostControl'],Shooting:['ShotMidrange','ShotThree','ShotFreeThrow'],Playmaking:['PassAccuracy','BallControl','SpeedWithBall'],Defense:['InteriorDefense','PerimeterDefense','Steal','Block','ReboundOffense','ReboundDefense'],Physicals:['Speed','Agility','Strength','Vertical']};
 const nice={ShotClose:'Close Shot',DrivingLayup:'Driving Layup',DrivingDunk:'Driving Dunk',StandingDunk:'Standing Dunk',PostControl:'Post Control',ShotMidrange:'Mid-Range',ShotThree:'3PT',ShotFreeThrow:'Free Throw',PassAccuracy:'Pass Accuracy',BallControl:'Ball Handle',SpeedWithBall:'Speed With Ball',InteriorDefense:'Interior Defense',PerimeterDefense:'Perimeter Defense',Steal:'Steal',Block:'Block',ReboundOffense:'Offensive Rebound',ReboundDefense:'Defensive Rebound',Speed:'Speed',Agility:'Agility',Strength:'Strength',Vertical:'Vertical'};
 const nameToAttr={
@@ -1746,6 +1746,9 @@ function updateAfterAttributeDrag(){
   solve();
   updateVisibleAttributeUI();
   renderUnlocks();
+  // v10.14: Badge Token potential depends on the live attribute vector.
+  // Refresh it on every legal slider change, not only on body changes/full renders.
+  renderBadgeTokens();
   
   let h=+document.querySelector('#height').value,o=directOverallFor(ratings,h);
   let el=document.querySelector('#builderOvr');if(el)el.textContent=o.display;
@@ -2479,7 +2482,7 @@ async function clearOldBuildLabCaches(){
 }
 hardClearBuildLabCaches().then(clearOldBuildLabCaches).finally(init);
 
-</script><div class="footer">Build Lab v10.13 • Reverse-engineered from the user-supplied NBA 2K HQ client for private build-planning use. Max-potential body caps use the decoded native NBA 2K HQ v1.1.3 tuning. Cap Breaker step math is HQ-validated against the supplied regression build (20/20 visible sequences).</div>
+</script><div class="footer">Build Lab v10.14 • Reverse-engineered from the user-supplied NBA 2K HQ client for private build-planning use. Max-potential body caps use the decoded native NBA 2K HQ v1.1.3 tuning. Cap Breaker step math is HQ-validated against the supplied regression build (20/20 visible sequences).</div>
 <div id="tapTooltip" aria-live="polite"></div>
 <div id="lockConflictModal" role="dialog" aria-modal="true" aria-labelledby="lockConflictTitle">
   <div class="lockModalCard">
