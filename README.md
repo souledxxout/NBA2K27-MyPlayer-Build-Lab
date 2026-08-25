@@ -1,3 +1,9 @@
+## v10.4
+- Removed the Optimizer page and navigation entry.
+- Fixed Compare Selected so saved builds render a comparison table.
+- Added Rename to saved builds.
+- Badge detail requirement values now show the current slider value in red parentheses.
+
 
 ## v10.3
 - Fixed the remaining takeover-art disappearance during height/weight/wingspan changes.
@@ -190,7 +196,7 @@ Those Unity atlases still need to be decoded into individual PNG/Sprite files be
 
 
 ## v9.0 Slim workflow
-- Main navigation: Builder, My Builds, Compare, Optimizer.
+- Main navigation: Builder, My Builds, Compare.
 - Optimizer automatically copies the current Builder build when opened.
 - Optimizer can instead load any saved build.
 - Current ratings are source data; the user changes Priority 1–10, not target ratings.
@@ -204,7 +210,7 @@ Those Unity atlases still need to be decoded into individual PNG/Sprite files be
 - Standardizes saved-build storage on the existing `2k27-builds` key.
 - Adds an Open button to My Builds.
 - Optimizer is now initialized only when its tab is opened, after the Builder has a valid state.
-- Keeps the slim four-tab navigation: Builder, My Builds, Compare, Optimizer.
+- Keeps the slim four-tab navigation: Builder, My Builds, Compare.
 
 
 ## v9.2 badge/takeover icon tiers + 99 OVR freeze

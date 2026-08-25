@@ -337,74 +337,6 @@ body{color-scheme:dark}
 }
 
 
-/* ===== v8.12 Optimizer rework ===== */
-.optimizerIntro{
-  margin-bottom:14px;padding:14px;border-radius:16px;
-  background:linear-gradient(180deg,#141820,#0e1116);border:1px solid #343a45
-}
-.optimizerIntroTitle{font-size:18px;font-weight:850;color:#fff;margin-bottom:6px}
-.optimizerIntro p{margin:0;color:#aeb5c0;font-size:13px;line-height:1.5}
-.optimizerSteps{display:flex;flex-wrap:wrap;gap:7px;margin-top:11px}
-.optimizerSteps span,.optimizerLegend span{
-  padding:6px 9px;border-radius:999px;background:#1a1e25;border:1px solid #343a45;
-  color:#dfe3e8;font-size:11px;font-weight:750
-}
-.optimizerLegend{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0}
-.presetDisabledNote{
-  margin-top:8px;padding:9px 10px;border-radius:11px;background:#201b0c;
-  border:1px solid #5b4a20;color:#e7c86f;font-size:11px;line-height:1.4
-}
-.goalRow{
-  display:grid !important;
-  grid-template-columns:minmax(130px,1.3fr) minmax(90px,.7fr) minmax(150px,1fr);
-  gap:12px;align-items:center
-}
-.goalCurrent{
-  width:86px !important;
-  min-height:42px;
-  font-size:16px !important;
-  font-weight:800;
-  text-align:center;
-}
-.priorityWrap{display:grid;grid-template-columns:1fr 38px;gap:8px;align-items:center}
-.priorityValue{
-  width:38px;height:32px;border-radius:9px;background:#281116;border:1px solid #6b2b31;
-  color:#ff7e86;display:grid;place-items:center;font-weight:850;font-size:13px
-}
-.opportunityScore{
-  display:inline-flex;align-items:center;padding:4px 7px;border-radius:999px;
-  font-size:10px;font-weight:800;background:#181b21;border:1px solid #343944;color:#fff
-}
-.opportunityScore.high{color:#68edb9;border-color:#285d49;background:#0e201a}
-.opportunityScore.mid{color:#ffd376;border-color:#66501b;background:#211a08}
-.validatedCapTag{
-  display:inline-flex;margin-left:5px;padding:2px 5px;border-radius:6px;
-  font-size:9px;font-weight:850;background:#0e201a;border:1px solid #285d49;color:#68edb9
-}
-@media(max-width:700px){
-  .goalRow{grid-template-columns:1fr 95px !important;gap:8px !important}
-  .goalRow>b{grid-column:1/-1}
-  .priorityWrap{grid-template-columns:1fr 38px}
-  .goalCurrent{width:100% !important}
-}
-
-
-/* ===== v9.0 Slim workflow ===== */
-.optimizerSourceCard{display:grid;gap:12px;margin-bottom:14px;padding:15px;border-radius:18px;background:linear-gradient(180deg,#171a20,#101318);border:1px solid #363c47}
-.optimizerSourceTitle{font-size:20px;font-weight:900;color:#fff}
-.optimizerSourceCard p{margin:0;color:#aab1bc;font-size:13px;line-height:1.5}
-.optimizerSourceActions{display:flex;gap:8px;flex-wrap:wrap}
-.optimizerSourceLabel{display:inline-flex;width:max-content;max-width:100%;padding:6px 9px;border-radius:999px;background:#291116;border:1px solid #682a31;color:#ff858c;font-size:11px;font-weight:800}
-.optimizerSaveBar{margin-top:14px;padding-top:14px;border-top:1px solid #2f343d;display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap}
-.simpleModal{position:fixed;inset:0;display:none;align-items:flex-end;justify-content:center;padding:18px;background:rgba(0,0,0,.7);backdrop-filter:blur(5px);z-index:10020}
-.simpleModal.show{display:flex}
-.simpleModalCard{width:min(620px,100%);max-height:78vh;overflow:auto;border-radius:22px;padding:16px;background:linear-gradient(180deg,#191c22,#0f1115);border:1px solid #3a404a;box-shadow:0 25px 70px rgba(0,0,0,.6)}
-.simpleModalHead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
-.simpleModalHead h3{margin:0;color:#fff}
-.savedPick{cursor:pointer}
-@media(min-width:700px){.simpleModal{align-items:center}}
-
-
 /* ===== v9.2 badge/takeover icon system ===== */
 .badgeIcon,
 .takeoverIcon{
@@ -758,7 +690,7 @@ body{color-scheme:dark}
 .iconInfoMetaRow.current{border-color:#244f43;background:#0d211b}
 .iconInfoMetaRow.current span{color:#71e3bd}
 .iconInfoMetaRow.requirement span{color:#e9edf3}
-.iconInfoMetaRow .reqCurrent{color:#ff5d68;font-weight:800}
+.iconInfoMetaRow .reqCurrent,.iconInfoMetaRow.requirement .reqCurrent{color:#ff4d5a!important;font-weight:900}
 .iconInfoMetaRow .reqJoin{color:#e9edf3;font-weight:800}
 
 /* ===== v10.1 parity status polish ===== */
@@ -775,8 +707,8 @@ body{color-scheme:dark}
 }
 
 </style></head><body><div class="wrap">
-<div class="top"><div><h1>NBA 2K27 Build Lab</h1><div id="deployMarker" style="margin-top:10px;font-size:12px;color:#ff7b82;font-weight:700;letter-spacing:.04em">MOBILE BUILD 10.1 • NATIVE MAX PARITY</div><p>Builder • My Builds • Compare • Optimizer</p></div><div class="pill">Engine v10.1</div></div>
-<div class="nav"><button class="active" data-page="builder">Builder</button><button data-page="saved">My Builds</button><button data-page="compare">Compare</button><button data-page="optimizer">Optimizer</button></div>
+<div class="top"><div><h1>NBA 2K27 Build Lab</h1><div id="deployMarker" style="margin-top:10px;font-size:12px;color:#ff7b82;font-weight:700;letter-spacing:.04em">MOBILE BUILD 10.4 • NATIVE MAX PARITY</div><p>Builder • My Builds • Compare</p></div><div class="pill">Engine v10.4</div></div>
+<div class="nav"><button class="active" data-page="builder">Builder</button><button data-page="saved">My Builds</button><button data-page="compare">Compare</button></div>
 
 
 <section id="builder" class="page active">
@@ -871,78 +803,12 @@ body{color-scheme:dark}
 
 
 
-<section id="optimizer" class="page">
-<div class="optimizerSourceCard">
-  <div class="optimizerSourceTitle">Optimize Your Build</div>
-  <p>We automatically use whatever is currently in Builder, or you can load one of your saved builds. Set priorities from 1–10 and the Optimizer will look for the best upgrades. Your source build is never overwritten.</p>
-  <div class="optimizerSourceActions">
-    <button class="btn primary" id="useBuilderInOptimizer">Use Current Builder</button>
-    <button class="btn" id="loadSavedIntoOptimizer">Load Saved Build</button>
-  </div>
-  <div id="optimizerSourceLabel" class="optimizerSourceLabel">Source: Current Builder</div>
-</div>
-
-<div class="cols">
-  <div class="card">
-    <h2>Build Optimizer</h2>
-    <div class="optimizerIntro">
-      <div class="optimizerIntroTitle">Set priorities — we handle the ratings</div>
-      <p>The Current Ratings come from the Builder or the saved build you load. Adjust the <b>Priority</b> sliders only: <b>1 = low priority</b>, <b>10 = build-defining</b>. The Optimizer decides which actual ratings are worth pursuing.</p>
-      <div class="optimizerSteps">
-        <span>1. Load Builder or saved build</span>
-        <span>2. Set priorities 1–10</span>
-        <span>3. Review suggestions</span>
-        <span>4. Save as a new build</span>
-      </div>
-    </div>
-    <div class="field"><label>Priority Profile</label>
-      <select id="preset">
-        <option value="custom" selected>Custom</option>
-        <option value="twoWaySlasherShooter">2-Way Shot-Creating Slasher</option>
-        <option value="shooter">Elite Shooter</option>
-        <option value="lock">Lockdown</option>
-        <option value="playmaker">Playmaker</option>
-        <option value="insideBig">Inside Big</option>
-        <option value="stretchBig">Stretch Big</option>
-      </select>
-    </div>
-    <div id="optimizerModeNote" class="presetDisabledNote"></div>
-    <div class="optimizerLegend">
-      <span><b>Current Rating</b> = your build now</span>
-      <span><b>Priority</b> = importance from 1–10</span>
-    </div>
-    <div id="goalRows"></div>
-  </div>
-
-  <div class="card">
-    <h2>Optimization Readout</h2>
-    <div class="status">
-      <div class="stat"><span>Current OVR</span><b id="fitScore">—</b></div>
-      <div class="stat"><span>High-priority attrs</span><b id="priorityCount">—</b></div>
-      <div class="stat"><span>Locked attrs</span><b id="optimizerLockCount">—</b></div>
-    </div>
-    <div id="fitLabel" class="muted" style="margin-top:10px"></div>
-    <h3>Best Upgrade Opportunities</h3>
-    <div id="targetCheck" class="list"></div>
-    <h3>Current High-Value Unlocks</h3>
-    <div id="optimizerUnlocks" class="list"></div><div class="optimizerSaveBar"><button class="btn primary" id="saveOptimizedBuildBtn">Save Optimized Build</button><div class="tiny muted">Creates a new build. The source build is never overwritten.</div></div>
-  </div>
-</div>
-<div class="card" style="margin-top:14px">
-  <h2>How recommendations are chosen</h2>
-  <div class="callout">The Optimizer weighs your 1–10 priorities against the selected body profile's max potential, linked-attribute requirements, badge thresholds and takeover thresholds. A priority of 10 does <b>not</b> mean “make it 99.” It means the Optimizer should spend on that area when the upgrade provides strong value.</div>
-</div>
-</section>
-
-
-
-
-<section id="compare" class="page"><div class="card"><h2>Build Compare</h2><p class="muted">Select up to four saved builds and compare attributes, badges, takeovers, body ceilings and Cap Breaker previews side by side.</p><div id="comparePickers" class="cols"></div><div class="field"><button id="runCompare" class="btn primary">Compare Selected</button></div></div><div class="card" style="margin-top:14px"><div id="compareOutput" class="wideTable"><div class="muted">Save some builds first, then compare them here.</div></div></div></section>
+<section id="compare" class="page"><div class="card"><h2>Build Compare</h2><p class="muted">Select up to four saved builds and compare their body setup, overall and attribute ratings side by side.</p><div id="comparePickers" class="cols"></div><div class="field"><button id="runCompare" class="btn primary">Compare Selected</button></div></div><div class="card" style="margin-top:14px"><div id="compareOutput" class="wideTable"><div class="muted">Save some builds first, then compare them here.</div></div></div></section>
 <section id="saved" class="page"><div class="card"><h2>My Builds</h2><div id="savedList" class="saved"></div></div></section>
 
-<div class="footer">Build Lab v10.3 • Extracted 2K27 tuning drives linked attributes, badges/takeovers, displayed OVR, and native max-potential body caps across every legal profile.</div></div>
+<div class="footer">Build Lab v10.4 • Extracted 2K27 tuning drives linked attributes, badges/takeovers, displayed OVR, and native max-potential body caps across every legal profile.</div></div>
 <script>
-console.log('NBA 2K27 Build Lab MOBILE BUILD 10.0');
+console.log('NBA 2K27 Build Lab MOBILE BUILD 10.4');
 const attrGroups={Finishing:['ShotClose','DrivingLayup','DrivingDunk','StandingDunk','PostControl'],Shooting:['ShotMidrange','ShotThree','ShotFreeThrow'],Playmaking:['PassAccuracy','BallControl','SpeedWithBall'],Defense:['InteriorDefense','PerimeterDefense','Steal','Block','ReboundOffense','ReboundDefense'],Physicals:['Speed','Agility','Strength','Vertical']};
 const nice={ShotClose:'Close Shot',DrivingLayup:'Driving Layup',DrivingDunk:'Driving Dunk',StandingDunk:'Standing Dunk',PostControl:'Post Control',ShotMidrange:'Mid-Range',ShotThree:'3PT',ShotFreeThrow:'Free Throw',PassAccuracy:'Pass Accuracy',BallControl:'Ball Handle',SpeedWithBall:'Speed With Ball',InteriorDefense:'Interior Defense',PerimeterDefense:'Perimeter Defense',Steal:'Steal',Block:'Block',ReboundOffense:'Offensive Rebound',ReboundDefense:'Defensive Rebound',Speed:'Speed',Agility:'Agility',Strength:'Strength',Vertical:'Vertical'};
 const nameToAttr={
@@ -1053,7 +919,6 @@ function solve(){
 function showPage(id){
   document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x.dataset.page===id));
   document.querySelectorAll('.page').forEach(x=>x.classList.toggle('active',x.id===id));
-  if(id==='optimizer')renderOptimizer();
   if(id==='saved')renderSaved();
 }
 
@@ -1064,25 +929,24 @@ function showPage(p){
   page.classList.add('active');
   if(p==='saved')renderSaved();
   if(p==='compare')refreshComparePickers();
-  if(p==='optimizer')cloneCurrentBuilderIntoOptimizer();
 }
 
 function initNav(){
   document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>showPage(b.dataset.page));
 }
 async function init(){await loadGameArtManifests();[rules,badges,takeovers,maxHeightMult,maxPotentialNative,validation,heightWeights,heightLerp,capResearch,ratingWeightScale,validatedCapsData,parityReport]=await Promise.all([
-fetch('./data/builder-rules.json?v=10.2').then(r=>r.json()),
-fetch('./data/badges.json?v=10.2').then(r=>r.json()),
-fetch('./data/takeovers.json?v=10.3').then(r=>r.json()),
-fetch('./data/max-potential-height-multipliers.json?v=10.2').then(r=>r.json()),
-fetch('./data/max-potential-native-tuning.json?v=10.2').then(r=>r.json()),
-fetch('./data/max-potential-validation.json?v=10.2').then(r=>r.json()),
-fetch('./data/height-attribute-weights.json?v=10.2').then(r=>r.json()),
-fetch('./data/height-overall-lerp.json?v=10.2').then(r=>r.json()),
-fetch('./data/capbreaker-research.json?v=10.2').then(r=>r.json()),
-fetch('./data/attribute-rating-weight-scale.json?v=10.2').then(r=>r.json()),
-fetch('./data/validated-cap-profiles.json?v=10.2').then(r=>r.json()),
-fetch('./data/parity-report.json?v=10.2').then(r=>r.json())
+fetch('./data/builder-rules.json?v=10.4').then(r=>r.json()),
+fetch('./data/badges.json?v=10.4').then(r=>r.json()),
+fetch('./data/takeovers.json?v=10.4').then(r=>r.json()),
+fetch('./data/max-potential-height-multipliers.json?v=10.4').then(r=>r.json()),
+fetch('./data/max-potential-native-tuning.json?v=10.4').then(r=>r.json()),
+fetch('./data/max-potential-validation.json?v=10.4').then(r=>r.json()),
+fetch('./data/height-attribute-weights.json?v=10.4').then(r=>r.json()),
+fetch('./data/height-overall-lerp.json?v=10.4').then(r=>r.json()),
+fetch('./data/capbreaker-research.json?v=10.4').then(r=>r.json()),
+fetch('./data/attribute-rating-weight-scale.json?v=10.4').then(r=>r.json()),
+fetch('./data/validated-cap-profiles.json?v=10.4').then(r=>r.json()),
+fetch('./data/parity-report.json?v=10.4').then(r=>r.json())
 ]);let legacyBadgeCount=document.querySelector('#badgeCount');if(legacyBadgeCount)legacyBadgeCount.textContent=badges.length;let legacyTakeCount=document.querySelector('#takeCount');if(legacyTakeCount)legacyTakeCount.textContent=takeovers.length;let p=document.querySelector('#position');Object.keys(rules.positions).forEach(x=>p.add(new Option(x.replaceAll('_',' '),x)));p.value='SHOOTING_GUARD';
 p.onchange=()=>{loadHeights();syncPositionSegment();};
 document.querySelectorAll('#positionSegment button').forEach(btn=>btn.onclick=()=>{
@@ -1095,18 +959,9 @@ document.querySelector('#heightRange').oninput=e=>{
   sel.selectedIndex=+e.target.value;
   loadBody();
   syncHeightRange();
-};document.querySelector('#weight').oninput=()=>{updateBody();updateBuilderHero();};document.querySelector('#wing').oninput=()=>{updateBody();updateBuilderHero();};document.querySelector('#tabs').innerHTML=Object.keys(attrGroups).map(g=>`<button data-g="${g}">${g}</button>`).join('');document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>{active=b.dataset.g;renderAttrs()});document.querySelector('#resetBuild').onclick=resetBuilder;document.querySelector('#saveBuild').onclick=saveBuild;document.querySelector('#shareBuild').onclick=()=>{let u=shareCurrent();alert('Share link copied.\n'+u)};document.querySelector('#preset').value='custom';
+};document.querySelector('#weight').oninput=()=>{updateBody();updateBuilderHero();};document.querySelector('#wing').oninput=()=>{updateBody();updateBuilderHero();};document.querySelector('#tabs').innerHTML=Object.keys(attrGroups).map(g=>`<button data-g="${g}">${g}</button>`).join('');document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>{active=b.dataset.g;renderAttrs()});document.querySelector('#resetBuild').onclick=resetBuilder;document.querySelector('#saveBuild').onclick=saveBuild;document.querySelector('#shareBuild').onclick=()=>{let u=shareCurrent();alert('Share link copied.\n'+u)};
+const runCompareBtn=document.querySelector('#runCompare');if(runCompareBtn)runCompareBtn.onclick=runCompare;
 
-const useBuilderOpt=document.querySelector('#useBuilderInOptimizer');
-if(useBuilderOpt)useBuilderOpt.onclick=()=>cloneCurrentBuilderIntoOptimizer();
-const loadSavedOpt=document.querySelector('#loadSavedIntoOptimizer');
-if(loadSavedOpt)loadSavedOpt.onclick=()=>openSavedBuildPickerForOptimizer();
-const closeSavedOpt=document.querySelector('#closeOptimizerSavedModal');
-if(closeSavedOpt)closeSavedOpt.onclick=()=>document.querySelector('#optimizerSavedModal')?.classList.remove('show');
-const saveOptimizedBtn=document.querySelector('#saveOptimizedBuildBtn');
-if(saveOptimizedBtn)saveOptimizedBtn.onclick=()=>saveOptimizedCopy();
-
-document.querySelector('#preset').onchange=renderGoals;
 document.querySelector('#keepLockedBtn').onclick=()=>{closeLockConflictModal();renderAttrs();};
 document.querySelector('#cancelOvrChangeBtn').onclick=()=>{closeOvrGuardModal();renderAttrs();};
 document.querySelector('#useMaxLegalBtn').onclick=()=>{
@@ -1415,8 +1270,8 @@ function saveBuildObject(x,name){let list=JSON.parse(localStorage.getItem('2k27-
 function buildSharePayload(b){return btoa(unescape(encodeURIComponent(JSON.stringify({p:b.pos,h:b.h,w:b.w,s:b.wing,r:b.ratings})))).replaceAll('+','-').replaceAll('/','_').replaceAll('=','')}
 function shareCurrent(){solve();let b={pos:document.querySelector('#position').value,h:+document.querySelector('#height').value,w:+document.querySelector('#weight').value,wing:+document.querySelector('#wing').value,ratings:{...ratings}};let u=location.href.split('#')[0]+'#build='+buildSharePayload(b);navigator.clipboard?.writeText(u);return u}
 function loadShareHash(){let m=location.hash.match(/#build=([^&]+)/);if(!m)return;try{let s=m[1].replaceAll('-','+').replaceAll('_','/');while(s.length%4)s+='=';let b=JSON.parse(decodeURIComponent(escape(atob(s))));document.querySelector('#position').value=b.p;loadHeights();document.querySelector('#height').value=b.h;loadBody();document.querySelector('#weight').value=b.w;document.querySelector('#wing').value=b.s;manual={...b.r};lockedAttrs.clear();updateBody()}catch(e){console.warn('Invalid shared build',e)}}
-function refreshComparePickers(){let box=document.querySelector('#comparePickers');if(!box)return;let list=JSON.parse(localStorage.getItem('2k27-builds')||'[]');box.innerHTML=[0,1,2,3].map(i=>`<div class="field"><label>Build ${i+1}</label><select class="compareSel"><option value="">— None —</option>${list.map((b,j)=>`<option value="${j}">${b.name} • ${feet(b.h)} ${b.w}lb</option>`).join('')}</select></div>`).join('')}
-function runCompare(){let list=JSON.parse(localStorage.getItem('2k27-builds')||'[]'),sel=[...document.querySelectorAll('.compareSel')].map(x=>x.value).filter(x=>x!=='').map(x=>list[+x]);if(!sel.length){document.querySelector('#compareOutput').innerHTML='<div class="muted">Choose at least one saved build.</div>';return}let rows=['Body','OVR',...directAttrs];let head=`<tr><th>Metric</th>${sel.map(b=>`<th>${b.name}</th>`).join('')}</tr>`;let body=rows.map(metric=>{let vals=sel.map(b=>{if(metric==='Body')return `${feet(b.h)} • ${b.w} • ${feet(b.wing)} WS`;if(metric==='OVR')return directOverallFor(b.ratings,b.h).display;return b.ratings[metric]??25});return `<tr><td>${nice[metric]||metric}</td>${vals.map(v=>`<td>${v}</td>`).join('')}</tr>`}).join('');document.querySelector('#compareOutput').innerHTML=`<table>${head}${body}</table>`}
+function refreshComparePickers(){let box=document.querySelector('#comparePickers');if(!box)return;let list=JSON.parse(localStorage.getItem('2k27-builds')||'[]');box.innerHTML=[0,1,2,3].map(i=>`<div class="field"><label>Build ${i+1}</label><select class="compareSel"><option value="">— None —</option>${list.map((b,j)=>`<option value="${j}">${escapeAttr(b.name||'Saved Build')} • ${feet(b.h)} ${b.w}lb</option>`).join('')}</select></div>`).join('')}
+function runCompare(){let list=JSON.parse(localStorage.getItem('2k27-builds')||'[]'),sel=[...document.querySelectorAll('.compareSel')].map(x=>x.value).filter(x=>x!=='').map(x=>list[+x]).filter(Boolean);const out=document.querySelector('#compareOutput');if(!out)return;if(!sel.length){out.innerHTML='<div class="muted">Choose at least one saved build.</div>';return}let rows=['Body','OVR',...directAttrs];let head=`<tr><th>Metric</th>${sel.map(b=>`<th>${escapeAttr(b.name||'Saved Build')}</th>`).join('')}</tr>`;let body=rows.map(metric=>{let vals=sel.map(b=>{const br=b.ratings||b.manual||{};if(metric==='Body')return `${feet(b.h)} • ${b.w} • ${feet(b.wing)} WS`;if(metric==='OVR')return directOverallFor(br,b.h).display;return br[metric]??25});return `<tr><td>${nice[metric]||metric}</td>${vals.map(v=>`<td>${v}</td>`).join('')}</tr>`}).join('');out.innerHTML=`<table>${head}${body}</table>`}
 
 function syncPositionSegment(){
   document.querySelectorAll('#positionSegment button').forEach(btn=>{
@@ -1527,7 +1382,7 @@ function toggleAttributeLock(a){
   // This ends an in-progress drag on mobile and the locked slider returns at the exact stop point.
   renderAttrs();
   renderUnlocks();
-  renderOptimizer();
+  
   updateBuilderHero();
 }
 function showLockConflictModal(change,conflicts){
@@ -1599,7 +1454,7 @@ function attemptAttributeChange(a,value){
     terminateActiveAttributeDrag();
     renderAttrs();
     renderUnlocks();
-    renderOptimizer();
+    
     updateBuilderHero();
     return false;
   }
@@ -1616,7 +1471,7 @@ function attemptAttributeChange(a,value){
     solve();
     renderAttrs();
     renderUnlocks();
-    renderOptimizer();
+    
     updateBuilderHero();
     showLockConflictModal({attr:a,value},result.conflicts);
     return false;
@@ -1631,7 +1486,7 @@ function attemptAttributeChange(a,value){
     solve();
     renderAttrs();
     renderUnlocks();
-    renderOptimizer();
+    
     updateBuilderHero();
     showOvrGuardModal({attr:a,value},maxLegal,score);
     return false;
@@ -1645,7 +1500,7 @@ function attemptAttributeChange(a,value){
     terminateActiveAttributeDrag();
     renderAttrs();
     renderUnlocks();
-    renderOptimizer();
+    
     let o=directOverallFor(ratings,h);
     let el=document.querySelector('#builderOvr');if(el)el.textContent=o.display;
     let attrOvr=document.querySelector('#attrOvrLive');if(attrOvr)attrOvr.textContent=o.display;
@@ -1657,7 +1512,7 @@ function attemptAttributeChange(a,value){
   return true;
 }
 
-function renderAll(){solve();renderAttrs();renderUnlocks();renderOptimizer();let h=+document.querySelector('#height').value,o=directOverallFor(ratings,h);let el=document.querySelector('#builderOvr');if(el)el.textContent=o.display;updateBuilderHero()}
+function renderAll(){solve();renderAttrs();renderUnlocks();let h=+document.querySelector('#height').value,o=directOverallFor(ratings,h);let el=document.querySelector('#builderOvr');if(el)el.textContent=o.display;updateBuilderHero()}
 function rangePct(value,min=25,max=99){return Math.max(0,Math.min(100,(value-min)/(max-min)*100))}
 function paintRange(inp,value){
   if(!inp)return;
@@ -1709,7 +1564,7 @@ function updateAfterAttributeDrag(){
   solve();
   updateVisibleAttributeUI();
   renderUnlocks();
-  renderOptimizer();
+  
   let h=+document.querySelector('#height').value,o=directOverallFor(ratings,h);
   let el=document.querySelector('#builderOvr');if(el)el.textContent=o.display;
   let attrOvr=document.querySelector('#attrOvrLive');if(attrOvr)attrOvr.textContent=o.display;
@@ -1811,11 +1666,11 @@ let astcDecoderPromise=null;
 async function loadGameArtManifests(){
   try{
     [badgeArtManifest,takeoverArtManifest]=await Promise.all([
-      fetch('./assets/badges/manifest.json?v=10.3').then(r=>{
+      fetch('./assets/badges/manifest.json?v=10.4').then(r=>{
         if(!r.ok)throw new Error('Badge art manifest failed');
         return r.json();
       }),
-      fetch('./assets/takeovers/manifest.json?v=10.3').then(r=>{
+      fetch('./assets/takeovers/manifest.json?v=10.4').then(r=>{
         if(!r.ok)throw new Error('Takeover art manifest failed');
         return r.json();
       })
@@ -2268,283 +2123,6 @@ function renderUnlocks(){
 
   bindTapTooltips();
 };
-const optimizerAttrs=['ShotClose','DrivingLayup','DrivingDunk','StandingDunk','PostControl','ShotMidrange','ShotThree','ShotFreeThrow','PassAccuracy','BallControl','SpeedWithBall','InteriorDefense','PerimeterDefense','Steal','Block','ReboundOffense','ReboundDefense','Speed','Agility','Strength','Vertical'];
-let optimizerPriorities={};
-let optimizerSourceType='builder',optimizerSourceBuildId=null,optimizerWorkingRatings=null,optimizerWorkingManual=null,optimizerSourceBody=null,optimizerSourceLocks=[];
-function priorityFor(a){
-  const p=document.querySelector('#preset')?.value||'custom';
-  if(p==='custom')return optimizerPriorities[a]??5;
-  return presets[p]?.[a]??1;
-}
-function syncOptimizerCurrentRating(a,value){
-  if(lockedAttrs.has(a)){
-    showTapTooltip(`${nice[a]} is locked in Builder. Unlock it there before changing its Current Rating.`);
-    renderGoals();
-    return;
-  }
-  attemptAttributeChange(a,+value);
-  renderGoals();
-}
-function nextBadgeThresholdForAttr(a,have,h){
-  let opts=[];
-  for(const b of badges){
-    if(!heightAllowed(b.heightRequirement,h))continue;
-    for(const tier of ['bronze','silver','gold','hof']){
-      const req=b[tier]; if(!req||req==='-')continue;
-      const nums=[...req.matchAll(/(\d+)\s+([A-Za-z0-9 \-]+)/g)];
-      for(const m of nums){
-        const need=+m[1], nm=m[2].trim(), mapped=nameToAttr[nm];
-        if(mapped===a && need>have) opts.push({need,label:`${tier==='hof'?'Hall of Fame':tier[0].toUpperCase()+tier.slice(1)} ${b.name}`});
-      }
-    }
-  }
-  opts.sort((x,y)=>x.need-y.need);
-  return opts[0]||null;
-}
-function nextTakeoverThresholdForAttr(a,have){
-  let opts=[];
-  for(const t of takeovers){
-    if(/Always available/i.test(t.requirement||''))continue;
-    const nums=[...(t.requirement||'').matchAll(/(\d+)\s+([A-Za-z0-9 \-]+)/g)];
-    for(const m of nums){
-      const need=+m[1], nm=m[2].trim(), mapped=nameToAttr[nm];
-      if(mapped===a && need>have)opts.push({need,label:`${t.name} takeover`});
-    }
-  }
-  opts.sort((x,y)=>x.need-y.need);
-  return opts[0]||null;
-}
-function optimizerOpportunity(a,have,priority,h,w,wing){
-  const cap=betaMaxCap(a,h,w,wing);
-  if(have>=cap)return {score:0,cap,need:null,label:'At max potential',gap:0};
-  const badge=nextBadgeThresholdForAttr(a,have,h);
-  const take=nextTakeoverThresholdForAttr(a,have);
-  let candidate=null;
-  for(const x of [badge,take].filter(Boolean)){
-    if(x.need<=cap && (!candidate||x.need<candidate.need))candidate=x;
-  }
-  if(!candidate){
-    const soft=Math.min(cap,have+5);
-    candidate={need:soft,label:'general improvement'};
-  }
-  const gap=Math.max(1,candidate.need-have);
-  const score=Math.round(priority*100/gap);
-  return {score,cap,need:candidate.need,label:candidate.label,gap};
-}
-
-function getSavedBuildList(){return JSON.parse(localStorage.getItem('2k27-builds')||'[]')}
-function cloneCurrentBuilderIntoOptimizer(){
-  solve();
-  optimizerSourceType='builder';optimizerSourceBuildId=null;
-  optimizerWorkingRatings={...ratings};optimizerWorkingManual={...manual};
-  optimizerSourceBody={pos:document.querySelector('#position').value,h:+document.querySelector('#height').value,w:+document.querySelector('#weight').value,wing:+document.querySelector('#wing').value};
-  optimizerSourceLocks=[...lockedAttrs];
-  const label=document.querySelector('#optimizerSourceLabel');if(label)label.textContent='Source: Current Builder';
-  renderGoals();
-}
-function loadSavedBuildIntoOptimizerById(id){
-  const list=getSavedBuildList(),b=list.find(x=>String(x.id)===String(id));if(!b)return;
-  optimizerSourceType='saved';optimizerSourceBuildId=b.id;
-  optimizerWorkingRatings={...(b.ratings||b.manual||{})};optimizerWorkingManual={...(b.manual||b.ratings||{})};
-  optimizerSourceBody={pos:b.pos,h:+b.h,w:+b.w,wing:+b.wing};
-  optimizerSourceLocks=[...(b.locks||[])];
-  const label=document.querySelector('#optimizerSourceLabel');if(label)label.textContent=`Source: ${b.name||'Saved Build'}`;
-  document.querySelector('#optimizerSavedModal')?.classList.remove('show');
-  renderGoals();
-}
-function openSavedBuildPickerForOptimizer(){
-  const list=getSavedBuildList(),box=document.querySelector('#optimizerSavedList');
-  if(box){
-    box.innerHTML=list.length?list.map(b=>`<div class="item savedPick" data-id="${b.id}"><div class="itemTop"><b>${b.name||'Saved Build'}</b><span class="tier">${b.h?feet(b.h):''}</span></div><div class="tiny muted">${(b.pos||'').replaceAll('_',' ')} • ${b.w||'?'} lb • ${b.wing?feet(b.wing):'?'} WS</div></div>`).join(''):'<div class="muted">No saved builds yet.</div>';
-    box.querySelectorAll('.savedPick').forEach(el=>el.onclick=()=>loadSavedBuildIntoOptimizerById(el.dataset.id));
-  }
-  document.querySelector('#optimizerSavedModal')?.classList.add('show');
-}
-function optimizerBaseRatings(){
-  if(optimizerSourceType==='builder'){
-    solve();
-    optimizerWorkingRatings={...ratings};optimizerWorkingManual={...manual};
-    optimizerSourceBody={pos:document.querySelector('#position').value,h:+document.querySelector('#height').value,w:+document.querySelector('#weight').value,wing:+document.querySelector('#wing').value};
-    optimizerSourceLocks=[...lockedAttrs];
-  }
-  return optimizerWorkingRatings||ratings;
-}
-function optimizerBody(){
-  return optimizerSourceBody||{pos:document.querySelector('#position').value,h:+document.querySelector('#height').value,w:+document.querySelector('#weight').value,wing:+document.querySelector('#wing').value}
-}
-function nextOptimizedName(base){
-  const list=getSavedBuildList(),root=(base||'Build').replace(/\s—\sOptimized(?:\s\d+)?$/,'');
-  if(!list.some(x=>x.name===`${root} — Optimized`))return `${root} — Optimized`;
-  let n=2;while(list.some(x=>x.name===`${root} — Optimized ${n}`))n++;
-  return `${root} — Optimized ${n}`;
-}
-function optimizeRatingsCopy(baseRatings,h,w,wing,sourceLocks,priorities){
-  let current={...baseRatings};
-  const lockedBase={};
-  for(const a of sourceLocks)lockedBase[a]=current[a]??25;
-
-  function legalCandidate(test){
-    const solved=solveObject(test,h);
-    for(const a of directAttrs){
-      const cap=betaMaxCap(a,h,w,wing);
-      if((solved[a]??25)>cap)return null;
-    }
-    for(const a of sourceLocks){
-      if((solved[a]??25)!==lockedBase[a])return null;
-    }
-    return solved;
-  }
-
-  let guard=0;
-  while(directOverallFor(current,h).display<99 && guard++<1800){
-    let best=null;
-    const beforeOvr=directOverallFor(current,h).score;
-
-    for(const a of optimizerAttrs){
-      if(sourceLocks.includes(a))continue;
-      const priority=priorities[a]??1;
-      if(priority<=1)continue;
-      const cap=betaMaxCap(a,h,w,wing);
-      const have=current[a]??25;
-      if(have>=cap)continue;
-
-      const proposed={...current,[a]:have+1};
-      const solved=legalCandidate(proposed);
-      if(!solved)continue;
-
-      const after=directOverallFor(solved,h);
-      const delta=Math.max(.015,after.score-beforeOvr);
-
-      const badgeBefore=nextBadgeThresholdForAttr(a,have,h);
-      const takeBefore=nextTakeoverThresholdForAttr(a,have);
-      let thresholdBonus=1;
-      if(badgeBefore && badgeBefore.need===have+1)thresholdBonus+=1.25;
-      if(takeBefore && takeBefore.need===have+1)thresholdBonus+=.8;
-
-      const value=(priority*thresholdBonus)/delta;
-      if(!best||value>best.value)best={a,solved,value,after}
-    }
-
-    if(!best)break;
-    current=best.solved;
-
-    if(best.after.display>=99)break
-  }
-  return current
-}
-function saveOptimizedCopy(){
-  const list=getSavedBuildList(),baseRatings={...optimizerBaseRatings()},ob=optimizerBody();
-  let pos=ob.pos,h=ob.h,w=ob.w,wing=ob.wing;
-  let sourceName=`${feet(h)} ${pos.replaceAll('_',' ')}`,locks=[...optimizerSourceLocks];
-
-  if(optimizerSourceType==='saved'){
-    const src=list.find(x=>String(x.id)===String(optimizerSourceBuildId));
-    if(src)sourceName=src.name||sourceName
-  }
-
-  const priorities=currentGoals();
-  const optimized=optimizeRatingsCopy(baseRatings,h,w,wing,locks,priorities);
-  const name=nextOptimizedName(sourceName);
-
-  list.unshift({
-    id:Date.now(),name,pos,h,w,wing,
-    ratings:{...optimized},manual:{...optimized},locks:[...locks],
-    optimized:true,
-    optimizedFrom:optimizerSourceType==='saved'?optimizerSourceBuildId:null,
-    sourceName,
-    savedAt:Date.now()
-  });
-  localStorage.setItem('2k27-builds',JSON.stringify(list));
-  if(typeof renderSaved==='function')renderSaved();
-  if(typeof refreshComparePickers==='function')refreshComparePickers();
-  showTapTooltip(`${name} saved as a new build. Original unchanged.`);
-}
-
-function currentGoals(){
-  let g={};
-  for(const a of optimizerAttrs)g[a]=priorityFor(a);
-  return g;
-}
-function renderGoals(){
-  if(!document.querySelector('#goalRows'))return;
-  const baseRatings=optimizerBaseRatings();
-  const p=document.querySelector('#preset')?.value||'custom';
-  const ob=optimizerBody(),h=ob.h,w=ob.w,wing=ob.wing;
-  const note=document.querySelector('#optimizerModeNote');
-  if(note)note.textContent=p==='custom'
-    ?'Custom mode: set each Priority from 1–10. Current Rating is synced with the Builder.'
-    :'Preset mode: priority weights are locked to the selected profile. Current Rating still reflects your Builder.';
-  document.querySelector('#goalRows').innerHTML=optimizerAttrs.map(a=>{
-    const have=baseRatings[a]??25,cap=betaMaxCap(a,h,w,wing),prio=priorityFor(a);
-    const validated=!!maxPotentialNative;
-    return `<div class="goalRow" data-a="${a}">
-      <b>${nice[a]}${validated?'<span class="validatedCapTag">2K NATIVE</span>':''}</b>
-      <div>
-        <span class="tiny muted">Current Rating</span>
-        <input class="goalCurrent" type="number" min="25" max="${cap}" value="${Math.min(have,cap)}" readonly>
-        <div class="tiny muted">Max ${cap}${optimizerSourceLocks.includes(a)?' • locked':''}</div>
-      </div>
-      <div>
-        <span class="tiny muted">Priority</span>
-        <div class="priorityWrap">
-          <input class="gw" type="range" min="1" max="10" value="${prio}" ${p==='custom'?'':'disabled'} style="--range-pct:${(prio-1)/9*100}%">
-          <span class="priorityValue">${prio}</span>
-        </div>
-      </div>
-    </div>`;
-  }).join('');
-  document.querySelectorAll('#goalRows .goalRow').forEach(row=>{
-    const a=row.dataset.a;
-    const cur=row.querySelector('.goalCurrent');
-    const pr=row.querySelector('.gw');
-    if(cur)cur.onclick=()=>showTapTooltip('Current Rating comes from your Builder or loaded saved build.');
-    if(pr)pr.oninput=e=>{
-      optimizerPriorities[a]=+e.currentTarget.value;
-      row.querySelector('.priorityValue').textContent=e.currentTarget.value;
-      e.currentTarget.style.setProperty('--range-pct',((+e.currentTarget.value-1)/9*100)+'%');
-      renderOptimizer();
-    };
-  });
-  renderOptimizer();
-}
-function renderOptimizer(){
-  if(!document.querySelector('#fitScore')||!rules)return;
-  const baseRatings=optimizerBaseRatings();
-  const ob=optimizerBody(),h=ob.h,w=ob.w,wing=ob.wing;
-  const ovr=directOverallFor(baseRatings,h);
-  document.querySelector('#fitScore').textContent=ovr.display;
-  const priorities=currentGoals();
-  const highCount=Object.values(priorities).filter(v=>v>=8).length;
-  document.querySelector('#priorityCount').textContent=highCount;
-  document.querySelector('#optimizerLockCount').textContent=optimizerSourceLocks.length;
-  document.querySelector('#fitLabel').textContent='Recommendations are ranked by priority, distance to the next useful threshold, body-profile max potential, and current locks.';
-
-  let opportunities=[];
-  for(const a of optimizerAttrs){
-    const have=baseRatings[a]??25,priority=priorities[a]??1;
-    if(priority<=1||optimizerSourceLocks.includes(a))continue;
-    const op=optimizerOpportunity(a,have,priority,h,w,wing);
-    if(op.score>0)opportunities.push({a,have,priority,...op});
-  }
-  opportunities.sort((a,b)=>b.score-a.score||b.priority-a.priority||a.gap-b.gap);
-  document.querySelector('#targetCheck').innerHTML=opportunities.slice(0,10).map((x,i)=>{
-    const klass=x.score>=250?'high':x.score>=120?'mid':'';
-    return `<div class="item">
-      <div class="itemTop"><b>#${i+1} ${nice[x.a]}</b><span class="opportunityScore ${klass}">${x.priority}/10 priority</span></div>
-      <div class="tiny">Current <b>${x.have}</b> → next useful point <b>${x.need}</b> <span class="muted">(max ${x.cap})</span></div>
-      <div class="tiny muted" style="margin-top:4px">${x.label} • ${x.gap} rating point${x.gap===1?'':'s'} away</div>
-    </div>`;
-  }).join('')||'<div class="muted">No upgrade opportunities remain under the current body caps and priorities.</div>';
-
-  const savedRatingsRef=ratings;ratings=baseRatings;
-  let high=badges.map(b=>({b,t:getBadgeTier(b,h)})).filter(x=>x.t==='Gold'||x.t==='Hall of Fame').slice(0,8);
-  let av=takeovers.filter(t=>parseReq(t.requirement).ok&&!t.name.startsWith('Default')).slice(0,6);
-  ratings=savedRatingsRef;
-  document.querySelector('#optimizerUnlocks').innerHTML=[
-    ...high.map(x=>`<div class="item"><b>${x.b.name}</b> <span class="tier ${x.t==='Hall of Fame'?'hof':'gold'}">${x.t}</span></div>`),
-    ...av.map(t=>`<div class="item"><b>${t.name}</b> <span class="tier">Takeover</span></div>`)
-  ].join('')||'<div class="muted">Raise attributes to see meaningful unlocks.</div>';
-}
 function saveBuild(){solve();let list=JSON.parse(localStorage.getItem('2k27-builds')||'[]');let pos=document.querySelector('#position').value,h=+document.querySelector('#height').value,w=+document.querySelector('#weight').value,wing=+document.querySelector('#wing').value;list.unshift({id:Date.now(),name:`${feet(h)} ${pos.replaceAll('_',' ')}`,pos,h,w,wing,ratings:{...ratings},manual:{...manual},locks:[...lockedAttrs]});localStorage.setItem('2k27-builds',JSON.stringify(list.slice(0,30)));refreshComparePickers();alert('Build saved on this device.')}
 function openSavedBuild(id){
   const list=JSON.parse(localStorage.getItem('2k27-builds')||'[]');
@@ -2565,12 +2143,22 @@ function renderSaved(){
   const box=document.querySelector('#savedList');if(!box)return;
   let list=JSON.parse(localStorage.getItem('2k27-builds')||'[]');
   box.innerHTML=list.length?list.map(b=>`<div class="item">
-    <div class="itemTop"><b>${b.name}</b><div style="display:flex;gap:6px"><button class="btn tiny" onclick="openSavedBuild(${b.id})">Open</button><button class="btn tiny" onclick="deleteSaved(${b.id})">Delete</button></div></div>
+    <div class="itemTop"><b>${escapeAttr(b.name||'Saved Build')}</b><div style="display:flex;gap:6px;flex-wrap:wrap"><button class="btn tiny" onclick="openSavedBuild(${b.id})">Open</button><button class="btn tiny" onclick="renameSaved(${b.id})">Rename</button><button class="btn tiny" onclick="deleteSaved(${b.id})">Delete</button></div></div>
     <div class="muted">${feet(b.h)} • ${b.w} lb • ${feet(b.wing)} wingspan</div>
     <div class="tiny" style="margin-top:7px">3PT ${b.ratings.ShotThree||25} • Dunk ${b.ratings.DrivingDunk||25} • Per D ${b.ratings.PerimeterDefense||25} • Handle ${b.ratings.BallControl||25}</div>
   </div>`).join(''):'<div class="muted">No saved builds yet.</div>';
 }
-function deleteSaved(id){let list=JSON.parse(localStorage.getItem('2k27-builds')||'[]').filter(x=>x.id!==id);localStorage.setItem('2k27-builds',JSON.stringify(list));renderSaved();refreshComparePickers()}
+function renameSaved(id){
+  const list=JSON.parse(localStorage.getItem('2k27-builds')||'[]');
+  const b=list.find(x=>String(x.id)===String(id));if(!b)return;
+  const next=prompt('Rename build:',b.name||'Saved Build');
+  if(next===null)return;
+  const clean=next.trim();if(!clean)return alert('Build name cannot be blank.');
+  b.name=clean.slice(0,80);
+  localStorage.setItem('2k27-builds',JSON.stringify(list));
+  renderSaved();refreshComparePickers();
+}
+function deleteSaved(id){let list=JSON.parse(localStorage.getItem('2k27-builds')||'[]').filter(x=>String(x.id)!==String(id));localStorage.setItem('2k27-builds',JSON.stringify(list));renderSaved();refreshComparePickers()}
 
 
 async function hardClearBuildLabCaches(){
@@ -2602,7 +2190,7 @@ async function clearOldBuildLabCaches(){
 }
 hardClearBuildLabCaches().then(clearOldBuildLabCaches).finally(init);
 
-</script><div class="footer">Build Lab v10.3 • Reverse-engineered from the user-supplied NBA 2K HQ client for private build-planning use. Max-potential body caps use the decoded native NBA 2K HQ v1.1.3 tuning. Cap Breakers remain explicitly marked preview where parity is not yet proven.</div>
+</script><div class="footer">Build Lab v10.4 • Reverse-engineered from the user-supplied NBA 2K HQ client for private build-planning use. Max-potential body caps use the decoded native NBA 2K HQ v1.1.3 tuning. Cap Breakers remain explicitly marked preview where parity is not yet proven.</div>
 <div id="tapTooltip" aria-live="polite"></div>
 <div id="lockConflictModal" role="dialog" aria-modal="true" aria-labelledby="lockConflictTitle">
   <div class="lockModalCard">
@@ -2628,14 +2216,6 @@ hardClearBuildLabCaches().then(clearOldBuildLabCaches).finally(init);
       <button class="btn primary" id="useMaxLegalBtn">Use Max Allowed</button>
     </div>
     <div class="ovrLimitNote">This guard uses the decoded 2K displayed-OVR weighting path.</div>
-  </div>
-</div>
-
-
-<div id="optimizerSavedModal" class="simpleModal" role="dialog" aria-modal="true">
-  <div class="simpleModalCard">
-    <div class="simpleModalHead"><h3>Load Saved Build</h3><button class="btn tiny" id="closeOptimizerSavedModal">Close</button></div>
-    <div id="optimizerSavedList" class="list"></div>
   </div>
 </div>
 
