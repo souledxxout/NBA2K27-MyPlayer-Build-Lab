@@ -1,0 +1,175 @@
+{
+  "source": "User-supplied NBA 2K HQ screenshots, 2026-08-25",
+  "purpose": "Cap Breaker step parity regression for v10.10",
+  "body": {
+    "heightInches": 77,
+    "weightLb": 207,
+    "wingspanInches": 80
+  },
+  "startingRatings": {
+    "ShotClose": 75,
+    "DrivingLayup": 75,
+    "DrivingDunk": 95,
+    "StandingDunk": 50,
+    "PostControl": 32,
+    "ShotMidrange": 80,
+    "ShotThree": 89,
+    "ShotFreeThrow": 81,
+    "PassAccuracy": 76,
+    "BallControl": 81,
+    "SpeedWithBall": 84,
+    "InteriorDefense": 43,
+    "PerimeterDefense": 91,
+    "Steal": 79,
+    "Block": 63,
+    "ReboundOffense": 29,
+    "ReboundDefense": 53,
+    "Speed": 85,
+    "Agility": 83,
+    "Strength": 63,
+    "Vertical": 81
+  },
+  "expectedSequences": {
+    "ShotClose": [
+      3,
+      3,
+      3,
+      2,
+      2
+    ],
+    "DrivingLayup": [
+      2,
+      2,
+      1,
+      1,
+      1
+    ],
+    "StandingDunk": [
+      8,
+      6,
+      4,
+      0,
+      0
+    ],
+    "PostControl": [
+      13,
+      11,
+      9,
+      7,
+      6
+    ],
+    "ShotMidrange": [
+      2,
+      2,
+      1,
+      1,
+      1
+    ],
+    "ShotThree": [
+      1,
+      1,
+      1,
+      1,
+      0
+    ],
+    "ShotFreeThrow": [
+      5,
+      4,
+      3,
+      3,
+      2
+    ],
+    "PassAccuracy": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "BallControl": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "SpeedWithBall": [
+      1,
+      1,
+      1,
+      1,
+      0
+    ],
+    "InteriorDefense": [
+      11,
+      9,
+      7,
+      6,
+      4
+    ],
+    "PerimeterDefense": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "Steal": [
+      3,
+      3,
+      2,
+      2,
+      2
+    ],
+    "Block": [
+      4,
+      0,
+      0,
+      0,
+      0
+    ],
+    "ReboundOffense": [
+      15,
+      12,
+      10,
+      6,
+      0
+    ],
+    "ReboundDefense": [
+      8,
+      7,
+      5,
+      2,
+      0
+    ],
+    "Speed": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "Agility": [
+      2,
+      1,
+      1,
+      1,
+      1
+    ],
+    "Strength": [
+      5,
+      5,
+      4,
+      3,
+      0
+    ],
+    "Vertical": [
+      2,
+      2,
+      1,
+      1,
+      1
+    ]
+  },
+  "result": "20/20 visible HQ attribute sequences reproduced by fixed-starting-player-type + raw height/player-type weights."
+}

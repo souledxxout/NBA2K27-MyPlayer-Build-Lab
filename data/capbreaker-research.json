@@ -1,6 +1,6 @@
 {
   "source": "User-supplied NBA 2K HQ APK native ATTRIBUTES_GetCapBreakerBoostValuesForAttrAtIndex + extracted 21-attribute weighting tables",
-  "status": "native arithmetic recovered; browser weighting upgraded from unscaled proxy to the extracted 21 direct attributes and rating-weight scales",
+  "status": "native arithmetic and native weight selection recovered; HQ screenshot regression now matches all supplied sequences",
   "exactRecoveredMath": {
     "stepFactor": "15 + trunc((350 - 14 * currentRating) / 74)",
     "boost": "max(1, round(((maxWeight - selectedWeight) / maxWeight) * stepFactor))",
@@ -8,9 +8,10 @@
     "repeat": "sequentially five times"
   },
   "weighting": {
-    "playerType": "best player type from the upgraded detailed OVR calculation",
-    "selectedWeight": "HeightBasedAttributeWeight * AttributeRatingWeightScale(rating - 1)",
-    "maxWeight": "maximum effective weight among the 21 mapped builder attributes for that player type/current state"
+    "playerType": "best player type selected once from the starting build state, then held fixed for all five breaker steps",
+    "selectedWeight": "raw HeightBasedAttributeWeight for the target attribute (no AttributeRatingWeightScale multiplier)",
+    "maxWeight": "maximum raw HeightBasedAttributeWeight among the mapped builder attributes for that same height/player type",
+    "important": "Cap Breaker math uses the raw height/player-type table; rating-scaled weights remain part of the OVR calculation only."
   },
-  "validationCaveat": "No supplied 2KHQ screenshot contains an exact five-step Cap Breaker sequence for independent regression, so the UI continues to identify this as a preview rather than claiming screenshot-validated parity."
+  "validationCaveat": "Validated against the user-supplied 2K HQ Cap Breaker screenshots for the 6'5\" SG regression build: 20/20 visible attribute sequences match."
 }

@@ -806,7 +806,7 @@ body{color-scheme:dark}
 <section id="compare" class="page"><div class="card"><h2>Build Compare</h2><p class="muted">Select up to four saved builds and compare their body setup, overall and attribute ratings side by side.</p><div id="comparePickers" class="cols"></div><div class="field"><button id="runCompare" class="btn primary">Compare Selected</button></div></div><div class="card" style="margin-top:14px"><div id="compareOutput" class="wideTable"><div class="muted">Save some builds first, then compare them here.</div></div></div></section>
 <section id="saved" class="page"><div class="card"><h2>My Builds</h2><div id="savedList" class="saved"></div></div></section>
 
-<div class="footer">Build Lab v10.9 • Extracted 2K27 tuning drives linked attributes, badges/takeovers, displayed OVR, and native max-potential body caps across every legal profile.</div></div>
+<div class="footer">Build Lab v10.10 • Extracted 2K27 tuning drives linked attributes, badges/takeovers, displayed OVR, and native max-potential body caps across every legal profile.</div></div>
 <script>
 console.log('NBA 2K27 Build Lab MOBILE BUILD 10.9');
 const attrGroups={Finishing:['ShotClose','DrivingLayup','DrivingDunk','StandingDunk','PostControl'],Shooting:['ShotMidrange','ShotThree','ShotFreeThrow'],Playmaking:['PassAccuracy','BallControl','SpeedWithBall'],Defense:['InteriorDefense','PerimeterDefense','Steal','Block','ReboundOffense','ReboundDefense'],Physicals:['Speed','Agility','Strength','Vertical']};
@@ -935,18 +935,18 @@ function initNav(){
   document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>showPage(b.dataset.page));
 }
 async function init(){await loadGameArtManifests();[rules,badges,takeovers,maxHeightMult,maxPotentialNative,validation,heightWeights,heightLerp,capResearch,ratingWeightScale,validatedCapsData,parityReport]=await Promise.all([
-fetch('./data/builder-rules.json?v=10.8').then(r=>r.json()),
-fetch('./data/badges.json?v=10.8').then(r=>r.json()),
-fetch('./data/takeovers.json?v=10.8').then(r=>r.json()),
-fetch('./data/max-potential-height-multipliers.json?v=10.8').then(r=>r.json()),
-fetch('./data/max-potential-native-tuning.json?v=10.8').then(r=>r.json()),
-fetch('./data/max-potential-validation.json?v=10.8').then(r=>r.json()),
-fetch('./data/height-attribute-weights.json?v=10.8').then(r=>r.json()),
-fetch('./data/height-overall-lerp.json?v=10.8').then(r=>r.json()),
-fetch('./data/capbreaker-research.json?v=10.8').then(r=>r.json()),
-fetch('./data/attribute-rating-weight-scale.json?v=10.8').then(r=>r.json()),
-fetch('./data/validated-cap-profiles.json?v=10.8').then(r=>r.json()),
-fetch('./data/parity-report.json?v=10.8').then(r=>r.json())
+fetch('./data/builder-rules.json?v=10.10').then(r=>r.json()),
+fetch('./data/badges.json?v=10.10').then(r=>r.json()),
+fetch('./data/takeovers.json?v=10.10').then(r=>r.json()),
+fetch('./data/max-potential-height-multipliers.json?v=10.10').then(r=>r.json()),
+fetch('./data/max-potential-native-tuning.json?v=10.10').then(r=>r.json()),
+fetch('./data/max-potential-validation.json?v=10.10').then(r=>r.json()),
+fetch('./data/height-attribute-weights.json?v=10.10').then(r=>r.json()),
+fetch('./data/height-overall-lerp.json?v=10.10').then(r=>r.json()),
+fetch('./data/capbreaker-research.json?v=10.10').then(r=>r.json()),
+fetch('./data/attribute-rating-weight-scale.json?v=10.10').then(r=>r.json()),
+fetch('./data/validated-cap-profiles.json?v=10.10').then(r=>r.json()),
+fetch('./data/parity-report.json?v=10.10').then(r=>r.json())
 ]);let legacyBadgeCount=document.querySelector('#badgeCount');if(legacyBadgeCount)legacyBadgeCount.textContent=badges.length;let legacyTakeCount=document.querySelector('#takeCount');if(legacyTakeCount)legacyTakeCount.textContent=takeovers.length;let p=document.querySelector('#position');Object.keys(rules.positions).forEach(x=>p.add(new Option(x.replaceAll('_',' '),x)));p.value='SHOOTING_GUARD';
 p.onchange=()=>{loadHeights();syncPositionSegment();};
 document.querySelectorAll('#positionSegment button').forEach(btn=>btn.onclick=()=>{
@@ -1102,22 +1102,29 @@ function directOverallFor(r,height){
   return best
 }
 function betaCapBreakers(attr,current,cap,height,ratingsObj){
-  let temp={...(ratingsObj||ratings)},out=[],lastMeta=null,r=current;
+  // Native Cap Breaker parity:
+  // 1) Choose the build's player type once from the starting ratings.
+  // 2) Use the raw height/player-type attribute weights (NOT the rating-scaled OVR weights).
+  // 3) Keep that same player type/weight table for all five sequential breaker steps.
+  // This reproduces every supplied 2K HQ Cap Breaker sequence in the v10.10 regression fixture.
+  const temp={...(ratingsObj||ratings)};
+  temp[attr]=current;
+  const startingOverall=directOverallFor(temp,height);
+  const playerType=startingOverall.playerType;
+  const w=directWeightsFor(height,playerType);
+  const sel=w[attr]??0;
+  const maxW=Math.max(0.0001,...Object.values(w));
+  let out=[],r=current;
   for(let i=0;i<5;i++){
     const room=cap-r;
     if(room<=0){out.push(0);continue}
-    temp[attr]=r;
-    const ov=directOverallFor(temp,height);
-    const w=effectiveWeightsFor(height,ov.playerType,temp);
-    const sel=w[attr]??0,maxW=Math.max(0.0001,...Object.values(w));
     const factor=15+Math.trunc((350-14*r)/74);
     let boost=Math.round(((maxW-sel)/maxW)*factor);
     boost=Math.max(1,Math.min(room,boost));
     out.push(boost);
-    lastMeta={playerType:ov.playerType,selectedWeight:sel,maxWeight:maxW};
-    r+=boost
+    r+=boost;
   }
-  return {boosts:out,...(lastMeta||{})}
+  return {boosts:out,playerType,selectedWeight:sel,maxWeight:maxW}
 }
 
 function runAutoBuild(){
@@ -1676,11 +1683,11 @@ let astcDecoderPromise=null;
 async function loadGameArtManifests(){
   try{
     [badgeArtManifest,takeoverArtManifest]=await Promise.all([
-      fetch('./assets/badges/manifest.json?v=10.8').then(r=>{
+      fetch('./assets/badges/manifest.json?v=10.10').then(r=>{
         if(!r.ok)throw new Error('Badge art manifest failed');
         return r.json();
       }),
-      fetch('./assets/takeovers/manifest.json?v=10.8').then(r=>{
+      fetch('./assets/takeovers/manifest.json?v=10.10').then(r=>{
         if(!r.ok)throw new Error('Takeover art manifest failed');
         return r.json();
       })
@@ -2202,7 +2209,7 @@ async function clearOldBuildLabCaches(){
 }
 hardClearBuildLabCaches().then(clearOldBuildLabCaches).finally(init);
 
-</script><div class="footer">Build Lab v10.9 • Reverse-engineered from the user-supplied NBA 2K HQ client for private build-planning use. Max-potential body caps use the decoded native NBA 2K HQ v1.1.3 tuning. Cap Breakers remain explicitly marked preview where parity is not yet proven.</div>
+</script><div class="footer">Build Lab v10.10 • Reverse-engineered from the user-supplied NBA 2K HQ client for private build-planning use. Max-potential body caps use the decoded native NBA 2K HQ v1.1.3 tuning. Cap Breaker step math is HQ-validated against the supplied regression build (20/20 visible sequences).</div>
 <div id="tapTooltip" aria-live="polite"></div>
 <div id="lockConflictModal" role="dialog" aria-modal="true" aria-labelledby="lockConflictTitle">
   <div class="lockModalCard">

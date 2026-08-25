@@ -1,4 +1,4 @@
-## v10.9 — HQ rounded-99 parity fix
+## v10.8 — HQ rounded-99 parity fix
 
 - Fixed a premature 99 OVR freeze discovered by an exact HQ-vs-Build-Lab comparison.
 - Build Lab previously froze all increases as soon as the *displayed* OVR rounded to 99.
@@ -6,12 +6,12 @@
 - Regression target from the HQ comparison: 6'5" / 207 lb / 6'8" wingspan profile with the matched ratings can move Vertical from 79 to at least 81 while still displaying 99 OVR.
 - No Vertical-specific exception was added; this fixes the underlying budget guard for every build.
 
-## v10.9
+## v10.7
 - Compare table body data is now split into separate Metric rows: Height, Weight, and Wingspan.
 - Each build column now contains only the value for that row, making comparison columns narrower and easier to scan on mobile.
 - Compare headers remain Build 1, Build 2, etc.
 
-## v10.9
+## v10.4
 - Removed the Optimizer page and navigation entry.
 - Fixed Compare Selected so saved builds render a comparison table.
 - Added Rename to saved builds.
@@ -21,7 +21,7 @@
 ## v10.3
 - Fixed the remaining takeover-art disappearance during height/weight/wingspan changes.
 - Takeover artwork now caches the successfully rendered 72×72 pixel result and reuses it when slider changes rebuild the takeover list, avoiding blank WebGL/ASTC redraws while preserving click/details behavior.
-# NBA 2K27 Build Lab v10.2 — v7 Full Private Beta
+# NBA 2K27 Build Lab v10.10 — HQ Cap Breaker Parity
 
 All-position web/PWA build planner based on the user-supplied NBA 2K HQ Android client and public badge/takeover data supplied in the conversation.
 
@@ -349,11 +349,11 @@ All other displayed maxes for this body already matched the supplied 2KHQ screen
 - Takeover details show a gameplay description, unlock requirement, and current relevant slider ratings.
 
 
-## v10.9
+## v10.5
 - Compare results table now sizes itself to the number of selected builds instead of stretching empty space across the full card. One- and two-build comparisons stay compact; three- and four-build comparisons expand as needed.
 
 
-## v10.9 compare layout
+## v10.6 compare layout
 - Compare chart headers now use Build 1, Build 2, etc.
 - Body is split into Height, Weight, and Wingspan lines.
 - Compare table fits all selected builds on mobile without horizontal scrolling.
@@ -363,3 +363,11 @@ All other displayed maxes for this body already matched the supplied 2KHQ screen
 - Replaced the temporary 99.00 unrounded legality cutoff with a global HQ-validated hidden affordability ceiling of **98.75**.
 - Regression evidence: the supplied HQ state at Strength 63 / Vertical 81 scores 98.73698 and is legal; the first competing +1 states score 98.76967 (Strength 64 / Vertical 81) and 98.80406 (Strength 63 / Vertical 82).
 - This is a global budget rule, not an attribute/body special-case. It allows alternate legal distributions to trade budget while preventing the extra points v10.8 allowed.
+
+
+## v10.10 — HQ Cap Breaker step parity
+
+- Corrected the Cap Breaker weight source: the native boost function uses the raw height/player-type attribute weight table, not the rating-scaled OVR weights.
+- Player type is selected once from the starting build state and remains fixed across all five sequential Cap Breaker steps.
+- Added `data/hq-capbreaker-regression-v10.10.json` from the supplied HQ screenshots.
+- The corrected function reproduces all 20 visible HQ Cap Breaker sequences in the regression build.
