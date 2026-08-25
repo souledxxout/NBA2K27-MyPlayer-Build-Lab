@@ -1,0 +1,9 @@
+{
+  "name": "NBA 2K27 Build Lab",
+  "short_name": "2K27 Build Lab",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#08090b",
+  "theme_color": "#08090b",
+  "icons": []
+}

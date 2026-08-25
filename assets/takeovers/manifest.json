@@ -1,0 +1,170 @@
+{
+  "Default Shooting": {
+    "file": "assets/takeovers/default-shooting.astcbin",
+    "width": 512,
+    "height": 512,
+    "format": 50,
+    "asset": "icon_takeover_special_shooting_color"
+  },
+  "Shot Artist": {
+    "file": "assets/takeovers/shot-artist.astcbin",
+    "width": 512,
+    "height": 512,
+    "format": 50,
+    "asset": "icon_takeover_special_shot_artist_color"
+  },
+  "Calibrated": {
+    "file": "assets/takeovers/calibrated.astcbin",
+    "width": 512,
+    "height": 512,
+    "format": 50,
+    "asset": "icon_takeover_special_calibrated_color"
+  },
+  "Zip Code": {
+    "file": "assets/takeovers/zip-code.astcbin",
+    "width": 512,
+    "height": 512,
+    "format": 50,
+    "asset": "icon_takeover_special_zip_code_color"
+  },
+  "Default Finishing": {
+    "file": "assets/takeovers/default-finishing.astcbin",
+    "width": 512,
+    "height": 512,
+    "format": 50,
+    "asset": "icon_takeover_special_finishing_color"
+  },
+  "Navigator": {
+    "file": "assets/takeovers/navigator.astcbin",
+    "width": 512,
+    "height": 512,
+    "format": 50,
+    "asset": "icon_takeover_special_navigator_color"
+  },
+  "Airspace": {
+    "file": "assets/takeovers/airspace.astcbin",
+    "width": 512,
+    "height": 512,
+    "format": 50,
+    "asset": "icon_takeover_special_airspace_color"
+  },
+  "Inside Touch": {
+    "file": "assets/takeovers/inside-touch.astcbin",
+    "width": 512,
+    "height": 512,
+    "format": 50,
+    "asset": "icon_takeover_special_inside_touch_color"
+  },
+  "Detonator": {
+    "file": "assets/takeovers/detonator.astcbin",
+    "width": 512,
+    "height": 512,
+    "format": 50,
+    "asset": "icon_takeover_special_detonator_color"
+  },
+  "Paint Surgeon": {
+    "file": "assets/takeovers/paint-surgeon.astcbin",
+    "width": 512,
+    "height": 512,
+    "format": 50,
+    "asset": "icon_takeover_special_paintsurgeon_color"
+  },
+  "Default Playmaking": {
+    "file": "assets/takeovers/default-playmaking.astcbin",
+    "width": 512,
+    "height": 512,
+    "format": 50,
+    "asset": "icon_takeover_special_playmaking_color"
+  },
+  "Blur": {
+    "file": "assets/takeovers/blur.astcbin",
+    "width": 512,
+    "height": 512,
+    "format": 50,
+    "asset": "icon_takeover_special_blur_color"
+  },
+  "Cook": {
+    "file": "assets/takeovers/cook.astcbin",
+    "width": 512,
+    "height": 512,
+    "format": 50,
+    "asset": "icon_takeover_special_cook_color"
+  },
+  "Dishmaster": {
+    "file": "assets/takeovers/dishmaster.astcbin",
+    "width": 512,
+    "height": 512,
+    "format": 50,
+    "asset": "icon_takeover_special_freepassinglanes_color"
+  },
+  "Default Defense": {
+    "file": "assets/takeovers/default-defense.astcbin",
+    "width": 512,
+    "height": 512,
+    "format": 50,
+    "asset": "icon_takeover_special_defense_color"
+  },
+  "Glue": {
+    "file": "assets/takeovers/glue.astcbin",
+    "width": 512,
+    "height": 512,
+    "format": 50,
+    "asset": "icon_takeover_special_glue_color"
+  },
+  "Hawk": {
+    "file": "assets/takeovers/hawk.astcbin",
+    "width": 512,
+    "height": 512,
+    "format": 50,
+    "asset": "icon_takeover_special_hawk_color"
+  },
+  "Rim Guardian": {
+    "file": "assets/takeovers/rim-guardian.astcbin",
+    "width": 512,
+    "height": 512,
+    "format": 50,
+    "asset": "icon_takeover_special_blockade_color"
+  },
+  "Default Rebounding": {
+    "file": "assets/takeovers/default-rebounding.astcbin",
+    "width": 512,
+    "height": 512,
+    "format": 50,
+    "asset": "icon_takeover_special_rebounding_color"
+  },
+  "Demolition": {
+    "file": "assets/takeovers/demolition.astcbin",
+    "width": 512,
+    "height": 512,
+    "format": 50,
+    "asset": "icon_takeover_special_demolition_color"
+  },
+  "Muscle": {
+    "file": "assets/takeovers/muscle.astcbin",
+    "width": 512,
+    "height": 512,
+    "format": 50,
+    "asset": "icon_takeover_special_muscle_color"
+  },
+  "Second Chance": {
+    "file": "assets/takeovers/second-chance.astcbin",
+    "width": 512,
+    "height": 512,
+    "format": 50,
+    "asset": "icon_takeover_special_second_chance_color"
+  },
+  "See the Future": {
+    "file": "assets/takeovers/see-the-future.astcbin",
+    "width": 512,
+    "height": 512,
+    "format": 50,
+    "asset": "icon_takeover_special_seethefuture_color"
+  },
+  "Hydration Hero": {
+    "file": "assets/takeovers/hydration-hero.astcbin",
+    "width": 512,
+    "height": 512,
+    "format": 50,
+    "asset": "icon_takeover_special_hydrationhero_color"
+  }
+}

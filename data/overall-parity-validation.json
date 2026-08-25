@@ -1,0 +1,58 @@
+[
+  {
+    "name": "SG 6'5 DD93 dependency state",
+    "height": 77,
+    "displayedOVR": 65,
+    "ratings": {
+      "ShotClose": 73,
+      "DrivingLayup": 73,
+      "DrivingDunk": 93,
+      "StandingDunk": 38,
+      "PostControl": 28,
+      "ShotMidrange": 33,
+      "ShotThree": 25,
+      "ShotFreeThrow": 33,
+      "PassAccuracy": 53,
+      "BallControl": 78,
+      "SpeedWithBall": 58,
+      "InteriorDefense": 25,
+      "PerimeterDefense": 25,
+      "Steal": 25,
+      "Block": 28,
+      "ReboundOffense": 25,
+      "ReboundDefense": 36,
+      "Speed": 54,
+      "Agility": 43,
+      "Strength": 48,
+      "Vertical": 73
+    }
+  },
+  {
+    "name": "SG 6'4 finishing-max dependency state",
+    "height": 76,
+    "displayedOVR": 87,
+    "ratings": {
+      "ShotClose": 99,
+      "DrivingLayup": 99,
+      "DrivingDunk": 94,
+      "StandingDunk": 62,
+      "PostControl": 85,
+      "ShotMidrange": 59,
+      "ShotThree": 39,
+      "ShotFreeThrow": 59,
+      "PassAccuracy": 59,
+      "BallControl": 84,
+      "SpeedWithBall": 69,
+      "InteriorDefense": 25,
+      "PerimeterDefense": 39,
+      "Steal": 25,
+      "Block": 29,
+      "ReboundOffense": 45,
+      "ReboundDefense": 35,
+      "Speed": 69,
+      "Agility": 54,
+      "Strength": 55,
+      "Vertical": 74
+    }
+  }
+]

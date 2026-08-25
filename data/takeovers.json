@@ -1,0 +1,146 @@
+[
+  {
+    "category": "Shooting",
+    "name": "Default Shooting",
+    "requirement": "Always available",
+    "description": "Considerable boost to Shooting attributes when in Takeover."
+  },
+  {
+    "category": "Shooting",
+    "name": "Shot Artist",
+    "requirement": "89 3PT OR 89 Mid-Range",
+    "description": "Enhances ability to make Off-Dribble shots."
+  },
+  {
+    "category": "Shooting",
+    "name": "Calibrated",
+    "requirement": "85 3PT OR 85 Mid-Range",
+    "description": "Enhances ability to make Set shots."
+  },
+  {
+    "category": "Shooting",
+    "name": "Zip Code",
+    "requirement": "91 3PT",
+    "description": "Extends ability to make shots from Deep."
+  },
+  {
+    "category": "Finishing",
+    "name": "Default Finishing",
+    "requirement": "Always available",
+    "description": "Considerable boost to Finishing attributes when in Takeover."
+  },
+  {
+    "category": "Finishing",
+    "name": "Navigator",
+    "requirement": "85 Driving Layup",
+    "description": "Enhances ability to make Driving and Advanced layups (euros, hops, spins)."
+  },
+  {
+    "category": "Finishing",
+    "name": "Airspace",
+    "requirement": "87 Driving Dunk AND 75 Vertical",
+    "description": "Enhances ability to make Driving dunks."
+  },
+  {
+    "category": "Finishing",
+    "name": "Inside Touch",
+    "requirement": "85 Close Shot",
+    "description": "Enhances ability to make Standing layups."
+  },
+  {
+    "category": "Finishing",
+    "name": "Detonator",
+    "requirement": "85 Standing Dunk",
+    "description": "Enhances ability to make Standing dunks."
+  },
+  {
+    "category": "Finishing",
+    "name": "Paint Surgeon",
+    "requirement": "80 Close Shot AND 75 Post Control",
+    "description": "Enhances ability to make Post Hooks, Fades, and win matchups in the post."
+  },
+  {
+    "category": "Playmaking",
+    "name": "Default Playmaking",
+    "requirement": "Always available",
+    "description": "Considerable boost to Playmaking attributes when in Takeover."
+  },
+  {
+    "category": "Playmaking",
+    "name": "Blur",
+    "requirement": "85 Ball Handle AND 80 Speed With Ball",
+    "description": "Enhances ability to blow by defenders and win body-up matchups."
+  },
+  {
+    "category": "Playmaking",
+    "name": "Cook",
+    "requirement": "90 Ball Handle",
+    "description": "Increases chances of successful ankle breakers."
+  },
+  {
+    "category": "Playmaking",
+    "name": "Dishmaster",
+    "requirement": "80 Pass Accuracy",
+    "description": "Increases boosts to pass recipient's Finishing and Shooting attributes."
+  },
+  {
+    "category": "Defense",
+    "name": "Default Defense",
+    "requirement": "Always available",
+    "description": "Considerable boost to Defense attributes when in Takeover."
+  },
+  {
+    "category": "Defense",
+    "name": "Glue",
+    "requirement": "85 Perimeter Defense",
+    "description": "Enhances ability to force ball pickups and fumbles."
+  },
+  {
+    "category": "Defense",
+    "name": "Hawk",
+    "requirement": "85 Steal",
+    "description": "Activates on-ball steal attempts that can cause turnovers or force fumbles."
+  },
+  {
+    "category": "Defense",
+    "name": "Rim Guardian",
+    "requirement": "80 Interior Defense AND 80 Block",
+    "description": "Increases ability to win post and off-ball post situations, and activates elite shot blocking around the rim."
+  },
+  {
+    "category": "Rebounding",
+    "name": "Default Rebounding",
+    "requirement": "Always available",
+    "description": "Considerable boost to Rebounding attributes when in Takeover."
+  },
+  {
+    "category": "Rebounding",
+    "name": "Demolition",
+    "requirement": "88 Strength",
+    "description": "Increases ability to set strong screens."
+  },
+  {
+    "category": "Rebounding",
+    "name": "Muscle",
+    "requirement": "80 Offensive Rebound AND 80 Defensive Rebound AND 80 Strength",
+    "description": "Increases ability to win successful boxouts and rebounds."
+  },
+  {
+    "category": "Rebounding",
+    "name": "Second Chance",
+    "requirement": "80 Offensive Rebound",
+    "description": "Instantly see shot feedback on all shots, and increase ability to make successful putbacks."
+  },
+  {
+    "category": "Rebounding",
+    "name": "See the Future",
+    "requirement": "85 Offensive Rebound AND 85 Defensive Rebound",
+    "description": "Shows you where missed shots will land ahead of time."
+  },
+  {
+    "category": "Universal",
+    "name": "Hydration Hero",
+    "requirement": "Always available",
+    "description": "Temporarily disables losing adrenaline and energy/turbo. Can be equipped in any of the five Takeover Ability discipline slots."
+  }
+]

@@ -1,0 +1,31 @@
+{
+  "version": "v7",
+  "scope": "All positions",
+  "legalBodyProfiles": 18935,
+  "dependencyRules": 1545,
+  "badges": 53,
+  "takeovers": 24,
+  "exactOrRecovered": [
+    "Position/body legal ranges",
+    "Height/weight/wingspan tuning",
+    "Attribute dependency rules",
+    "Badge thresholds",
+    "Takeover thresholds",
+    "21-direct-attribute OVR proxy math",
+    "15 player-type direct weighting paths",
+    "HeightBasedOverallLerp",
+    "Cap Breaker five-step formula"
+  ],
+  "betaOrApproximate": [
+    "Extreme-body max-potential final adjustment",
+    "Derived player-data slots in exact displayed OVR",
+    "Cap Breaker 155-slot maximum weight lookup",
+    "Automatic completed-build legality"
+  ],
+  "validation": {
+    "body": "SG 6'5 / 195 / 6'8",
+    "test": "Driving Dunk 93 only",
+    "2KHQ": 65,
+    "direct21Proxy": 62.1441
+  }
+}

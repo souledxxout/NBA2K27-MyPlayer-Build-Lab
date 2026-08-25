@@ -1,0 +1,34 @@
+{
+  "name": "6ft5 SG driving-dunk-only validation",
+  "body": {
+    "position": "SHOOTING_GUARD",
+    "heightInches": 77,
+    "weightLb": 195,
+    "wingspanInches": 80
+  },
+  "ratings": {
+    "ShotClose": 73,
+    "DrivingLayup": 73,
+    "DrivingDunk": 93,
+    "StandingDunk": 38,
+    "PostControl": 28,
+    "ShotMidrange": 33,
+    "ShotThree": 25,
+    "ShotFreeThrow": 33,
+    "PassAccuracy": 53,
+    "BallControl": 78,
+    "SpeedWithBall": 58,
+    "InteriorDefense": 25,
+    "PerimeterDefense": 25,
+    "Steal": 25,
+    "Block": 28,
+    "ReboundOffense": 25,
+    "ReboundDefense": 36,
+    "Speed": 54,
+    "Agility": 43,
+    "Strength": 48,
+    "Vertical": 73
+  },
+  "displayedOverall": 65,
+  "direct21Proxy": 62.1441
+}

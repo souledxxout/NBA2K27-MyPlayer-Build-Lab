@@ -1,0 +1,18 @@
+[
+  {
+    "name": "SG 6'5 DD93 dependency state",
+    "expected": 65,
+    "display": 65,
+    "detailed": 65.074425,
+    "playerType": 2,
+    "pass": true
+  },
+  {
+    "name": "SG 6'4 finishing-max dependency state",
+    "expected": 87,
+    "display": 87,
+    "detailed": 86.636104,
+    "playerType": 2,
+    "pass": true
+  }
+]

@@ -1,0 +1,1034 @@
+{
+  "TWO_WAY_PLAYMAKER": {
+    "ShotClose": [
+      76.0,
+      89.0
+    ],
+    "DrivingLayup": [
+      71.0,
+      83.0
+    ],
+    "DrivingDunk": [
+      25.0,
+      25.0
+    ],
+    "StandingDunk": [
+      25.0,
+      25.0
+    ],
+    "PostControl": [
+      39.0,
+      56.0
+    ],
+    "ShotMidrange": [
+      65.0,
+      76.0
+    ],
+    "ShotThree": [
+      65.0,
+      76.0
+    ],
+    "ShotFreeThrow": [
+      77.0,
+      91.0
+    ],
+    "PassAccuracy": [
+      82.0,
+      96.0
+    ],
+    "BallControl": [
+      79.0,
+      93.0
+    ],
+    "SpeedWithBall": [
+      79.0,
+      93.0
+    ],
+    "InteriorDefense": [
+      73.0,
+      86.0
+    ],
+    "PerimeterDefense": [
+      76.0,
+      89.0
+    ],
+    "Steal": [
+      73.0,
+      86.0
+    ],
+    "Block": [
+      75.0,
+      88.0
+    ],
+    "ReboundOffense": [
+      65.0,
+      76.0
+    ],
+    "ReboundDefense": [
+      76.0,
+      89.0
+    ],
+    "Speed": [
+      84.0,
+      93.0
+    ],
+    "Agility": [
+      84.0,
+      93.0
+    ],
+    "Strength": [
+      72.0,
+      90.0
+    ],
+    "Vertical": [
+      61.0,
+      76.0
+    ]
+  },
+  "SLASHING_PLAYMAKER": {
+    "ShotClose": [
+      81.0,
+      95.0
+    ],
+    "DrivingLayup": [
+      83.0,
+      98.0
+    ],
+    "DrivingDunk": [
+      25.0,
+      25.0
+    ],
+    "StandingDunk": [
+      25.0,
+      25.0
+    ],
+    "PostControl": [
+      41.0,
+      58.0
+    ],
+    "ShotMidrange": [
+      69.0,
+      81.0
+    ],
+    "ShotThree": [
+      65.0,
+      76.0
+    ],
+    "ShotFreeThrow": [
+      77.0,
+      91.0
+    ],
+    "PassAccuracy": [
+      82.0,
+      97.0
+    ],
+    "BallControl": [
+      84.0,
+      99.0
+    ],
+    "SpeedWithBall": [
+      80.0,
+      94.0
+    ],
+    "InteriorDefense": [
+      71.0,
+      83.0
+    ],
+    "PerimeterDefense": [
+      65.0,
+      77.0
+    ],
+    "Steal": [
+      60.0,
+      71.0
+    ],
+    "Block": [
+      71.0,
+      83.0
+    ],
+    "ReboundOffense": [
+      71.0,
+      84.0
+    ],
+    "ReboundDefense": [
+      75.0,
+      88.0
+    ],
+    "Speed": [
+      85.0,
+      94.0
+    ],
+    "Agility": [
+      77.0,
+      85.0
+    ],
+    "Strength": [
+      66.0,
+      83.0
+    ],
+    "Vertical": [
+      73.0,
+      91.0
+    ]
+  },
+  "INSIDE_OUT_PLAYMAKER": {
+    "ShotClose": [
+      80.0,
+      94.0
+    ],
+    "DrivingLayup": [
+      77.0,
+      90.0
+    ],
+    "DrivingDunk": [
+      25.0,
+      25.0
+    ],
+    "StandingDunk": [
+      25.0,
+      25.0
+    ],
+    "PostControl": [
+      66.0,
+      78.0
+    ],
+    "ShotMidrange": [
+      68.0,
+      80.0
+    ],
+    "ShotThree": [
+      77.0,
+      91.0
+    ],
+    "ShotFreeThrow": [
+      77.0,
+      91.0
+    ],
+    "PassAccuracy": [
+      84.0,
+      99.0
+    ],
+    "BallControl": [
+      79.0,
+      93.0
+    ],
+    "SpeedWithBall": [
+      78.0,
+      92.0
+    ],
+    "InteriorDefense": [
+      48.0,
+      69.0
+    ],
+    "PerimeterDefense": [
+      62.0,
+      73.0
+    ],
+    "Steal": [
+      48.0,
+      69.0
+    ],
+    "Block": [
+      65.0,
+      76.0
+    ],
+    "ReboundOffense": [
+      46.0,
+      66.0
+    ],
+    "ReboundDefense": [
+      69.0,
+      81.0
+    ],
+    "Speed": [
+      80.0,
+      89.0
+    ],
+    "Agility": [
+      74.0,
+      82.0
+    ],
+    "Strength": [
+      66.0,
+      82.0
+    ],
+    "Vertical": [
+      72.0,
+      90.0
+    ]
+  },
+  "TWO_WAY_SLASHER": {
+    "ShotClose": [
+      80.0,
+      94.0
+    ],
+    "DrivingLayup": [
+      84.0,
+      99.0
+    ],
+    "DrivingDunk": [
+      28.0,
+      40.0
+    ],
+    "StandingDunk": [
+      25.0,
+      25.0
+    ],
+    "PostControl": [
+      34.0,
+      48.0
+    ],
+    "ShotMidrange": [
+      65.0,
+      76.0
+    ],
+    "ShotThree": [
+      61.0,
+      72.0
+    ],
+    "ShotFreeThrow": [
+      76.0,
+      89.0
+    ],
+    "PassAccuracy": [
+      67.0,
+      79.0
+    ],
+    "BallControl": [
+      75.0,
+      88.0
+    ],
+    "SpeedWithBall": [
+      84.0,
+      99.0
+    ],
+    "InteriorDefense": [
+      77.0,
+      91.0
+    ],
+    "PerimeterDefense": [
+      76.0,
+      89.0
+    ],
+    "Steal": [
+      69.0,
+      81.0
+    ],
+    "Block": [
+      76.0,
+      89.0
+    ],
+    "ReboundOffense": [
+      66.0,
+      78.0
+    ],
+    "ReboundDefense": [
+      70.0,
+      82.0
+    ],
+    "Speed": [
+      89.0,
+      99.0
+    ],
+    "Agility": [
+      86.0,
+      95.0
+    ],
+    "Strength": [
+      68.0,
+      85.0
+    ],
+    "Vertical": [
+      79.0,
+      99.0
+    ]
+  },
+  "THREE_AND_D": {
+    "ShotClose": [
+      75.0,
+      88.0
+    ],
+    "DrivingLayup": [
+      64.0,
+      75.0
+    ],
+    "DrivingDunk": [
+      25.0,
+      25.0
+    ],
+    "StandingDunk": [
+      25.0,
+      25.0
+    ],
+    "PostControl": [
+      40.0,
+      57.0
+    ],
+    "ShotMidrange": [
+      73.0,
+      86.0
+    ],
+    "ShotThree": [
+      81.0,
+      95.0
+    ],
+    "ShotFreeThrow": [
+      76.0,
+      89.0
+    ],
+    "PassAccuracy": [
+      65.0,
+      77.0
+    ],
+    "BallControl": [
+      69.0,
+      81.0
+    ],
+    "SpeedWithBall": [
+      73.0,
+      86.0
+    ],
+    "InteriorDefense": [
+      77.0,
+      91.0
+    ],
+    "PerimeterDefense": [
+      74.0,
+      87.0
+    ],
+    "Steal": [
+      75.0,
+      88.0
+    ],
+    "Block": [
+      68.0,
+      80.0
+    ],
+    "ReboundOffense": [
+      63.0,
+      74.0
+    ],
+    "ReboundDefense": [
+      63.0,
+      74.0
+    ],
+    "Speed": [
+      79.0,
+      88.0
+    ],
+    "Agility": [
+      80.0,
+      89.0
+    ],
+    "Strength": [
+      72.0,
+      90.0
+    ],
+    "Vertical": [
+      59.0,
+      74.0
+    ]
+  },
+  "THREE_LEVEL_SCORER": {
+    "ShotClose": [
+      77.0,
+      91.0
+    ],
+    "DrivingLayup": [
+      77.0,
+      91.0
+    ],
+    "DrivingDunk": [
+      25.0,
+      25.0
+    ],
+    "StandingDunk": [
+      25.0,
+      25.0
+    ],
+    "PostControl": [
+      72.0,
+      85.0
+    ],
+    "ShotMidrange": [
+      80.0,
+      94.0
+    ],
+    "ShotThree": [
+      77.0,
+      90.0
+    ],
+    "ShotFreeThrow": [
+      78.0,
+      92.0
+    ],
+    "PassAccuracy": [
+      65.0,
+      77.0
+    ],
+    "BallControl": [
+      70.0,
+      82.0
+    ],
+    "SpeedWithBall": [
+      73.0,
+      86.0
+    ],
+    "InteriorDefense": [
+      68.0,
+      80.0
+    ],
+    "PerimeterDefense": [
+      65.0,
+      77.0
+    ],
+    "Steal": [
+      63.0,
+      74.0
+    ],
+    "Block": [
+      61.0,
+      72.0
+    ],
+    "ReboundOffense": [
+      47.0,
+      67.0
+    ],
+    "ReboundDefense": [
+      68.0,
+      80.0
+    ],
+    "Speed": [
+      77.0,
+      86.0
+    ],
+    "Agility": [
+      72.0,
+      80.0
+    ],
+    "Strength": [
+      67.0,
+      84.0
+    ],
+    "Vertical": [
+      61.0,
+      76.0
+    ]
+  },
+  "OFFENSIVE_THREAT": {
+    "ShotClose": [
+      78.0,
+      92.0
+    ],
+    "DrivingLayup": [
+      77.0,
+      90.0
+    ],
+    "DrivingDunk": [
+      25.0,
+      25.0
+    ],
+    "StandingDunk": [
+      25.0,
+      25.0
+    ],
+    "PostControl": [
+      67.0,
+      79.0
+    ],
+    "ShotMidrange": [
+      75.0,
+      88.0
+    ],
+    "ShotThree": [
+      75.0,
+      88.0
+    ],
+    "ShotFreeThrow": [
+      78.0,
+      92.0
+    ],
+    "PassAccuracy": [
+      76.0,
+      89.0
+    ],
+    "BallControl": [
+      74.0,
+      87.0
+    ],
+    "SpeedWithBall": [
+      73.0,
+      86.0
+    ],
+    "InteriorDefense": [
+      48.0,
+      69.0
+    ],
+    "PerimeterDefense": [
+      60.0,
+      70.0
+    ],
+    "Steal": [
+      39.0,
+      55.0
+    ],
+    "Block": [
+      32.0,
+      45.0
+    ],
+    "ReboundOffense": [
+      43.0,
+      62.0
+    ],
+    "ReboundDefense": [
+      60.0,
+      70.0
+    ],
+    "Speed": [
+      77.0,
+      86.0
+    ],
+    "Agility": [
+      73.0,
+      81.0
+    ],
+    "Strength": [
+      65.0,
+      81.0
+    ],
+    "Vertical": [
+      57.0,
+      71.0
+    ]
+  },
+  "SHARPSHOOTER": {
+    "ShotClose": [
+      77.0,
+      90.0
+    ],
+    "DrivingLayup": [
+      65.0,
+      76.0
+    ],
+    "DrivingDunk": [
+      25.0,
+      25.0
+    ],
+    "StandingDunk": [
+      25.0,
+      25.0
+    ],
+    "PostControl": [
+      48.0,
+      68.0
+    ],
+    "ShotMidrange": [
+      84.0,
+      99.0
+    ],
+    "ShotThree": [
+      84.0,
+      99.0
+    ],
+    "ShotFreeThrow": [
+      81.0,
+      95.0
+    ],
+    "PassAccuracy": [
+      74.0,
+      87.0
+    ],
+    "BallControl": [
+      66.0,
+      78.0
+    ],
+    "SpeedWithBall": [
+      64.0,
+      75.0
+    ],
+    "InteriorDefense": [
+      62.0,
+      73.0
+    ],
+    "PerimeterDefense": [
+      63.0,
+      74.0
+    ],
+    "Steal": [
+      39.0,
+      56.0
+    ],
+    "Block": [
+      46.0,
+      66.0
+    ],
+    "ReboundOffense": [
+      38.0,
+      54.0
+    ],
+    "ReboundDefense": [
+      66.0,
+      78.0
+    ],
+    "Speed": [
+      71.0,
+      79.0
+    ],
+    "Agility": [
+      65.0,
+      72.0
+    ],
+    "Strength": [
+      62.0,
+      78.0
+    ],
+    "Vertical": [
+      49.0,
+      70.0
+    ]
+  },
+  "PLAYMAKING_SHOT_CREATOR": {
+    "ShotClose": [
+      77.0,
+      91.0
+    ],
+    "DrivingLayup": [
+      77.0,
+      90.0
+    ],
+    "DrivingDunk": [
+      25.0,
+      25.0
+    ],
+    "StandingDunk": [
+      25.0,
+      25.0
+    ],
+    "PostControl": [
+      68.0,
+      80.0
+    ],
+    "ShotMidrange": [
+      73.0,
+      86.0
+    ],
+    "ShotThree": [
+      72.0,
+      85.0
+    ],
+    "ShotFreeThrow": [
+      77.0,
+      91.0
+    ],
+    "PassAccuracy": [
+      80.0,
+      94.0
+    ],
+    "BallControl": [
+      77.0,
+      90.0
+    ],
+    "SpeedWithBall": [
+      72.0,
+      85.0
+    ],
+    "InteriorDefense": [
+      65.0,
+      77.0
+    ],
+    "PerimeterDefense": [
+      64.0,
+      75.0
+    ],
+    "Steal": [
+      39.0,
+      55.0
+    ],
+    "Block": [
+      35.0,
+      50.0
+    ],
+    "ReboundOffense": [
+      39.0,
+      55.0
+    ],
+    "ReboundDefense": [
+      60.0,
+      70.0
+    ],
+    "Speed": [
+      77.0,
+      85.0
+    ],
+    "Agility": [
+      75.0,
+      83.0
+    ],
+    "Strength": [
+      70.0,
+      87.0
+    ],
+    "Vertical": [
+      61.0,
+      76.0
+    ]
+  },
+  "POST_SCORER": {
+    "ShotClose": [
+      84.0,
+      99.0
+    ],
+    "DrivingLayup": [
+      77.0,
+      90.0
+    ],
+    "DrivingDunk": [
+      25.0,
+      25.0
+    ],
+    "StandingDunk": [
+      25.0,
+      25.0
+    ],
+    "PostControl": [
+      84.0,
+      99.0
+    ],
+    "ShotMidrange": [
+      80.0,
+      94.0
+    ],
+    "ShotThree": [
+      35.0,
+      50.0
+    ],
+    "ShotFreeThrow": [
+      71.0,
+      84.0
+    ],
+    "PassAccuracy": [
+      65.0,
+      76.0
+    ],
+    "BallControl": [
+      71.0,
+      83.0
+    ],
+    "SpeedWithBall": [
+      69.0,
+      81.0
+    ],
+    "InteriorDefense": [
+      72.0,
+      85.0
+    ],
+    "PerimeterDefense": [
+      72.0,
+      85.0
+    ],
+    "Steal": [
+      65.0,
+      76.0
+    ],
+    "Block": [
+      67.0,
+      79.0
+    ],
+    "ReboundOffense": [
+      72.0,
+      85.0
+    ],
+    "ReboundDefense": [
+      71.0,
+      84.0
+    ],
+    "Speed": [
+      77.0,
+      85.0
+    ],
+    "Agility": [
+      77.0,
+      85.0
+    ],
+    "Strength": [
+      79.0,
+      99.0
+    ],
+    "Vertical": [
+      70.0,
+      88.0
+    ]
+  },
+  "LOCKDOWN_DEFENDER": {
+    "ShotClose": [
+      77.0,
+      90.0
+    ],
+    "DrivingLayup": [
+      61.0,
+      72.0
+    ],
+    "DrivingDunk": [
+      25.0,
+      25.0
+    ],
+    "StandingDunk": [
+      25.0,
+      25.0
+    ],
+    "PostControl": [
+      71.0,
+      83.0
+    ],
+    "ShotMidrange": [
+      64.0,
+      75.0
+    ],
+    "ShotThree": [
+      47.0,
+      67.0
+    ],
+    "ShotFreeThrow": [
+      71.0,
+      83.0
+    ],
+    "PassAccuracy": [
+      62.0,
+      73.0
+    ],
+    "BallControl": [
+      67.0,
+      79.0
+    ],
+    "SpeedWithBall": [
+      71.0,
+      84.0
+    ],
+    "InteriorDefense": [
+      84.0,
+      99.0
+    ],
+    "PerimeterDefense": [
+      84.0,
+      99.0
+    ],
+    "Steal": [
+      84.0,
+      99.0
+    ],
+    "Block": [
+      84.0,
+      99.0
+    ],
+    "ReboundOffense": [
+      75.0,
+      88.0
+    ],
+    "ReboundDefense": [
+      84.0,
+      99.0
+    ],
+    "Speed": [
+      79.0,
+      88.0
+    ],
+    "Agility": [
+      89.0,
+      99.0
+    ],
+    "Strength": [
+      74.0,
+      92.0
+    ],
+    "Vertical": [
+      65.0,
+      81.0
+    ]
+  },
+  "PAINT_BEAST": {
+    "ShotClose": [
+      83.0,
+      98.0
+    ],
+    "DrivingLayup": [
+      78.0,
+      92.0
+    ],
+    "DrivingDunk": [
+      27.0,
+      38.0
+    ],
+    "StandingDunk": [
+      25.0,
+      25.0
+    ],
+    "PostControl": [
+      77.0,
+      91.0
+    ],
+    "ShotMidrange": [
+      66.0,
+      78.0
+    ],
+    "ShotThree": [
+      62.0,
+      73.0
+    ],
+    "ShotFreeThrow": [
+      74.0,
+      87.0
+    ],
+    "PassAccuracy": [
+      65.0,
+      77.0
+    ],
+    "BallControl": [
+      64.0,
+      75.0
+    ],
+    "SpeedWithBall": [
+      64.0,
+      75.0
+    ],
+    "InteriorDefense": [
+      81.0,
+      95.0
+    ],
+    "PerimeterDefense": [
+      66.0,
+      78.0
+    ],
+    "Steal": [
+      66.0,
+      78.0
+    ],
+    "Block": [
+      81.0,
+      95.0
+    ],
+    "ReboundOffense": [
+      84.0,
+      99.0
+    ],
+    "ReboundDefense": [
+      82.0,
+      97.0
+    ],
+    "Speed": [
+      75.0,
+      83.0
+    ],
+    "Agility": [
+      71.0,
+      79.0
+    ],
+    "Strength": [
+      72.0,
+      90.0
+    ],
+    "Vertical": [
+      67.0,
+      84.0
+    ]
+  }
+}

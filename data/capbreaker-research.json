@@ -1,0 +1,16 @@
+{
+  "source": "User-supplied NBA 2K HQ APK native ATTRIBUTES_GetCapBreakerBoostValuesForAttrAtIndex + extracted 21-attribute weighting tables",
+  "status": "native arithmetic recovered; browser weighting upgraded from unscaled proxy to the extracted 21 direct attributes and rating-weight scales",
+  "exactRecoveredMath": {
+    "stepFactor": "15 + trunc((350 - 14 * currentRating) / 74)",
+    "boost": "max(1, round(((maxWeight - selectedWeight) / maxWeight) * stepFactor))",
+    "clamp": "boost = min(boost, naturalMax - currentRating)",
+    "repeat": "sequentially five times"
+  },
+  "weighting": {
+    "playerType": "best player type from the upgraded detailed OVR calculation",
+    "selectedWeight": "HeightBasedAttributeWeight * AttributeRatingWeightScale(rating - 1)",
+    "maxWeight": "maximum effective weight among the 21 mapped builder attributes for that player type/current state"
+  },
+  "validationCaveat": "No supplied 2KHQ screenshot contains an exact five-step Cap Breaker sequence for independent regression, so the UI continues to identify this as a preview rather than claiming screenshot-validated parity."
+}

@@ -1,0 +1,23 @@
+{
+  "version": "10.0",
+  "badgesAudited": 53,
+  "takeoversAudited": 24,
+  "requirementTermsAudited": 362,
+  "unknownRequirementAttributes": 0,
+  "unparsedRequirements": 0,
+  "missingBadgeIcons": [],
+  "missingTakeoverIcons": [],
+  "dishmaster": {
+    "requirement": "80 Pass Accuracy",
+    "79": "locked",
+    "80": "unlocked"
+  },
+  "rootCause": "The old parser replaced `Pass Acc` inside the already-correct text `Pass Accuracy`, corrupting the name before attribute lookup.",
+  "additionalFixes": [
+    "Mid-Range is no longer vulnerable to substring normalization",
+    "Requirement checks can evaluate an explicit rating set",
+    "Unknown attributes fail closed",
+    "Full Interior Defense / Perimeter Defense aliases are covered",
+    "Optimizer badge heightRequirement property corrected"
+  ]
+}

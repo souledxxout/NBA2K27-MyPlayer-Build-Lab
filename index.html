@@ -1,0 +1,2529 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NBA 2K27 Build Lab</title><meta name="theme-color" content="#08090b"><link rel="manifest" href="./manifest.webmanifest">
+<style>
+:root{--bg:#08090b;--panel:#141519;--panel2:#1a1c21;--line:#30333a;--text:#f5f7fa;--muted:#9ba3af;--red:#ef4444;--green:#22c55e;--amber:#f59e0b;--blue:#60a5fa;--purple:#a78bfa}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 20% -10%,#351111 0,#0b0c0f 34%,#08090b 75%);color:var(--text);font:15px system-ui,-apple-system,Segoe UI,Roboto,sans-serif}.wrap{max-width:1320px;margin:auto;padding:18px}.top{display:flex;justify-content:space-between;gap:14px;align-items:center;margin-bottom:15px}.top h1{margin:0;font-size:29px}.top p{margin:4px 0 0;color:var(--muted)}.pill{padding:7px 11px;border:1px solid #444850;border-radius:999px;color:#ddd;background:#13151a}.nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}.nav button,.btn{border:1px solid #363a43;background:#181a20;color:#eee;border-radius:9px;padding:9px 12px;cursor:pointer}.nav button.active,.btn.primary{background:#ef4444;border-color:#ef4444}.page{display:none}.page.active{display:block}.grid{display:grid;grid-template-columns:360px 1fr;gap:15px}.card{background:rgba(20,21,25,.96);border:1px solid var(--line);border-radius:15px;padding:15px;box-shadow:0 10px 40px rgba(0,0,0,.18)}.card h2{font-size:17px;margin:0 0 13px}.card h3{font-size:14px;margin:15px 0 9px;color:#e6e8ed}.field{margin:11px 0}.field label{display:flex;justify-content:space-between;color:#ddd;margin-bottom:6px}.field select,.field input,.field textarea{width:100%;background:#0e1014;color:white;border:1px solid #3a3e47;border-radius:8px;padding:9px}.bodyread{margin-top:12px;padding:11px;background:#0e1014;border-radius:9px;color:#ddd;line-height:1.55}.status{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.stat{padding:9px;border-radius:9px;background:#0e1014}.stat b{display:block;font-size:16px}.ok{color:var(--green)}.warn{color:var(--amber)}.tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:11px}.tabs button{border:1px solid #383c45;background:#202228;color:#eee;border-radius:8px;padding:8px 10px;cursor:pointer}.tabs button.active{background:#ef4444;border-color:#ef4444}.attrs{display:grid;grid-template-columns:1fr 1fr;gap:9px 14px}.attr{padding:10px;background:#0e1014;border:1px solid #292d34;border-radius:9px}.attrTop{display:flex;justify-content:space-between;gap:8px}.forced{font-size:12px;color:var(--amber);margin-top:5px;min-height:16px}.cap{font-size:12px;color:var(--blue);margin-top:3px}.cap.low{color:var(--amber)}.attr input{accent-color:#ef4444;padding:0}.cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}.list{display:grid;gap:7px}.item{background:#0e1014;border:1px solid #292d34;border-radius:9px;padding:9px 10px}.itemTop{display:flex;justify-content:space-between;gap:10px;align-items:center}.tier{font-size:11px;border-radius:999px;padding:3px 7px;background:#242832;color:#ddd}.tier.gold{background:#573f08;color:#fcd34d}.tier.hof{background:#4c174d;color:#f0abfc}.tier.silver{background:#343943}.tier.bronze{background:#4a2c1c;color:#fdba74}.muted{color:var(--muted)}.tiny{font-size:12px}.score{font-size:38px;font-weight:800}.score.good{color:var(--green)}.score.mid{color:var(--amber)}.goalRow{display:grid;grid-template-columns:1.5fr .7fr .8fr;gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid #262a31}.goalRow input[type=range]{padding:0}.badgegrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.saved{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.note{margin-top:12px;color:var(--muted);font-size:13px;line-height:1.5}.callout{padding:11px;border-radius:9px;background:#2a2109;border:1px solid #5f4b13;color:#fde68a}.footer{margin-top:16px;color:#727986;font-size:12px}@media(max-width:900px){.grid,.cols{grid-template-columns:1fr}.attrs,.badgegrid,.saved{grid-template-columns:1fr}.top{align-items:flex-start;flex-direction:column}.status{grid-template-columns:1fr 1fr 1fr}}
+
+.rankgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.buildcard{background:#0e1014;border:1px solid #30343d;border-radius:12px;padding:12px}.buildcard.leader{border-color:#f59e0b;box-shadow:0 0 0 1px #f59e0b55}.metric{display:flex;justify-content:space-between;gap:8px;padding:4px 0;border-bottom:1px solid #22262d}.metric:last-child{border-bottom:0}.tagrow{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}.tag{font-size:11px;padding:3px 6px;border-radius:999px;background:#252932}.cbrow{display:flex;gap:5px;flex-wrap:wrap;margin-top:5px}.cb{font-size:12px;padding:3px 7px;border-radius:6px;background:#3a2b0a;color:#fcd34d}.danger{color:#f87171}.goodbg{background:#10271a;border-color:#1e6b3a}.copybox{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;word-break:break-all;font-size:12px}.wideTable{overflow:auto}.wideTable table{border-collapse:collapse;width:100%;min-width:900px}.wideTable th,.wideTable td{padding:7px 8px;border-bottom:1px solid #2a2e35;text-align:right}.wideTable th:first-child,.wideTable td:first-child{text-align:left;position:sticky;left:0;background:#141519}.confidence{font-size:11px;border-radius:999px;padding:3px 7px;background:#3b2f0d;color:#fde68a}.confidence.high{background:#12321f;color:#86efac}@media(max-width:900px){.rankgrid{grid-template-columns:1fr}}
+
+/* v8.1 reverse-builder visual redesign + interaction hotfix */
+:root{
+  --bg:#ececf2;--panel:#f7f7fa;--panel2:#ffffff;--line:#d8dbe4;--text:#262a33;--muted:#7f8796;
+  --red:#ff5b61;--green:#32d29a;--amber:#ff9f43;--blue:#4da3ff;--purple:#b45cff;
+}
+body{
+  background:linear-gradient(135deg,#eef0f5 0%,#ebe8f2 45%,#e8eef3 100%);
+  color:var(--text);
+}
+.wrap{max-width:1460px;padding:20px 28px 36px}
+.top{background:rgba(255,255,255,.58);border:1px solid rgba(210,214,225,.8);backdrop-filter:blur(12px);padding:18px 22px;border-radius:28px}
+.top h1{font-size:31px;letter-spacing:-.5px}
+.top p{color:#8e95a3}
+.pill{background:#fff;color:#59606d;border-color:#d8dce5}
+.nav{margin:16px 0 18px}
+.nav button,.btn{background:#fff;color:#3b404a;border-color:#d9dde5;box-shadow:0 2px 8px rgba(45,50,60,.04)}
+.nav button.active,.btn.primary{background:#ff625f;color:#fff;border-color:#ff625f;box-shadow:0 8px 18px rgba(255,98,95,.22)}
+.card{background:rgba(255,255,255,.72);border-color:#dfe2ea;box-shadow:0 18px 50px rgba(72,78,94,.08)}
+.card h2{font-size:16px;color:#2c313a}
+.card h3{color:#5f6672}
+.field label{color:#555c68}
+.field select,.field input,.field textarea{background:#fff;color:#2c313a;border-color:#d7dbe4}
+.bodyread,.stat,.attr,.item,.buildcard{background:#fff;border-color:#e1e4eb}
+.muted{color:#8a91a0}
+.callout{background:#fff8de;border-color:#f2dda0;color:#7d6411}
+.tabs button{background:#fff;color:#646b77;border-color:#d9dde5}
+.tabs button.active{background:#222934;color:#fff;border-color:#222934}
+.tier{background:#eef0f4;color:#5d6470}
+.tier.gold{background:#fff0b8;color:#8b6b00}.tier.hof{background:#f0dcff;color:#8438a7}
+.tier.silver{background:#edf0f4;color:#656d79}.tier.bronze{background:#f4e1d1;color:#925b33}
+.cb{background:#fff0ca;color:#9b6b00}
+.metric{border-bottom-color:#edf0f4}
+.footer{color:#9aa1ae}
+
+/* Reverse-builder hero */
+.builderHero{background:rgba(255,255,255,.7);border:1px solid #dfe2ea;border-radius:26px;padding:20px 22px;margin-bottom:18px;box-shadow:0 18px 50px rgba(72,78,94,.07)}
+.builderBanner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:4px 2px 18px}
+.builderTitleWrap{display:flex;align-items:center;gap:16px}
+.ovrOrb{width:74px;height:74px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle,#fff 44%,#f1f2f6 45%);border:7px solid #eceef3;box-shadow:inset 0 0 0 1px #d9dde4}
+.ovrOrb small{display:block;text-align:center;font-size:9px;letter-spacing:.12em;color:#a1a8b4}
+.ovrOrb b{display:block;text-align:center;font-size:23px}
+.builderIdentity h2{margin:0;font-size:28px;font-weight:500;letter-spacing:-.6px}
+.builderIdentity p{margin:5px 0 0;color:#8a91a0}
+.badgeCounter{text-align:center}.badgeCounter small{font-size:9px;letter-spacing:.14em;color:#9aa2ae}.badgeCounter b{display:block;font-size:24px;color:#4edbc5}
+.reverseLabel{display:flex;align-items:center;gap:14px;color:#ff8c53;font-weight:700;letter-spacing:.09em;font-size:12px;margin:4px 0 18px}
+.reverseLabel:before,.reverseLabel:after{content:"";height:1px;background:#dfe2ea;flex:1}
+.heroGrid{display:grid;grid-template-columns:330px 1fr;gap:24px}
+.bodyControls{background:rgba(247,247,249,.85);border:1px solid #e1e4eb;border-radius:20px;padding:16px}
+.segmented{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;background:#eef0f4;border-radius:24px;padding:4px}
+.segmented button{border:0;background:transparent;color:#646b77;border-radius:20px;padding:8px 4px;cursor:pointer}
+.segmented button.active{background:#fff;color:#2d333d;box-shadow:0 4px 12px rgba(50,55,65,.08)}
+.bodySlider{margin:24px 0}.bodySlider .line{display:flex;justify-content:space-between;font-size:12px;margin-bottom:8px}.bodySlider input{width:100%;accent-color:#b9bec8}
+.potentialPanel{background:rgba(247,247,249,.74);border:1px solid #e1e4eb;border-radius:20px;padding:16px 18px}
+.potentialHead{font-size:10px;letter-spacing:.14em;color:#8f96a3;margin-bottom:12px}
+.potentialGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px 24px}
+.potentialGroup h4{margin:0 0 8px;font-size:11px;letter-spacing:.09em}
+.potentialGroup.finish h4{color:#4388ff}.potentialGroup.shoot h4{color:#25c96f}.potentialGroup.play h4{color:#f3a32f}
+.potentialGroup.def h4{color:#ff665f}.potentialGroup.reb h4{color:#a85cff}.potentialGroup.phys h4{color:#d5a043}
+.potentialRow{display:flex;justify-content:space-between;gap:10px;padding:3px 0;font-size:13px;color:#626a76}
+.potentialRow b{color:#2e333c}
+.unlockStrip{margin-top:18px}
+.unlockStrip h4{font-size:10px;letter-spacing:.13em;color:#8f96a3;margin:0 0 9px}
+.unlockChips{display:flex;gap:8px;flex-wrap:wrap}
+.unlockChip{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;font-size:10px;font-weight:800;background:#fff;border:1px solid #e1e4eb;box-shadow:0 5px 14px rgba(50,55,65,.06)}
+.unlockChip.gold{background:#fff2c9;color:#936900}.unlockChip.hof{background:#efe0ff;color:#7e35a5}.unlockChip.silver{background:#eef0f4;color:#656d79}.unlockChip.bronze{background:#f3e0d3;color:#905e38}
+.takeChip{border-radius:50%;background:#fff3f2;color:#ff625f}
+.builderLower{display:grid;grid-template-columns:1.45fr .85fr;gap:18px}
+.builderAttrCard,.builderUnlockCard{min-height:580px}
+.builderAttrCard .attrs{grid-template-columns:1fr}
+.builderAttrCard .attr{border:0;border-bottom:1px solid #eceef2;border-radius:0;padding:10px 0;background:transparent}
+.builderAttrCard .attr:last-child{border-bottom:0}
+.builderAttrCard .attrTop{align-items:center}
+.builderAttrCard input[type=range]{width:100%}
+.builderUnlockCard .list{grid-template-columns:repeat(2,1fr)}
+@media(max-width:1050px){.heroGrid{grid-template-columns:1fr}.potentialGrid{grid-template-columns:repeat(3,1fr)}.builderLower{grid-template-columns:1fr}}
+@media(max-width:700px){.potentialGrid{grid-template-columns:repeat(2,1fr)}.builderBanner{align-items:flex-start}.builderIdentity h2{font-size:21px}.builderUnlockCard .list{grid-template-columns:1fr}}
+
+
+/* ===== v8.5 FINAL THEME OVERRIDE: RED + BLACK ===== */
+html,body{
+  background:
+    radial-gradient(circle at 18% -8%, rgba(121,16,25,.50) 0%, rgba(20,9,12,.35) 25%, transparent 48%),
+    #08090b !important;
+  color:#f5f6f8 !important;
+}
+body{color-scheme:dark}
+.top,.builderHero,.card{
+  background:linear-gradient(180deg,rgba(21,23,28,.98),rgba(11,13,17,.98)) !important;
+  border:1px solid #30343d !important;
+  box-shadow:0 18px 50px rgba(0,0,0,.34) !important;
+}
+.top h1,.builderIdentity h2,.card h2,.card h3,.attrTop b,.potentialRow b,.ovrOrb b{color:#fff !important}
+.top p,.builderIdentity p,.muted,.potentialRow,.note,.footer{color:#9299a6 !important}
+.pill,.nav button,.btn,.tabs button{
+  background:#16191f !important;color:#e9ebef !important;border-color:#353a45 !important;
+}
+.nav button.active,.btn.primary,.tabs button.active{
+  background:linear-gradient(180deg,#ff535d,#e33d47) !important;
+  border-color:#ff5963 !important;color:#fff !important;
+  box-shadow:0 7px 18px rgba(229,61,71,.24) !important;
+}
+.bodyControls,.potentialPanel,.bodyread,.stat,.attr,.item,.buildcard{
+  background:#111419 !important;border-color:#2c313a !important;
+}
+.segmented{background:#0b0d10 !important;border:1px solid #292e37 !important}
+.segmented button{color:#9aa2af !important}
+.segmented button.active{
+  background:#e3434d !important;color:#fff !important;box-shadow:0 5px 15px rgba(227,67,77,.30) !important;
+}
+.reverseLabel{color:#ff626b !important}
+.reverseLabel:before,.reverseLabel:after{background:#363b45 !important}
+.ovrOrb{
+  background:radial-gradient(circle,#171a20 44%,#0b0d10 45%) !important;
+  border-color:#292e36 !important;box-shadow:inset 0 0 0 1px #3a414c !important;
+}
+.ovrOrb small,.badgeCounter small,.potentialHead,.unlockStrip h4{color:#8f97a4 !important}
+.badgeCounter b{color:#42dfbd !important}
+.field label{color:#d8dbe0 !important}
+.field select,.field input,.field textarea{
+  background:#0c0f13 !important;color:#fff !important;border-color:#343a45 !important;
+}
+.unlockChip{background:#181b21 !important;color:#fff !important;border-color:#343944 !important}
+.takeChip{background:#2b1116 !important;color:#ff626c !important}
+.callout{background:#211b0d !important;border-color:#5a481d !important;color:#f3d17c !important}
+.builderAttrCard .attr{border-bottom-color:#292e36 !important}
+.cap{color:#58a8ff !important}.forced{color:#ff9f43 !important}.cb{background:#3b2b08 !important;color:#ffd269 !important}
+
+/* Mobile attribute range controls */
+.builderAttrCard input[type="range"],
+.goalRow input[type="range"]{
+  -webkit-appearance:none !important;appearance:none !important;width:100% !important;
+  height:40px !important;padding:0 !important;margin:3px 0 !important;background:transparent !important;
+  touch-action:none !important;-webkit-user-select:none !important;user-select:none !important;
+}
+.builderAttrCard input[type="range"]::-webkit-slider-runnable-track,
+.goalRow input[type="range"]::-webkit-slider-runnable-track{
+  height:7px !important;border-radius:999px !important;
+  background:linear-gradient(90deg,#e94650 0%,#e94650 var(--range-pct,0%),#3b4049 var(--range-pct,0%),#3b4049 100%) !important;
+}
+.builderAttrCard input[type="range"]::-webkit-slider-thumb,
+.goalRow input[type="range"]::-webkit-slider-thumb{
+  -webkit-appearance:none !important;appearance:none !important;width:30px !important;height:30px !important;
+  border-radius:50% !important;background:#fff !important;border:2px solid #efeff1 !important;
+  box-shadow:0 3px 10px rgba(0,0,0,.6) !important;margin-top:-11.5px !important;
+}
+.builderAttrCard input[type="range"]:active::-webkit-slider-thumb{
+  background:#ff555e !important;border-color:#ff9da2 !important;
+}
+.builderAttrCard input[type="range"]::-moz-range-track{height:7px;border-radius:999px;background:#3b4049}
+.builderAttrCard input[type="range"]::-moz-range-progress{height:7px;border-radius:999px;background:#e94650}
+.builderAttrCard input[type="range"]::-moz-range-thumb{width:30px;height:30px;border-radius:50%;background:#fff;border:2px solid #efeff1}
+@media(max-width:700px){
+  .wrap{padding:12px 12px 28px !important}
+  .nav{display:grid !important;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px !important}
+  .nav button{min-height:46px}
+  .builderHero,.card{border-radius:22px !important}
+  .builderAttrCard input[type="range"]{height:46px !important}
+  .builderAttrCard input[type="range"]::-webkit-slider-thumb{width:34px !important;height:34px !important;margin-top:-13.5px !important}
+}
+
+
+/* ===== v8.6 Build Finder explanation layer ===== */
+.explainBox{
+  margin-top:10px;
+  padding:10px 11px;
+  border-radius:12px;
+  background:#0d1014;
+  border:1px solid #292e37;
+}
+.explainTitle{
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.08em;
+  color:#aeb5c0;
+  margin-bottom:7px;
+}
+.explainRow{
+  display:flex;
+  gap:7px;
+  align-items:flex-start;
+  font-size:12px;
+  line-height:1.35;
+  margin:5px 0;
+  color:#dce0e6;
+}
+.explainRow.good:before{content:"✓";color:#39d98a;font-weight:900}
+.explainRow.warn:before{content:"△";color:#ffc45c;font-weight:900}
+.explainRow.bad:before{content:"×";color:#ff676f;font-weight:900}
+.buildGrade{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  margin-top:7px;
+  padding:5px 8px;
+  border-radius:999px;
+  font-size:11px;
+  font-weight:800;
+  background:#171b21;
+  border:1px solid #343a45;
+}
+.buildGrade.elite{color:#69efbd;border-color:#285d49;background:#0e201a}
+.buildGrade.strong{color:#7ec6ff;border-color:#285070;background:#0e1820}
+.buildGrade.trade{color:#ffd376;border-color:#66501b;background:#211a08}
+.rankWhy{
+  margin-top:8px;
+  font-size:11px;
+  color:#8f97a4;
+}
+.tradeoffGrid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-top:9px;
+}
+.tradeoffCell{
+  padding:8px;
+  border-radius:10px;
+  background:#0b0e12;
+  border:1px solid #282d35;
+}
+.tradeoffCell b{display:block;color:#fff;font-size:12px}
+.tradeoffCell span{font-size:10px;color:#8f97a4}
+.autoToolbar{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:10px;
+}
+.autoToolbar .btn{font-size:12px}
+@media(max-width:700px){
+  .tradeoffGrid{grid-template-columns:1fr}
+}
+
+
+/* ===== v8.7 Attribute locks + mobile icon labels ===== */
+.attrTop .attrRight{display:flex;align-items:center;gap:8px;margin-left:auto}
+.attrLock{
+  width:34px;height:34px;border-radius:10px;border:1px solid #3a404b;
+  background:#171a20;color:#aeb5c0;display:grid;place-items:center;padding:0;
+  font-size:15px;cursor:pointer;touch-action:manipulation
+}
+.attrLock.locked{background:#45171c;border-color:#a93c45;color:#ff737b}
+.attr.lockedAttr{background:linear-gradient(90deg,rgba(109,25,32,.15),transparent 60%) !important}
+.attr.lockedAttr input[type="range"]{opacity:.72}
+.lockHint{margin-top:5px;color:#ff7e86;font-size:11px;font-weight:700}
+
+#tapTooltip{
+  position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom));
+  transform:translate(-50%,18px);z-index:9999;max-width:min(88vw,440px);
+  padding:11px 14px;border-radius:14px;background:rgba(15,17,21,.97);
+  border:1px solid #3a404a;color:#fff;font-size:13px;font-weight:750;text-align:center;
+  box-shadow:0 14px 38px rgba(0,0,0,.48);opacity:0;pointer-events:none;
+  transition:opacity .16s ease,transform .16s ease
+}
+#tapTooltip.show{opacity:1;transform:translate(-50%,0)}
+.unlockChip[data-tip]{cursor:pointer;touch-action:manipulation}
+
+#lockConflictModal{
+  position:fixed;inset:0;z-index:10000;display:none;align-items:flex-end;justify-content:center;
+  padding:18px;background:rgba(0,0,0,.68);backdrop-filter:blur(5px)
+}
+#lockConflictModal.show{display:flex}
+.lockModalCard{
+  width:min(560px,100%);border-radius:22px;background:linear-gradient(180deg,#191c22,#0f1115);
+  border:1px solid #3a404a;box-shadow:0 24px 70px rgba(0,0,0,.62);padding:18px
+}
+.lockModalIcon{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:#45171c;color:#ff737b;margin-bottom:12px;font-size:20px}
+.lockModalCard h3{margin:0 0 7px;color:#fff;font-size:19px}
+.lockModalCard p{margin:0;color:#aeb5c0;font-size:13px;line-height:1.45}
+.lockConflictList{margin:14px 0;display:grid;gap:8px}
+.lockConflictItem{border:1px solid #343a45;background:#111419;border-radius:12px;padding:10px 11px;font-size:12px;color:#e5e8ed}
+.lockConflictItem b{color:#ff7e86}
+.lockModalActions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:14px}
+.lockModalActions button{min-height:46px}
+@media(min-width:700px){#lockConflictModal{align-items:center}}
+
+
+/* ===== v8.8 legality guard ===== */
+.ovrLimitNote{
+  margin-top:7px;
+  font-size:11px;
+  color:#ffcf6a;
+}
+#ovrGuardModal{
+  position:fixed;inset:0;z-index:10001;display:none;align-items:flex-end;justify-content:center;
+  padding:18px;background:rgba(0,0,0,.70);backdrop-filter:blur(5px)
+}
+#ovrGuardModal.show{display:flex}
+.ovrModalCard{
+  width:min(560px,100%);border-radius:22px;background:linear-gradient(180deg,#191c22,#0f1115);
+  border:1px solid #3a404a;box-shadow:0 24px 70px rgba(0,0,0,.62);padding:18px
+}
+.ovrModalIcon{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:#3b2b08;color:#ffd269;margin-bottom:12px;font-size:20px}
+.ovrModalCard h3{margin:0 0 7px;color:#fff;font-size:19px}
+.ovrModalCard p{margin:0;color:#aeb5c0;font-size:13px;line-height:1.45}
+.ovrModalActions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:14px}
+@media(min-width:700px){#ovrGuardModal{align-items:center}}
+
+
+/* ===== v8.9 Live OVR in Attributes header ===== */
+.attrSectionHead{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:10px;
+}
+.attrSectionHead h2{margin:0}
+.attrOvrBadge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:7px 11px;
+  border-radius:999px;
+  background:#0d1014;
+  border:1px solid #343a45;
+  color:#fff;
+  min-width:88px;
+  justify-content:center;
+}
+.attrOvrBadge small{
+  color:#8f97a4;
+  font-size:9px;
+  letter-spacing:.12em;
+}
+.attrOvrBadge b{
+  font-size:18px;
+  line-height:1;
+}
+
+
+/* ===== v8.12 Optimizer rework ===== */
+.optimizerIntro{
+  margin-bottom:14px;padding:14px;border-radius:16px;
+  background:linear-gradient(180deg,#141820,#0e1116);border:1px solid #343a45
+}
+.optimizerIntroTitle{font-size:18px;font-weight:850;color:#fff;margin-bottom:6px}
+.optimizerIntro p{margin:0;color:#aeb5c0;font-size:13px;line-height:1.5}
+.optimizerSteps{display:flex;flex-wrap:wrap;gap:7px;margin-top:11px}
+.optimizerSteps span,.optimizerLegend span{
+  padding:6px 9px;border-radius:999px;background:#1a1e25;border:1px solid #343a45;
+  color:#dfe3e8;font-size:11px;font-weight:750
+}
+.optimizerLegend{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0}
+.presetDisabledNote{
+  margin-top:8px;padding:9px 10px;border-radius:11px;background:#201b0c;
+  border:1px solid #5b4a20;color:#e7c86f;font-size:11px;line-height:1.4
+}
+.goalRow{
+  display:grid !important;
+  grid-template-columns:minmax(130px,1.3fr) minmax(90px,.7fr) minmax(150px,1fr);
+  gap:12px;align-items:center
+}
+.goalCurrent{
+  width:86px !important;
+  min-height:42px;
+  font-size:16px !important;
+  font-weight:800;
+  text-align:center;
+}
+.priorityWrap{display:grid;grid-template-columns:1fr 38px;gap:8px;align-items:center}
+.priorityValue{
+  width:38px;height:32px;border-radius:9px;background:#281116;border:1px solid #6b2b31;
+  color:#ff7e86;display:grid;place-items:center;font-weight:850;font-size:13px
+}
+.opportunityScore{
+  display:inline-flex;align-items:center;padding:4px 7px;border-radius:999px;
+  font-size:10px;font-weight:800;background:#181b21;border:1px solid #343944;color:#fff
+}
+.opportunityScore.high{color:#68edb9;border-color:#285d49;background:#0e201a}
+.opportunityScore.mid{color:#ffd376;border-color:#66501b;background:#211a08}
+.validatedCapTag{
+  display:inline-flex;margin-left:5px;padding:2px 5px;border-radius:6px;
+  font-size:9px;font-weight:850;background:#0e201a;border:1px solid #285d49;color:#68edb9
+}
+@media(max-width:700px){
+  .goalRow{grid-template-columns:1fr 95px !important;gap:8px !important}
+  .goalRow>b{grid-column:1/-1}
+  .priorityWrap{grid-template-columns:1fr 38px}
+  .goalCurrent{width:100% !important}
+}
+
+
+/* ===== v9.0 Slim workflow ===== */
+.optimizerSourceCard{display:grid;gap:12px;margin-bottom:14px;padding:15px;border-radius:18px;background:linear-gradient(180deg,#171a20,#101318);border:1px solid #363c47}
+.optimizerSourceTitle{font-size:20px;font-weight:900;color:#fff}
+.optimizerSourceCard p{margin:0;color:#aab1bc;font-size:13px;line-height:1.5}
+.optimizerSourceActions{display:flex;gap:8px;flex-wrap:wrap}
+.optimizerSourceLabel{display:inline-flex;width:max-content;max-width:100%;padding:6px 9px;border-radius:999px;background:#291116;border:1px solid #682a31;color:#ff858c;font-size:11px;font-weight:800}
+.optimizerSaveBar{margin-top:14px;padding-top:14px;border-top:1px solid #2f343d;display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.simpleModal{position:fixed;inset:0;display:none;align-items:flex-end;justify-content:center;padding:18px;background:rgba(0,0,0,.7);backdrop-filter:blur(5px);z-index:10020}
+.simpleModal.show{display:flex}
+.simpleModalCard{width:min(620px,100%);max-height:78vh;overflow:auto;border-radius:22px;padding:16px;background:linear-gradient(180deg,#191c22,#0f1115);border:1px solid #3a404a;box-shadow:0 25px 70px rgba(0,0,0,.6)}
+.simpleModalHead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+.simpleModalHead h3{margin:0;color:#fff}
+.savedPick{cursor:pointer}
+@media(min-width:700px){.simpleModal{align-items:center}}
+
+
+/* ===== v9.2 badge/takeover icon system ===== */
+.badgeIcon,
+.takeoverIcon{
+  width:44px;
+  height:44px;
+  flex:0 0 44px;
+  border-radius:12px;
+  display:grid;
+  place-items:center;
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.16);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 6px 14px rgba(0,0,0,.26);
+}
+.badgeIcon::after,
+.takeoverIcon::after{
+  content:"";
+  position:absolute;
+  inset:1px;
+  border-radius:10px;
+  background:linear-gradient(145deg,rgba(255,255,255,.14),transparent 42%);
+  pointer-events:none;
+}
+.badgeIcon .iconMark,
+.takeoverIcon .iconMark{
+  position:relative;
+  z-index:1;
+  font-size:11px;
+  line-height:1;
+  font-weight:950;
+  letter-spacing:-.03em;
+  color:#fff;
+  text-shadow:0 2px 5px rgba(0,0,0,.55);
+}
+.badgeIcon.bronze{
+  background:radial-gradient(circle at 35% 25%,#ecaa6d,#8d512d 68%,#52301d);
+  border-color:#d59058;
+}
+.badgeIcon.silver{
+  background:radial-gradient(circle at 35% 25%,#f4f5f7,#89909a 68%,#505761);
+  border-color:#c9ced5;
+}
+.badgeIcon.gold{
+  background:radial-gradient(circle at 35% 25%,#fff0a5,#d49c16 66%,#76560a);
+  border-color:#f6d565;
+}
+.badgeIcon.hof{
+  background:
+    radial-gradient(circle at 30% 20%,#ffd1ff 0,#c95df3 34%,#6b2fbd 67%,#29175f 100%);
+  border-color:#e39aff;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.28),0 0 17px rgba(185,78,255,.24);
+}
+.takeoverIcon{
+  background:radial-gradient(circle at 35% 25%,#ff747c,#bd202b 65%,#5e1016);
+  border-color:#ff6871;
+}
+.takeoverIcon.shooting{background:radial-gradient(circle at 35% 25%,#6ee7a2,#18864c 65%,#0c4427);border-color:#5ee296}
+.takeoverIcon.finishing{background:radial-gradient(circle at 35% 25%,#65b7ff,#2966b5 65%,#173968);border-color:#74bdff}
+.takeoverIcon.playmaking{background:radial-gradient(circle at 35% 25%,#ffbf66,#b96f19 65%,#673a0d);border-color:#ffb653}
+.takeoverIcon.defense{background:radial-gradient(circle at 35% 25%,#ff7373,#b82a31 65%,#65151a);border-color:#ff6f75}
+.takeoverIcon.rebounding{background:radial-gradient(circle at 35% 25%,#c792ff,#7a3aba 65%,#402061);border-color:#c58bff}
+.takeoverIcon.universal{background:radial-gradient(circle at 35% 25%,#67e8f9,#167f91 65%,#0b424d);border-color:#63e1f2}
+
+.unlockChip.iconChip{
+  width:46px !important;
+  height:46px !important;
+  padding:0 !important;
+  background:transparent !important;
+  border:0 !important;
+  box-shadow:none !important;
+}
+.unlockChip.iconChip .badgeIcon,
+.unlockChip.iconChip .takeoverIcon{
+  width:46px;
+  height:46px;
+  flex-basis:46px;
+}
+.unlockItem{
+  display:flex;
+  align-items:center;
+  gap:11px;
+}
+.unlockItemText{
+  min-width:0;
+  flex:1;
+}
+.unlockItemText b{
+  display:block;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.ovrMaxNotice{
+  display:none;
+  margin:8px 0 2px;
+  padding:8px 10px;
+  border-radius:10px;
+  background:#42151a;
+  border:1px solid #8b3038;
+  color:#ff9aa0;
+  font-size:11px;
+  font-weight:800;
+}
+.ovrMaxNotice.show{display:block}
+
+
+/* ===== v9.3 actual 2K27 game artwork ===== */
+.gameIconCanvas{
+  position:absolute;
+  inset:2px;
+  width:calc(100% - 4px);
+  height:calc(100% - 4px);
+  display:block;
+  z-index:3;
+  border-radius:9px;
+  object-fit:contain;
+}
+.gameIconCanvas.loaded + .iconMark{display:none !important}
+.gameIconCanvas.failed{display:none}
+.badgeIcon,.takeoverIcon{position:relative;cursor:pointer}
+.iconInfoBackdrop{
+  position:fixed;
+  inset:0;
+  z-index:11000;
+  display:none;
+  align-items:flex-end;
+  justify-content:center;
+  padding:14px;
+  background:rgba(0,0,0,.64);
+  backdrop-filter:blur(5px);
+}
+.iconInfoBackdrop.show{display:flex}
+.iconInfoSheet{
+  width:min(520px,100%);
+  position:relative;
+  display:grid;
+  grid-template-columns:76px 1fr;
+  gap:14px;
+  align-items:center;
+  padding:16px 46px 16px 16px;
+  border-radius:22px;
+  background:linear-gradient(180deg,#1a1d23,#0f1115);
+  border:1px solid #3b414c;
+  box-shadow:0 24px 72px rgba(0,0,0,.64);
+}
+.iconInfoPreview{
+  width:72px;
+  height:72px;
+  display:grid;
+  place-items:center;
+}
+.iconInfoPreview .badgeIcon,
+.iconInfoPreview .takeoverIcon{
+  width:70px;
+  height:70px;
+  flex-basis:70px;
+}
+.iconInfoPreview .gameIconCanvas{
+  inset:4px;
+  width:62px;
+  height:62px;
+}
+.iconInfoType{
+  color:#949ca8;
+  font-size:10px;
+  font-weight:850;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+.iconInfoName{
+  color:#fff;
+  margin-top:3px;
+  font-size:20px;
+  font-weight:900;
+  line-height:1.15;
+}
+.iconInfoDetail{
+  color:#adb4bf;
+  margin-top:6px;
+  font-size:12px;
+  line-height:1.4;
+}
+.iconInfoClose{
+  position:absolute;
+  top:10px;
+  right:10px;
+  width:32px;
+  height:32px;
+  padding:0;
+  border-radius:50%;
+  border:1px solid #3a404a;
+  background:#111419;
+  color:#fff;
+  font-size:21px;
+  line-height:28px;
+}
+@media(min-width:700px){
+  .iconInfoBackdrop{align-items:center}
+}
+
+
+/* ===== v9.5 tier-colored badge artwork, no tile background ===== */
+
+/* Remove the colored tile/background treatment entirely. */
+.badgeIcon,
+.takeoverIcon,
+.badgeIcon.bronze,
+.badgeIcon.silver,
+.badgeIcon.gold,
+.badgeIcon.hof,
+.takeoverIcon.shooting,
+.takeoverIcon.finishing,
+.takeoverIcon.playmaking,
+.takeoverIcon.defense,
+.takeoverIcon.rebounding,
+.takeoverIcon.universal{
+  background:transparent !important;
+  border:0 !important;
+  box-shadow:none !important;
+  overflow:visible !important;
+}
+
+/* Let the actual 2K artwork occupy the icon area. */
+.badgeIcon .gameIconCanvas,
+.takeoverIcon .gameIconCanvas{
+  inset:0 !important;
+  width:100% !important;
+  height:100% !important;
+  border-radius:0 !important;
+  object-fit:contain !important;
+}
+
+/* Tier color is applied to the badge ART itself.
+   The source 2K badge sprites are gold/black, so the filters convert
+   the artwork to the correct tier while preserving highlights/shadows. */
+.badgeIcon.bronze .gameIconCanvas{
+  filter:
+    grayscale(.15)
+    sepia(.55)
+    saturate(1.35)
+    hue-rotate(338deg)
+    brightness(.82)
+    contrast(1.08);
+}
+.badgeIcon.silver .gameIconCanvas{
+  filter:
+    grayscale(1)
+    saturate(.15)
+    brightness(1.25)
+    contrast(1.02);
+}
+.badgeIcon.gold .gameIconCanvas{
+  filter:
+    saturate(1.08)
+    brightness(1.03)
+    contrast(1.03);
+}
+.badgeIcon.hof .gameIconCanvas{
+  filter:
+    grayscale(1)
+    sepia(1)
+    saturate(7)
+    hue-rotate(235deg)
+    brightness(1.06)
+    contrast(1.06);
+}
+
+/* The fallback initials should not have a colored tile either. */
+.badgeIcon .iconMark,
+.takeoverIcon .iconMark{
+  background:transparent !important;
+  text-shadow:0 2px 5px rgba(0,0,0,.8);
+}
+
+/* Remove the outer potential-chip tile so only the artwork is visible. */
+.unlockChip.iconChip{
+  background:transparent !important;
+  border:0 !important;
+  box-shadow:none !important;
+  padding:2px !important;
+}
+
+/* Slightly larger actual icon art now that there is no square card behind it. */
+.unlockChip.iconChip .badgeIcon,
+.unlockChip.iconChip .takeoverIcon{
+  width:52px !important;
+  height:52px !important;
+  flex-basis:52px !important;
+}
+
+.iconInfoPreview .badgeIcon,
+.iconInfoPreview .takeoverIcon{
+  background:transparent !important;
+  border:0 !important;
+  box-shadow:none !important;
+}
+
+
+/* ===== v9.6 final icon cleanup ===== */
+
+/* Kill the leftover glossy square / gray tile completely. */
+.badgeIcon::before,
+.badgeIcon::after,
+.takeoverIcon::before,
+.takeoverIcon::after{
+  content:none !important;
+  display:none !important;
+  background:none !important;
+  box-shadow:none !important;
+}
+
+/* Ensure the icon wrappers themselves are visually clean. */
+.badgeIcon,
+.takeoverIcon{
+  background:transparent !important;
+  border:0 !important;
+  box-shadow:none !important;
+  outline:0 !important;
+}
+
+/* The game artwork was rendering upside down in the browser build.
+   Flip the displayed icon art so it reads upright on the site. */
+.badgeIcon .gameIconCanvas,
+.takeoverIcon .gameIconCanvas{
+  transform:rotate(180deg) !important;
+  transform-origin:center center !important;
+  background:transparent !important;
+}
+
+/* Keep the preview sheet clean too. */
+.iconInfoPreview .badgeIcon::before,
+.iconInfoPreview .badgeIcon::after,
+.iconInfoPreview .takeoverIcon::before,
+.iconInfoPreview .takeoverIcon::after{
+  content:none !important;
+  display:none !important;
+}
+
+
+/* ===== v10.1 parity status polish ===== */
+.parityExact{
+  color:#62e8a7;
+  font-weight:800;
+}
+.parityEstimated{
+  color:#8f97a4;
+}
+.attrOvrBadge b{
+  min-width:24px;
+  text-align:center;
+}
+
+</style></head><body><div class="wrap">
+<div class="top"><div><h1>NBA 2K27 Build Lab</h1><div id="deployMarker" style="margin-top:10px;font-size:12px;color:#ff7b82;font-weight:700;letter-spacing:.04em">MOBILE BUILD 10.1 • NATIVE MAX PARITY</div><p>Builder • My Builds • Compare • Optimizer</p></div><div class="pill">Engine v10.1</div></div>
+<div class="nav"><button class="active" data-page="builder">Builder</button><button data-page="saved">My Builds</button><button data-page="compare">Compare</button><button data-page="optimizer">Optimizer</button></div>
+
+
+<section id="builder" class="page active">
+  <div class="builderHero">
+    <div class="builderBanner">
+      <div class="builderTitleWrap">
+        <div class="ovrOrb"><div><small>OVERALL</small><b id="builderOvrHero">25</b></div></div>
+        <div class="builderIdentity">
+          <h2 id="buildArchetypeTitle">Custom MyPLAYER Build</h2>
+          <p id="buildIdentityLine">PG · 6'3" · 198 lbs · 6'6" Wingspan</p>
+        </div>
+      </div>
+      <div class="badgeCounter"><small>BADGES</small><b id="badgeCountHero">0</b></div>
+    </div>
+
+    <div class="reverseLabel">REVERSE BUILDER</div><div id="capValidationStatus" class="tiny muted" style="text-align:center;margin-top:-4px;margin-bottom:8px"></div>
+
+    <div class="heroGrid">
+      <div class="bodyControls">
+        <div class="field">
+          <label>Position</label>
+          <div class="segmented" id="positionSegment">
+            <button data-pos="POINT_GUARD">PG</button>
+            <button data-pos="SHOOTING_GUARD">SG</button>
+            <button data-pos="SMALL_FORWARD">SF</button>
+            <button data-pos="POWER_FORWARD">PF</button>
+            <button data-pos="CENTER">C</button>
+          </div>
+          <select id="position" style="display:none"></select>
+        </div>
+
+        <div class="bodySlider">
+          <div class="line"><span>Height</span><b id="heightText"></b></div>
+          <select id="height" style="display:none"></select>
+          <input id="heightRange" type="range">
+        </div>
+
+        <div class="bodySlider">
+          <div class="line"><span>Weight</span><b id="weightText"></b></div>
+          <input id="weight" type="range">
+        </div>
+
+        <div class="bodySlider">
+          <div class="line"><span>Wingspan</span><b id="wingText"></b></div>
+          <input id="wing" type="range">
+        </div>
+
+        <div id="bodyread" style="display:none"></div>
+        <div class="field">
+          <button class="btn primary" id="saveBuild">Save Build</button>
+          <button class="btn" id="shareBuild">Share</button>
+          <button class="btn" id="resetBuild">Reset</button>
+        </div>
+      </div>
+
+      <div class="potentialPanel">
+        <div class="potentialHead">MAX POTENTIAL ATTRIBUTES</div>
+        <div class="potentialGrid" id="potentialGrid"></div>
+
+        <div class="unlockStrip">
+          <h4>MAX POTENTIAL BADGES <span id="potentialBadgeTotal"></span></h4>
+          <div class="unlockChips" id="potentialBadgeChips"></div>
+        </div>
+        <div class="unlockStrip">
+          <h4>POTENTIAL TAKEOVERS <span id="potentialTakeTotal"></span></h4>
+          <div class="unlockChips" id="potentialTakeChips"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="builderLower">
+    <div class="card builderAttrCard">
+      <div class="attrSectionHead">
+        <h2>Attributes</h2>
+        <div class="attrOvrBadge"><small>OVR</small><b id="attrOvrLive">25</b></div>
+      </div>
+      <div id="ovrMaxNotice" class="ovrMaxNotice">99 OVR reached — attribute sliders can only be lowered until OVR drops below 99.</div><div class="tabs" id="tabs"></div>
+      <div class="attrs" id="attrs"></div>
+    </div>
+    <div class="card builderUnlockCard">
+      <h2>Badges & Takeovers</h2>
+      <h3>Unlocked Badges</h3>
+      <div id="badgeList" class="list"></div>
+      <h3>Available Takeovers</h3>
+      <div id="takeList" class="list"></div>
+    </div>
+  </div>
+  <div class="note" style="margin-top:14px"><b>Parity status:</b> linked attributes, badge/takeover thresholds and the displayed OVR weighting path use extracted 2K tuning. Max-potential body caps now use the complete decoded native height/weight/wingspan tuning for every legal body profile.<br><b>99 OVR guard:</b> active — once displayed OVR reaches 99, attribute increases are frozen until you lower something.</div>
+</section>
+
+
+
+
+<section id="optimizer" class="page">
+<div class="optimizerSourceCard">
+  <div class="optimizerSourceTitle">Optimize Your Build</div>
+  <p>We automatically use whatever is currently in Builder, or you can load one of your saved builds. Set priorities from 1–10 and the Optimizer will look for the best upgrades. Your source build is never overwritten.</p>
+  <div class="optimizerSourceActions">
+    <button class="btn primary" id="useBuilderInOptimizer">Use Current Builder</button>
+    <button class="btn" id="loadSavedIntoOptimizer">Load Saved Build</button>
+  </div>
+  <div id="optimizerSourceLabel" class="optimizerSourceLabel">Source: Current Builder</div>
+</div>
+
+<div class="cols">
+  <div class="card">
+    <h2>Build Optimizer</h2>
+    <div class="optimizerIntro">
+      <div class="optimizerIntroTitle">Set priorities — we handle the ratings</div>
+      <p>The Current Ratings come from the Builder or the saved build you load. Adjust the <b>Priority</b> sliders only: <b>1 = low priority</b>, <b>10 = build-defining</b>. The Optimizer decides which actual ratings are worth pursuing.</p>
+      <div class="optimizerSteps">
+        <span>1. Load Builder or saved build</span>
+        <span>2. Set priorities 1–10</span>
+        <span>3. Review suggestions</span>
+        <span>4. Save as a new build</span>
+      </div>
+    </div>
+    <div class="field"><label>Priority Profile</label>
+      <select id="preset">
+        <option value="custom" selected>Custom</option>
+        <option value="twoWaySlasherShooter">2-Way Shot-Creating Slasher</option>
+        <option value="shooter">Elite Shooter</option>
+        <option value="lock">Lockdown</option>
+        <option value="playmaker">Playmaker</option>
+        <option value="insideBig">Inside Big</option>
+        <option value="stretchBig">Stretch Big</option>
+      </select>
+    </div>
+    <div id="optimizerModeNote" class="presetDisabledNote"></div>
+    <div class="optimizerLegend">
+      <span><b>Current Rating</b> = your build now</span>
+      <span><b>Priority</b> = importance from 1–10</span>
+    </div>
+    <div id="goalRows"></div>
+  </div>
+
+  <div class="card">
+    <h2>Optimization Readout</h2>
+    <div class="status">
+      <div class="stat"><span>Current OVR</span><b id="fitScore">—</b></div>
+      <div class="stat"><span>High-priority attrs</span><b id="priorityCount">—</b></div>
+      <div class="stat"><span>Locked attrs</span><b id="optimizerLockCount">—</b></div>
+    </div>
+    <div id="fitLabel" class="muted" style="margin-top:10px"></div>
+    <h3>Best Upgrade Opportunities</h3>
+    <div id="targetCheck" class="list"></div>
+    <h3>Current High-Value Unlocks</h3>
+    <div id="optimizerUnlocks" class="list"></div><div class="optimizerSaveBar"><button class="btn primary" id="saveOptimizedBuildBtn">Save Optimized Build</button><div class="tiny muted">Creates a new build. The source build is never overwritten.</div></div>
+  </div>
+</div>
+<div class="card" style="margin-top:14px">
+  <h2>How recommendations are chosen</h2>
+  <div class="callout">The Optimizer weighs your 1–10 priorities against the selected body profile's max potential, linked-attribute requirements, badge thresholds and takeover thresholds. A priority of 10 does <b>not</b> mean “make it 99.” It means the Optimizer should spend on that area when the upgrade provides strong value.</div>
+</div>
+</section>
+
+
+
+
+<section id="compare" class="page"><div class="card"><h2>Build Compare</h2><p class="muted">Select up to four saved builds and compare attributes, badges, takeovers, body ceilings and Cap Breaker previews side by side.</p><div id="comparePickers" class="cols"></div><div class="field"><button id="runCompare" class="btn primary">Compare Selected</button></div></div><div class="card" style="margin-top:14px"><div id="compareOutput" class="wideTable"><div class="muted">Save some builds first, then compare them here.</div></div></div></section>
+<section id="saved" class="page"><div class="card"><h2>My Builds</h2><div id="savedList" class="saved"></div></div></section>
+
+<div class="footer">Build Lab v10.1 • Extracted 2K27 tuning drives linked attributes, badges/takeovers, displayed OVR, and native max-potential body caps across every legal profile.</div></div>
+<script>
+console.log('NBA 2K27 Build Lab MOBILE BUILD 10.0');
+const attrGroups={Finishing:['ShotClose','DrivingLayup','DrivingDunk','StandingDunk','PostControl'],Shooting:['ShotMidrange','ShotThree','ShotFreeThrow'],Playmaking:['PassAccuracy','BallControl','SpeedWithBall'],Defense:['InteriorDefense','PerimeterDefense','Steal','Block','ReboundOffense','ReboundDefense'],Physicals:['Speed','Agility','Strength','Vertical']};
+const nice={ShotClose:'Close Shot',DrivingLayup:'Driving Layup',DrivingDunk:'Driving Dunk',StandingDunk:'Standing Dunk',PostControl:'Post Control',ShotMidrange:'Mid-Range',ShotThree:'3PT',ShotFreeThrow:'Free Throw',PassAccuracy:'Pass Accuracy',BallControl:'Ball Handle',SpeedWithBall:'Speed With Ball',InteriorDefense:'Interior Defense',PerimeterDefense:'Perimeter Defense',Steal:'Steal',Block:'Block',ReboundOffense:'Offensive Rebound',ReboundDefense:'Defensive Rebound',Speed:'Speed',Agility:'Agility',Strength:'Strength',Vertical:'Vertical'};
+const nameToAttr={
+'Close Shot':'ShotClose',
+'Driving Layup':'DrivingLayup',
+'Driving Dunk':'DrivingDunk','Dr Dunk':'DrivingDunk',
+'Standing Dunk':'StandingDunk','St Dunk':'StandingDunk',
+'Post Control':'PostControl',
+'Mid-Range':'ShotMidrange','Mid':'ShotMidrange',
+'3PT':'ShotThree',
+'Pass Accuracy':'PassAccuracy','Pass Acc':'PassAccuracy',
+'Ball Handle':'BallControl','Ball Hdl':'BallControl',
+'Speed With Ball':'SpeedWithBall','SWB':'SpeedWithBall',
+'Interior D':'InteriorDefense','Interior Defense':'InteriorDefense','Int Def':'InteriorDefense',
+'Perimeter D':'PerimeterDefense','Perimeter Defense':'PerimeterDefense','Per Def':'PerimeterDefense',
+'Steal':'Steal','Block':'Block',
+'Offensive Rebound':'ReboundOffense','Off Reb':'ReboundOffense',
+'Defensive Rebound':'ReboundDefense','Def Reb':'ReboundDefense',
+'Speed':'Speed','Agility':'Agility',
+'Strength':'Strength','Str':'Strength',
+'Vertical':'Vertical','Vert':'Vertical'
+};let rules,badges,takeovers,maxHeightMult,maxPotentialNative,validation,heightWeights,heightLerp,capResearch,ratingWeightScale,validatedCapsData,parityReport,ratings={},manual={},active='Finishing',lastAutoResults=[],lockedAttrs=new Set(),lastLockConflicts=[],pendingLockedChange=null,tapTooltipTimer=null,pendingOvrChange=null,activeAttributeSlider=null;
+function feet(i){return `${Math.floor(i/12)}'${i%12}"`}
+function heightAllowed(req,h){
+  if(!req||req==='-')return true;
+  const m=req.match(/(MIN|MAX) HEIGHT:\s*(\d+)'(\d+)"/i);
+  if(!m)return true;
+  const v=+m[2]*12+(+m[3]);
+  return m[1].toUpperCase()==='MIN'?h>=v:h<=v
+}
+function parseReq(text,ratingsObj=ratings){
+  if(!text||/Always available/i.test(text))return {ok:true,parts:[]};
+
+  const evalAnd=clause=>{
+    let detail=[],ok=true;
+    for(const raw of clause.split(/\s+AND\s+/i)){
+      const m=raw.trim().match(/^(\d+)\s+(.+)$/);
+      if(!m){
+        ok=false;
+        detail.push({a:null,name:raw.trim(),need:null,have:null,ok:false,unparsed:true});
+        continue
+      }
+      const need=+m[1],name=m[2].trim(),a=nameToAttr[name];
+      if(!a){
+        ok=false;
+        detail.push({a:null,name,need,have:null,ok:false,unknown:true});
+        continue
+      }
+      const have=ratingsObj?.[a]??25,passed=have>=need;
+      detail.push({a,name,need,have,ok:passed});
+      if(!passed)ok=false
+    }
+    return {ok,detail}
+  };
+
+  const options=text.split(/\s+OR\s+/i).map(evalAnd);
+  const pass=options.find(x=>x.ok);
+  return {ok:!!pass,parts:(pass||options[0]||{detail:[]}).detail,options}
+}
+function getBadgeTier(b,h,ratingsObj=ratings){
+  if(!heightAllowed(b.heightRequirement,h))return null;
+  for(const tier of ['Hall of Fame','Gold','Silver','Bronze']){
+    const req=b[tier];
+    if(req&&req!=='-'&&parseReq(req,ratingsObj).ok)return tier
+  }
+  return null
+}
+function solveDependencies(seed,height){
+  let out={};
+  Object.values(attrGroups).flat().forEach(a=>out[a]=seed[a]??25);
+  let changed=true,guard=0;
+  while(changed&&guard++<100){
+    changed=false;
+    for(const r of rules.attributeConstraints){
+      if(r.height!==height)continue;
+      let src=out[r.attribute]??25;
+      let req=Math.max(25,src-r.maxDelta);
+      if(req>(out[r.associatedAttribute]??25)){
+        out[r.associatedAttribute]=req;
+        changed=true;
+      }
+    }
+  }
+  return out;
+}
+function computeRatingsWithLocks(seed,height,locks=lockedAttrs){
+  // First solve without locks. This catches direct AND cascading dependency pressure.
+  const unconstrained=solveDependencies(seed,height);
+  const lockedResult={...unconstrained};
+  let conflicts=[];
+  for(const a of locks){
+    const lockedAt=seed[a]??25;
+    const needed=unconstrained[a]??25;
+    if(needed>lockedAt){
+      conflicts.push({source:null,target:a,required:needed,current:lockedAt});
+      lockedResult[a]=lockedAt;
+    }
+  }
+  return {ratings:lockedResult,unconstrained,conflicts};
+}
+function solve(){
+  let h=+document.querySelector('#height').value;
+  let result=computeRatingsWithLocks(manual,h,lockedAttrs);
+  ratings=result.ratings;
+  lastLockConflicts=result.conflicts;
+  return result;
+}
+function showPage(id){
+  document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x.dataset.page===id));
+  document.querySelectorAll('.page').forEach(x=>x.classList.toggle('active',x.id===id));
+  if(id==='optimizer')renderOptimizer();
+  if(id==='saved')renderSaved();
+}
+
+function showPage(p){
+  const page=document.querySelector('#'+p);if(!page)return;
+  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x.dataset.page===p));
+  page.classList.add('active');
+  if(p==='saved')renderSaved();
+  if(p==='compare')refreshComparePickers();
+  if(p==='optimizer')cloneCurrentBuilderIntoOptimizer();
+}
+
+function initNav(){
+  document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>showPage(b.dataset.page));
+}
+async function init(){await loadGameArtManifests();[rules,badges,takeovers,maxHeightMult,maxPotentialNative,validation,heightWeights,heightLerp,capResearch,ratingWeightScale,validatedCapsData,parityReport]=await Promise.all([
+fetch('./data/builder-rules.json?v=10.1').then(r=>r.json()),
+fetch('./data/badges.json?v=10.1').then(r=>r.json()),
+fetch('./data/takeovers.json?v=10.1').then(r=>r.json()),
+fetch('./data/max-potential-height-multipliers.json?v=10.1').then(r=>r.json()),
+fetch('./data/max-potential-native-tuning.json?v=10.1').then(r=>r.json()),
+fetch('./data/max-potential-validation.json?v=10.1').then(r=>r.json()),
+fetch('./data/height-attribute-weights.json?v=10.1').then(r=>r.json()),
+fetch('./data/height-overall-lerp.json?v=10.1').then(r=>r.json()),
+fetch('./data/capbreaker-research.json?v=10.1').then(r=>r.json()),
+fetch('./data/attribute-rating-weight-scale.json?v=10.1').then(r=>r.json()),
+fetch('./data/validated-cap-profiles.json?v=10.1').then(r=>r.json()),
+fetch('./data/parity-report.json?v=10.1').then(r=>r.json())
+]);let legacyBadgeCount=document.querySelector('#badgeCount');if(legacyBadgeCount)legacyBadgeCount.textContent=badges.length;let legacyTakeCount=document.querySelector('#takeCount');if(legacyTakeCount)legacyTakeCount.textContent=takeovers.length;let p=document.querySelector('#position');Object.keys(rules.positions).forEach(x=>p.add(new Option(x.replaceAll('_',' '),x)));p.value='SHOOTING_GUARD';
+p.onchange=()=>{loadHeights();syncPositionSegment();};
+document.querySelectorAll('#positionSegment button').forEach(btn=>btn.onclick=()=>{
+  p.value=btn.dataset.pos;
+  loadHeights();
+  syncPositionSegment();
+});document.querySelector('#height').onchange=()=>{loadBody();syncHeightRange();};
+document.querySelector('#heightRange').oninput=e=>{
+  let sel=document.querySelector('#height');
+  sel.selectedIndex=+e.target.value;
+  loadBody();
+  syncHeightRange();
+};document.querySelector('#weight').oninput=()=>{updateBody();updateBuilderHero();};document.querySelector('#wing').oninput=()=>{updateBody();updateBuilderHero();};document.querySelector('#tabs').innerHTML=Object.keys(attrGroups).map(g=>`<button data-g="${g}">${g}</button>`).join('');document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>{active=b.dataset.g;renderAttrs()});document.querySelector('#resetBuild').onclick=()=>{manual={};ratings={};lockedAttrs.clear();renderAll();updateBuilderHero();};document.querySelector('#saveBuild').onclick=saveBuild;document.querySelector('#shareBuild').onclick=()=>{let u=shareCurrent();alert('Share link copied.\n'+u)};document.querySelector('#preset').value='custom';
+
+const useBuilderOpt=document.querySelector('#useBuilderInOptimizer');
+if(useBuilderOpt)useBuilderOpt.onclick=()=>cloneCurrentBuilderIntoOptimizer();
+const loadSavedOpt=document.querySelector('#loadSavedIntoOptimizer');
+if(loadSavedOpt)loadSavedOpt.onclick=()=>openSavedBuildPickerForOptimizer();
+const closeSavedOpt=document.querySelector('#closeOptimizerSavedModal');
+if(closeSavedOpt)closeSavedOpt.onclick=()=>document.querySelector('#optimizerSavedModal')?.classList.remove('show');
+const saveOptimizedBtn=document.querySelector('#saveOptimizedBuildBtn');
+if(saveOptimizedBtn)saveOptimizedBtn.onclick=()=>saveOptimizedCopy();
+
+document.querySelector('#preset').onchange=renderGoals;
+document.querySelector('#keepLockedBtn').onclick=()=>{closeLockConflictModal();renderAttrs();};
+document.querySelector('#cancelOvrChangeBtn').onclick=()=>{closeOvrGuardModal();renderAttrs();};
+document.querySelector('#useMaxLegalBtn').onclick=()=>{
+  if(!pendingOvrChange)return;
+  const ch={...pendingOvrChange};
+  document.querySelector('#ovrGuardModal')?.classList.remove('show');
+  pendingOvrChange=null,activeAttributeSlider=null;
+  attemptAttributeChange(ch.attr,ch.maxLegal);
+  renderAttrs();
+};
+document.querySelector('#unlockApplyBtn').onclick=()=>{
+  if(!pendingLockedChange)return;
+  const change={...pendingLockedChange};
+  for(const c of change.conflicts)lockedAttrs.delete(c.target);
+  document.querySelector('#lockConflictModal')?.classList.remove('show');
+  pendingLockedChange=null;
+  attemptAttributeChange(change.attr,change.value);
+  renderAttrs();
+};initNav();loadHeights();syncPositionSegment();syncHeightRange();loadShareHash();refreshComparePickers();updateBuilderHero();renderSaved();
+const iconInfoClose=document.querySelector('#iconInfoClose');
+if(iconInfoClose)iconInfoClose.onclick=closeIconInfo;
+const iconInfoBackdrop=document.querySelector('#iconInfoBackdrop');
+if(iconInfoBackdrop)iconInfoBackdrop.onclick=e=>{if(e.target===iconInfoBackdrop)closeIconInfo();};
+const unlockAuditIssues=auditUnlockDefinitions();
+if(unlockAuditIssues.length)console.error(unlockAuditIssues);
+hydrateGameIconCanvases();
+}
+function loadHeights(){let pos=document.querySelector('#position').value,h=document.querySelector('#height');h.innerHTML='';rules.positions[pos].heights.forEach(x=>h.add(new Option(feet(x.height),x.height)));let def=rules.positions[pos].heights.find(x=>x.height===rules.positions[pos].defaultHeight)||rules.positions[pos].heights[Math.floor(rules.positions[pos].heights.length/2)];h.value=def.height;loadBody()}
+function loadBody(){let pos=document.querySelector('#position').value,hi=+document.querySelector('#height').value,row=rules.positions[pos].heights.find(x=>x.height===hi);let w=document.querySelector('#weight'),s=document.querySelector('#wing');w.min=row.minWeight;w.max=row.maxWeight;w.value=Math.round((row.minWeight+row.maxWeight)/2);s.min=row.minWingspan;s.max=row.maxWingspan;s.value=Math.round((row.minWingspan+row.maxWingspan)/2);manual={};lockedAttrs.clear();updateBody()}
+function updateBody(){let pos=document.querySelector('#position').value,hi=+document.querySelector('#height').value,row=rules.positions[pos].heights.find(x=>x.height===hi),w=+document.querySelector('#weight').value,wing=+document.querySelector('#wing').value;document.querySelector('#heightText').textContent=feet(hi);document.querySelector('#weightText').textContent=w+' lb';document.querySelector('#wingText').textContent=feet(wing);document.querySelector('#bodyread').innerHTML=`<b>${pos.replaceAll('_',' ')}</b><br>${feet(hi)} • ${w} lb • ${feet(wing)} wingspan<br><span class="muted">Legal range: ${row.minWeight}-${row.maxWeight} lb • ${feet(row.minWingspan)}-${feet(row.maxWingspan)}</span>`;renderAll()}
+function interpEndpoint(rows,attr,x,key){if(!rows||rows.length<2)return 1;let a=rows[0],b=rows[rows.length-1],den=(b[key]-a[key])||1,t=(x-a[key])/den;t=Math.max(0,Math.min(1,t));return (a.multipliers[attr]??1)+t*((b.multipliers[attr]??1)-(a.multipliers[attr]??1))}
+
+// Screenshot-validated profiles remain as regression fixtures only. Max caps come from the decoded native tuning for all legal profiles.
+function validatedProfileKey(height,weight,wing){
+  const pos=document.querySelector('#position')?.value||'';
+  return `${pos}|${height}|${weight}|${wing}`;
+}
+function validatedCapFor(attr,height,weight,wing){
+  return validatedCapsData?.[validatedProfileKey(height,weight,wing)]?.[attr] ?? null;
+}
+function isValidatedBodyProfile(height,weight,wing){return !!maxPotentialNative?.heightMultipliers?.[String(height)];}
+function capLabelFor(height,weight,wing){return 'Native 2K max';}
+
+function nativeRoundNearestEven(x){
+  const f=Math.floor(x),d=x-f;
+  if(d<0.5)return f;if(d>0.5)return f+1;return (f%2===0)?f:f+1;
+}
+function nativeEndpointMultiplier(rows,attr,x,key){
+  if(!rows?.length)return 1;
+  const f=Math.fround,a=rows[0],z=rows[rows.length-1];
+  const am=f(a.multipliers?.[attr]??1),zm=f(z.multipliers?.[attr]??1);
+  if(x<=a[key])return am;if(x>=z[key])return zm;
+  const t=f(f(x-a[key])/f(z[key]-a[key]));
+  return f(am+f(t*f(zm-am)));
+}
+function betaMaxCap(attr,height,weight,wing){
+  if(!maxPotentialNative)return 25;
+  const f=Math.fround;
+  const hm=f(maxPotentialNative.heightMultipliers?.[String(height)]?.[attr]??1);
+  const wm=nativeEndpointMultiplier(maxPotentialNative.weightEndpoints?.[String(height)],attr,weight,'weight');
+  const sm=nativeEndpointMultiplier(maxPotentialNative.wingspanEndpoints?.[String(height)],attr,wing,'wingspan');
+  let v=f(74);v=f(v*hm);v=f(v*wm);v=f(v*sm);v=f(25+v);
+  return Math.max(25,Math.min(99,nativeRoundNearestEven(v)));
+}
+function currentBetaCaps(){let h=+document.querySelector('#height').value,w=+document.querySelector('#weight').value,wing=+document.querySelector('#wing').value,o={};for(const a of Object.values(attrGroups).flat())o[a]=betaMaxCap(a,h,w,wing);return o}
+function scoreCaps(caps,goals){let num=0,den=0,hits=0,total=0;for(const [a,[w,t]] of Object.entries(goals)){if(!w)continue;let have=caps[a]??25,ratio=Math.min(1,Math.max(0,(have-25)/(t-25||1)));num+=w*ratio;den+=w;total++;if(have>=t)hits++}return {score:den?Math.round(100*num/den):0,hits,total}}
+function solveObject(seed,height){let out={};for(const a of Object.values(attrGroups).flat())out[a]=Math.max(25,seed[a]||25);let changed=true,guard=0;while(changed&&guard++<100){changed=false;for(const r of rules.attributeConstraints){if(r.height!==height)continue;let v=out[r.attribute]||25,need=Math.max(25,v-r.maxDelta);if((out[r.associatedAttribute]||25)<need){out[r.associatedAttribute]=need;changed=true}}}return out}
+function compileTargets(){let key=document.querySelector('#compilePreset').value,g=presets[key]||presets.twoWaySlasherShooter,h=+document.querySelector('#height').value,w=+document.querySelector('#weight').value,wing=+document.querySelector('#wing').value,caps={};for(const a of Object.values(attrGroups).flat())caps[a]=betaMaxCap(a,h,w,wing);let seed={},req=[],conf=[];for(const [a,[weight,target]] of Object.entries(g)){if(!weight)continue;let clamped=Math.min(target,caps[a]??99);seed[a]=clamped;req.push({a,target,clamped,cap:caps[a],weight});if(target>(caps[a]??99))conf.push({a,target,cap:caps[a]})}let solved=solveObject(seed,h),forced=[];for(const [a,v] of Object.entries(solved)){let base=seed[a]||25;if(v>base)forced.push({a,v,base,delta:v-base})}document.querySelector('#compileRequested').textContent=req.length;document.querySelector('#compileConflicts').textContent=conf.length;document.querySelector('#compileForced').textContent=forced.length;document.querySelector('#compileSummary').innerHTML=`Compiled <b>${key.replaceAll(/([A-Z])/g,' $1')}</b> for <b>${feet(h)} • ${w} lb • ${feet(wing)} WS</b>.<br>${conf.length?`<span class="warn">${conf.length} requested target(s) exceed the native body ceiling.</span>`:'<span class="ok">All requested targets fit inside the native body ceilings.</span>'}<br><span class="muted">99 OVR affordability is not yet enforced.</span>`;document.querySelector('#compileTargets').innerHTML=req.sort((a,b)=>b.weight-a.weight).map(x=>`<div class="item"><div class="itemTop"><b>${nice[x.a]}</b><span class="${x.target>x.cap?'warn':'ok'}">${x.clamped}${x.clamped!==x.target?` / wanted ${x.target}`:''}</span></div><div class="tiny muted">Priority ${x.weight}/10 • native ceiling ${x.cap}</div></div>`).join('');document.querySelector('#compileLinks').innerHTML=forced.length?forced.sort((a,b)=>b.delta-a.delta).map(x=>`<div class="item"><div class="itemTop"><b>${nice[x.a]}</b><span class="tier">${x.v}</span></div><div class="tiny muted">Forced above ${x.base} by linked attributes (+${x.delta})</div></div>`).join(''):'<div class="muted">No additional linked ratings were forced above the requested targets.</div>'}
+function runScout(){let pos=document.querySelector('#scoutPosition').value,preset=document.querySelector('#scoutPreset').value,goals=presets[preset]||presets.twoWaySlasherShooter,res=[],tested=0;for(const row of rules.positions[pos].heights){for(let w=row.minWeight;w<=row.maxWeight;w++){for(let wing=row.minWingspan;wing<=row.maxWingspan;wing++){tested++;let caps={};for(const a of Object.values(attrGroups).flat())caps[a]=betaMaxCap(a,row.height,w,wing);let s=scoreCaps(caps,goals);res.push({h:row.height,w,wing,caps,...s})}}}res.sort((a,b)=>b.score-a.score||b.hits-a.hits||b.h-a.h);let top=res.slice(0,12);document.querySelector('#scoutTested').textContent=tested.toLocaleString();document.querySelector('#scoutTop').textContent=(top[0]?.score??0)+'/100';document.querySelector('#scoutPosLabel').textContent=pos.replaceAll('_',' ');document.querySelector('#scoutSummary').innerHTML=`Searched <b>${tested.toLocaleString()}</b> legal physical profiles. Scores reflect potential ceilings only — not 99 OVR affordability.`;document.querySelector('#scoutResults').innerHTML=top.map((x,i)=>`<div class="item"><div class="itemTop"><b>#${i+1} ${feet(x.h)} • ${x.w} lb • ${feet(x.wing)} WS</b><span class="tier ${x.score>=95?'gold':''}">${x.score}/100</span></div><div class="tiny muted">Targets reachable: ${x.hits}/${x.total}</div><div class="tiny" style="margin-top:6px">3PT <b>${x.caps.ShotThree}</b> • Dunk <b>${x.caps.DrivingDunk}</b> • Layup <b>${x.caps.DrivingLayup}</b> • Per D <b>${x.caps.PerimeterDefense}</b> • Int D <b>${x.caps.InteriorDefense}</b> • Handle <b>${x.caps.BallControl}</b> • SWB <b>${x.caps.SpeedWithBall}</b> • Str <b>${x.caps.Strength}</b></div></div>`).join('')}
+
+const directAttrs=Object.values(attrGroups).flat();
+function heightIndex(inches){return inches-64}
+function directWeightsFor(height,pt){
+  let hi=heightIndex(height),m={};
+  for(const x of heightWeights)if(x.heightIndex===hi&&x.playerType===pt)m[x.attribute]=x.weight;
+  return m
+}
+function transformOverall(raw,height){
+  let l=heightLerp[String(heightIndex(height))]||[[25,99],[25,99]],a=l[0],b=l[1],den=(a[1]-a[0])||1;
+  return Math.max(25,Math.min(99,b[0]+(raw-a[0])*(b[1]-b[0])/den))
+}
+function ratingScaleFor(attr,rating){
+  const idx=Math.min(99,Math.max(0,Math.floor(rating)-1));
+  if(idx<75)return 1;
+  return +(ratingWeightScale?.[attr]?.[String(idx)]??1)
+}
+function effectiveWeightsFor(height,pt,rObj){
+  const base=directWeightsFor(height,pt),out={};
+  for(const [a,wt] of Object.entries(base)){
+    out[a]=wt*ratingScaleFor(a,rObj?.[a]??25)
+  }
+  return out
+}
+function directOverallFor(r,height){
+  let best={score:25,display:25,playerType:0,raw:25};
+  for(let pt=0;pt<15;pt++){
+    const w=effectiveWeightsFor(height,pt,r);
+    let sw=0,sv=0;
+    for(const [a,wt] of Object.entries(w)){
+      sw+=wt;
+      sv+=wt*(r[a]??25)
+    }
+    if(!sw)continue;
+    const raw=sv/sw,score=transformOverall(raw,height),display=Math.max(25,Math.min(99,Math.round(score)));
+    if(score>best.score)best={score,display,playerType:pt,raw}
+  }
+  return best
+}
+function betaCapBreakers(attr,current,cap,height,ratingsObj){
+  let temp={...(ratingsObj||ratings)},out=[],lastMeta=null,r=current;
+  for(let i=0;i<5;i++){
+    const room=cap-r;
+    if(room<=0){out.push(0);continue}
+    temp[attr]=r;
+    const ov=directOverallFor(temp,height);
+    const w=effectiveWeightsFor(height,ov.playerType,temp);
+    const sel=w[attr]??0,maxW=Math.max(0.0001,...Object.values(w));
+    const factor=15+Math.trunc((350-14*r)/74);
+    let boost=Math.round(((maxW-sel)/maxW)*factor);
+    boost=Math.max(1,Math.min(room,boost));
+    out.push(boost);
+    lastMeta={playerType:ov.playerType,selectedWeight:sel,maxWeight:maxW};
+    r+=boost
+  }
+  return {boosts:out,...(lastMeta||{})}
+}
+
+function runAutoBuild(){
+try{
+let btn=document.querySelector('#runAuto');
+btn.disabled=true;btn.textContent='Searching...';
+document.querySelector('#autoSummary').innerHTML='Searching legal body profiles and compiling candidates...';
+document.querySelector('#autoResults').innerHTML='';
+let pos=document.querySelector('#autoPosition').value,key=document.querySelector('#autoPreset').value,goals=presets[key]||presets.twoWaySlasherShooter,depth=document.querySelector('#autoDepth').value,heightStrategy=document.querySelector('#autoHeightStrategy')?.value||'sizeAware',bodyCandidates=[],tested=0;
+for(const row of rules.positions[pos].heights){
+  let hp=heightPreferenceFor(pos,row.height,heightStrategy);
+  if(!hp.allowed) continue;
+  let ws=depth==='fast'?5:1,ss=depth==='fast'?2:1;
+  for(let w=row.minWeight;w<=row.maxWeight;w+=ws){
+    for(let wing=row.minWingspan;wing<=row.maxWingspan;wing+=ss){
+      tested++;
+      let caps=bodyCaps(row.height,w,wing),sc=scoreCaps(caps,goals);
+      bodyCandidates.push({h:row.height,w,wing,bodyScore:sc.score+hp.bonus,rawBodyScore:sc.score,sizeBonus:hp.bonus,sizeLabel:hp.label,hits:sc.hits})
+    }
+  }
+}
+bodyCandidates.sort((a,b)=>b.bodyScore-a.bodyScore||b.hits-a.hits||b.h-a.h);let finals=bodyCandidates.slice(0,depth==='fast'?30:80).map(x=>({...x,...makeBuildResult(pos,x.h,x.w,x.wing,goals)}));finals.forEach(x=>{x.fitAdjusted=Math.min(100,x.fit+(x.sizeBonus||0));});
+finals.sort((a,b)=>(b.fitAdjusted-a.fitAdjusted)||(b.fit-a.fit)||(b.h-a.h)||(b.unlocks.badges.Gold-a.unlocks.badges.Gold)||(b.proxy-a.proxy));lastAutoResults=finals.slice(0,9);document.querySelector('#autoBodies').textContent=tested.toLocaleString();document.querySelector('#autoFit').textContent=(lastAutoResults[0]?.fitAdjusted??lastAutoResults[0]?.fit??0).toFixed(0)+'/100';document.querySelector('#autoOvr').textContent=(lastAutoResults[0]?.proxy??25).toFixed(1);document.querySelector('#autoSummary').innerHTML=`Searched <b>${tested.toLocaleString()}</b> eligible body profiles using <b>${document.querySelector('#autoHeightStrategy').selectedOptions[0].text}</b>. Height preference is a playstyle/meta layer, not a hard 2K rule. <span class="ok">Displayed OVR uses the decoded 2K weighting path.</span>`;document.querySelector('#autoResults').innerHTML=lastAutoResults.map((x,i)=>renderAutoCard(x,i)).join('');
+if(lastAutoResults.length>=3){
+  const t=lastAutoResults.slice(0,3);
+  document.querySelector('#autoSummary').innerHTML += `<div class="explainBox" style="margin-top:10px">
+    <div class="explainTitle">TOP 3 QUICK READ</div>
+    <div class="explainRow good">#1 ${feet(t[0].h)}: best overall fit for the selected priorities.</div>
+    <div class="explainRow warn">#2 ${feet(t[1].h)}: ${explainBuild(t[1]).best} — tradeoff: ${explainBuild(t[1]).trade}.</div>
+    <div class="explainRow warn">#3 ${feet(t[2].h)}: ${explainBuild(t[2]).best} — tradeoff: ${explainBuild(t[2]).trade}.</div>
+  </div>`;
+}
+btn.disabled=false;btn.textContent='Find Best Builds';
+}catch(err){
+ console.error('Automatic Build Finder failed:',err);
+ let btn=document.querySelector('#runAuto'); if(btn){btn.disabled=false;btn.textContent='Find Best Builds';}
+ document.querySelector('#autoSummary').innerHTML='<span class="danger"><b>Build Finder error:</b> '+String(err.message||err)+'</span>';
+ document.querySelector('#autoResults').innerHTML='<div class="callout">The finder hit an error. Copy or screenshot the red error message above if this happens again.</div>';
+}}
+
+function badgeTierNameFor(name,ratingsObj,h){
+  const row=badges.find(b=>b.name===name);
+  return row?getBadgeTier(row,h,ratingsObj):null;
+}
+function takeoverUnlocked(name,ratingsObj){
+  const row=takeovers.find(t=>t.name===name);
+  return row?parseReq(row.requirement,ratingsObj).ok:false;
+}
+function targetStatus(r,attr,target){
+  const v=r[attr]??25;
+  if(v>=target) return {kind:'good',text:`${nice[attr]} ${v} hits the ${target} target`};
+  if(v>=target-3) return {kind:'warn',text:`${nice[attr]} ${v} is close to the ${target} target`};
+  return {kind:'bad',text:`${nice[attr]} ${v} misses the ${target} target`};
+}
+function explainBuild(x){
+  const r=x.ratings,h=x.h,lines=[];
+  const keyTargets=[
+    ['ShotThree',93],['DrivingDunk',93],['PerimeterDefense',91],
+    ['BallControl',86],['SpeedWithBall',80],['PassAccuracy',75],
+    ['Strength',75],['Vertical',80]
+  ];
+  for(const [a,t] of keyTargets){
+    const st=targetStatus(r,a,t);
+    if(st.kind!=='good'||['ShotThree','DrivingDunk','PerimeterDefense','BallControl'].includes(a)) lines.push(st);
+  }
+
+  const keyBadges=[
+    ['Posterizer','Gold'],['Limitless Range','Gold'],['Challenger','Gold'],
+    ['Handles for Days','Silver'],['Unpluckable','Silver']
+  ];
+  for(const [name,want] of keyBadges){
+    const tier=badgeTierNameFor(name,r,h);
+    if(tier) lines.push({kind:'good',text:`${tier} ${name}`});
+    else lines.push({kind:'warn',text:`No ${name} at this rating set`});
+  }
+
+  const tos=['Zip Code','Airspace','Blur','Glue'];
+  const unlocked=tos.filter(n=>takeoverUnlocked(n,r));
+  if(unlocked.length) lines.push({kind:'good',text:`Core takeovers: ${unlocked.join(', ')}`});
+
+  const size=h>=79?'strong contest size':h>=78?'good guard size':h>=77?'acceptable size':'small guard';
+  lines.push({kind:h>=78?'good':'warn',text:`${feet(h)} gives ${size} for this search`});
+
+  // Biggest strength and tradeoff based on the user's target profile.
+  const strengths=[
+    ['Shooting',r.ShotThree,93],['Finishing',r.DrivingDunk,93],
+    ['Perimeter defense',r.PerimeterDefense,91],['Creation',r.BallControl,86],
+    ['Movement',Math.round(((r.Speed||25)+(r.Agility||25)+(r.SpeedWithBall||25))/3),83],
+    ['Ball security',Math.round(((r.BallControl||25)+(r.Strength||25))/2),80]
+  ];
+  strengths.sort((a,b)=>(b[1]-b[2])-(a[1]-a[2]));
+  const best=strengths[0], worst=strengths[strengths.length-1];
+  return {
+    lines:lines.slice(0,8),
+    best:`${best[0]} (${best[1]})`,
+    trade:`${worst[0]} (${worst[1]})`,
+    grade:(x.fitAdjusted??x.fit)>=98?'elite':(x.fitAdjusted??x.fit)>=93?'strong':'trade'
+  };
+}
+
+function renderAutoCard(x,i){
+  let r=x.ratings,
+      cb=betaCapBreakers('ShotThree',r.ShotThree,x.caps.ShotThree,x.h,r).boosts.filter(Boolean),
+      shownFit=x.fitAdjusted??x.fit,
+      ex=explainBuild(x);
+  return `<div class="buildcard ${i===0?'leader':''}">
+    <div class="itemTop">
+      <b>#${i+1} ${feet(x.h)} ${x.pos.replaceAll('_',' ')}</b>
+      <span class="tier ${shownFit>=95?'gold':''}">${shownFit.toFixed(0)} fit</span>
+    </div>
+    <div class="muted tiny">${x.w} lb • ${feet(x.wing)} WS • OVR ${x.proxy.toFixed(1)} • ${x.sizeLabel||'Size neutral'}</div>
+
+    <div style="margin-top:8px">
+      <div class="metric"><span>3PT</span><b>${r.ShotThree}</b></div>
+      <div class="metric"><span>Dunk / Layup</span><b>${r.DrivingDunk} / ${r.DrivingLayup}</b></div>
+      <div class="metric"><span>Per D / Int D</span><b>${r.PerimeterDefense} / ${r.InteriorDefense}</b></div>
+      <div class="metric"><span>Handle / SWB</span><b>${r.BallControl} / ${r.SpeedWithBall}</b></div>
+      <div class="metric"><span>Pass / Strength</span><b>${r.PassAccuracy} / ${r.Strength}</b></div>
+    </div>
+
+    <div class="tagrow">
+      <span class="tag">Gold ${x.unlocks.badges.Gold}</span>
+      <span class="tag">HOF ${x.unlocks.badges['Hall of Fame']}</span>
+      <span class="tag">TO ${x.unlocks.takeovers.length}</span>
+    </div>
+
+    <div class="tradeoffGrid">
+      <div class="tradeoffCell"><span>BEST TRAIT</span><b>${ex.best}</b></div>
+      <div class="tradeoffCell"><span>MAIN TRADEOFF</span><b>${ex.trade}</b></div>
+    </div>
+
+    <div class="explainBox">
+      <div class="explainTitle">WHY THIS BUILD RANKED #${i+1}</div>
+      ${ex.lines.map(v=>`<div class="explainRow ${v.kind}">${v.text}</div>`).join('')}
+    </div>
+
+    ${cb.length?`<div class="tiny muted" style="margin-top:8px">3PT Cap Breaker preview</div>
+      <div class="cbrow">${cb.map(v=>`<span class="cb">+${v}</span>`).join('')}</div>`:''}
+
+    <div class="buildGrade ${ex.grade}">
+      ${ex.grade==='elite'?'Elite match':ex.grade==='strong'?'Strong match':'Tradeoff build'}
+    </div>
+
+    <div class="autoToolbar">
+      <button class="btn primary tiny" onclick="loadAutoResult(${i})">Open Build</button>
+      <button class="btn tiny" onclick="saveAutoResult(${i})">Save</button>
+      ${i<3?`<button class="btn tiny" onclick="quickCompareAuto(${i})">Add to Compare</button>`:''}
+    </div>
+  </div>`
+}
+function loadAutoResult(i){let x=lastAutoResults[i];if(!x)return;document.querySelector('#position').value=x.pos;loadHeights();document.querySelector('#height').value=x.h;loadBody();document.querySelector('#weight').value=x.w;document.querySelector('#wing').value=x.wing;manual={...x.ratings};lockedAttrs.clear();updateBody();showPage('builder')}
+
+function quickCompareAuto(i){
+  if(!lastAutoResults[i])return;
+  let x=lastAutoResults[i];
+  let arr=JSON.parse(localStorage.getItem('2k27-builds')||'[]');
+  let name=`Auto #${i+1} ${feet(x.h)} ${x.pos.replaceAll('_',' ')}`;
+  arr.push({name,pos:x.pos,h:x.h,w:x.w,wing:x.wing,manual:{...x.ratings},savedAt:Date.now()});
+  localStorage.setItem('2k27-builds',JSON.stringify(arr));
+  refreshComparePickers();
+  showPage('compare');
+}
+
+function saveAutoResult(i){let x=lastAutoResults[i];if(!x)return;saveBuildObject(x,`Auto #${i+1} ${feet(x.h)} ${x.pos.replaceAll('_',' ')}`);refreshComparePickers();alert('Build saved.')}
+function saveBuildObject(x,name){let list=JSON.parse(localStorage.getItem('2k27-builds')||'[]');list.unshift({id:Date.now()+Math.random(),name,pos:x.pos,h:x.h,w:x.w,wing:x.wing,ratings:{...x.ratings},manual:{...x.ratings}});localStorage.setItem('2k27-builds',JSON.stringify(list.slice(0,30)))}
+function buildSharePayload(b){return btoa(unescape(encodeURIComponent(JSON.stringify({p:b.pos,h:b.h,w:b.w,s:b.wing,r:b.ratings})))).replaceAll('+','-').replaceAll('/','_').replaceAll('=','')}
+function shareCurrent(){solve();let b={pos:document.querySelector('#position').value,h:+document.querySelector('#height').value,w:+document.querySelector('#weight').value,wing:+document.querySelector('#wing').value,ratings:{...ratings}};let u=location.href.split('#')[0]+'#build='+buildSharePayload(b);navigator.clipboard?.writeText(u);return u}
+function loadShareHash(){let m=location.hash.match(/#build=([^&]+)/);if(!m)return;try{let s=m[1].replaceAll('-','+').replaceAll('_','/');while(s.length%4)s+='=';let b=JSON.parse(decodeURIComponent(escape(atob(s))));document.querySelector('#position').value=b.p;loadHeights();document.querySelector('#height').value=b.h;loadBody();document.querySelector('#weight').value=b.w;document.querySelector('#wing').value=b.s;manual={...b.r};lockedAttrs.clear();updateBody()}catch(e){console.warn('Invalid shared build',e)}}
+function refreshComparePickers(){let box=document.querySelector('#comparePickers');if(!box)return;let list=JSON.parse(localStorage.getItem('2k27-builds')||'[]');box.innerHTML=[0,1,2,3].map(i=>`<div class="field"><label>Build ${i+1}</label><select class="compareSel"><option value="">— None —</option>${list.map((b,j)=>`<option value="${j}">${b.name} • ${feet(b.h)} ${b.w}lb</option>`).join('')}</select></div>`).join('')}
+function runCompare(){let list=JSON.parse(localStorage.getItem('2k27-builds')||'[]'),sel=[...document.querySelectorAll('.compareSel')].map(x=>x.value).filter(x=>x!=='').map(x=>list[+x]);if(!sel.length){document.querySelector('#compareOutput').innerHTML='<div class="muted">Choose at least one saved build.</div>';return}let rows=['Body','OVR',...directAttrs];let head=`<tr><th>Metric</th>${sel.map(b=>`<th>${b.name}</th>`).join('')}</tr>`;let body=rows.map(metric=>{let vals=sel.map(b=>{if(metric==='Body')return `${feet(b.h)} • ${b.w} • ${feet(b.wing)} WS`;if(metric==='OVR')return directOverallFor(b.ratings,b.h).display;return b.ratings[metric]??25});return `<tr><td>${nice[metric]||metric}</td>${vals.map(v=>`<td>${v}</td>`).join('')}</tr>`}).join('');document.querySelector('#compareOutput').innerHTML=`<table>${head}${body}</table>`}
+
+function syncPositionSegment(){
+  document.querySelectorAll('#positionSegment button').forEach(btn=>{
+    btn.classList.toggle('active',btn.dataset.pos===document.querySelector('#position').value);
+  });
+}
+function syncHeightRange(){
+  const sel=document.querySelector('#height'),range=document.querySelector('#heightRange');
+  if(!sel||!range)return;
+  range.min=0;range.max=Math.max(0,sel.options.length-1);range.step=1;
+  range.value=Math.max(0,sel.selectedIndex);
+}
+function buildPotentialSummary(){
+  const h=+document.querySelector('#height').value,w=+document.querySelector('#weight').value,wing=+document.querySelector('#wing').value;
+  const groups=[
+    ['finish','FINISHING',['ShotClose','DrivingLayup','DrivingDunk','StandingDunk','PostControl']],
+    ['shoot','SHOOTING',['ShotMidrange','ShotThree','ShotFreeThrow']],
+    ['play','PLAYMAKING',['PassAccuracy','BallControl','SpeedWithBall']],
+    ['def','DEFENSE',['InteriorDefense','PerimeterDefense','Steal','Block']],
+    ['reb','REBOUNDING',['ReboundOffense','ReboundDefense']],
+    ['phys','PHYSICALS',['Speed','Agility','Strength','Vertical']]
+  ];
+  const pg=document.querySelector('#potentialGrid');
+  if(pg)pg.innerHTML=groups.map(([cls,title,arr])=>`<div class="potentialGroup ${cls}"><h4>${title}</h4>${arr.map(a=>`<div class="potentialRow"><span>${nice[a]}</span><b>${betaMaxCap(a,h,w,wing)}</b></div>`).join('')}</div>`).join('');
+
+  let capRatings={}; for(const a of directAttrs) capRatings[a]=betaMaxCap(a,h,w,wing);
+  const saveRatings=ratings; ratings=capRatings;
+  let ub=badges.map(b=>({b,t:getBadgeTier(b,h)})).filter(x=>x.t);
+  let av=takeovers.filter(t=>parseReq(t.requirement).ok&&!t.name.startsWith('Default'));
+  ratings=saveRatings;
+
+  const bc=document.querySelector('#potentialBadgeChips');
+  if(bc)bc.innerHTML=ub.map(x=>`<div class="unlockChip iconChip" title="${x.t} ${x.b.name}" data-tip="${x.t} ${x.b.name}" role="button" tabindex="0">${badgeIconHTML(x.b.name,x.t,x.b.category)}</div>`).join('');
+  const bt=document.querySelector('#potentialBadgeTotal'); if(bt)bt.textContent=`${ub.length} reachable`;
+  const tc=document.querySelector('#potentialTakeChips');
+  if(tc)tc.innerHTML=av.map(t=>`<div class="unlockChip iconChip" title="${t.name} — ${t.requirement}" data-tip="${t.name} — ${t.requirement}" role="button" tabindex="0">${takeoverIconHTML(t.name,t.category,t.requirement)}</div>`).join('');
+  const tt=document.querySelector('#potentialTakeTotal'); if(tt)tt.textContent=`${av.length} reachable`;
+  bindTapTooltips();
+}
+function updateBuilderHero(){
+  const pos=document.querySelector('#position').value,h=+document.querySelector('#height').value,w=+document.querySelector('#weight').value,wing=+document.querySelector('#wing').value;
+  const currentOverall=directOverallFor(ratings,h),currentOvr=currentOverall.display;
+  const hero=document.querySelector('#builderOvrHero'); if(hero) hero.textContent=currentOvr;
+  const attrOvr=document.querySelector('#attrOvrLive'); if(attrOvr) attrOvr.textContent=currentOvr;
+  const ident=document.querySelector('#buildIdentityLine'); if(ident) ident.textContent=`${posAbbr(pos)} · ${feet(h)} · ${w} lbs · ${feet(wing)} Wingspan`;
+  const count=document.querySelector('#badgeCountHero'); if(count) count.textContent=document.querySelectorAll('#badgeList .item').length||0;
+  const title=document.querySelector('#buildArchetypeTitle'); if(title){
+    const three=ratings.ShotThree||25,dunk=ratings.DrivingDunk||25,per=ratings.PerimeterDefense||25,bh=ratings.BallControl||25;
+    title.textContent=(three>=89&&per>=85?'2-Way ':three>=89?'Shot-':'')+(dunk>=87?'Slashing ':'')+(bh>=85?'Creator':'Build');
+  }
+  syncPositionSegment(); syncHeightRange(); buildPotentialSummary();
+}
+function posAbbr(p){return ({POINT_GUARD:'PG',SHOOTING_GUARD:'SG',SMALL_FORWARD:'SF',POWER_FORWARD:'PF',CENTER:'C'})[p]||p}
+
+
+function showTapTooltip(text){
+  const el=document.querySelector('#tapTooltip');
+  if(!el||!text)return;
+  el.textContent=text;el.classList.add('show');
+  clearTimeout(tapTooltipTimer);
+  tapTooltipTimer=setTimeout(()=>el.classList.remove('show'),2200);
+}
+function bindTapTooltips(){
+  document.querySelectorAll('.unlockChip[data-tip]').forEach(el=>{
+    el.onclick=()=>{
+      const icon=el.querySelector('[data-icon-kind]');
+      if(icon){
+        showIconInfo(icon.dataset.iconKind,icon.dataset.iconName,icon.dataset.iconDetail,icon);
+      }else{
+        showTapTooltip(el.dataset.tip||el.title);
+      }
+    };
+    el.onkeydown=e=>{
+      if(e.key==='Enter'||e.key===' '){
+        e.preventDefault();
+        el.click();
+      }
+    };
+  });
+
+  document.querySelectorAll('.unlockItem [data-icon-kind]').forEach(icon=>{
+    icon.onclick=e=>{
+      e.stopPropagation();
+      showIconInfo(icon.dataset.iconKind,icon.dataset.iconName,icon.dataset.iconDetail,icon);
+    };
+  });
+
+  hydrateGameIconCanvases();
+}
+function toggleAttributeLock(a){
+  terminateActiveAttributeDrag();
+  solve();
+  if(lockedAttrs.has(a)){
+    lockedAttrs.delete(a);
+  }else{
+    manual[a]=ratings[a]??manual[a]??25;
+    lockedAttrs.add(a);
+  }
+  // Rebuild the attribute list immediately so any active slider element is replaced.
+  // This ends an in-progress drag on mobile and the locked slider returns at the exact stop point.
+  renderAttrs();
+  renderUnlocks();
+  renderOptimizer();
+  updateBuilderHero();
+}
+function showLockConflictModal(change,conflicts){
+  pendingLockedChange={...change,conflicts};
+  const modal=document.querySelector('#lockConflictModal');
+  const list=document.querySelector('#lockConflictList');
+  const msg=document.querySelector('#lockConflictMessage');
+  if(msg)msg.textContent=`Raising ${nice[change.attr]} to ${change.value} conflicts with ${conflicts.length} locked attribute${conflicts.length===1?'':'s'}.`;
+  if(list)list.innerHTML=conflicts.map(c=>`<div class="lockConflictItem">The linked-attribute chain needs <b>${nice[c.target]} ${c.required}</b>, but it is locked at ${c.current}.</div>`).join('');
+  modal?.classList.add('show');
+}
+function closeLockConflictModal(){
+  document.querySelector('#lockConflictModal')?.classList.remove('show');
+  pendingLockedChange=null;
+}
+
+function buildOvrScoreFor(seed,h){
+  const solved=solveDependencies(seed,h);
+  return directOverallFor(solved,h).score;
+}
+function showOvrGuardModal(change,maxLegal,score){
+  pendingOvrChange={...change,maxLegal,score};
+  const modal=document.querySelector('#ovrGuardModal');
+  const msg=document.querySelector('#ovrGuardMessage');
+  if(msg)msg.textContent=`${nice[change.attr]} ${change.value} would push this build to ${score.toFixed(1)} OVR in the decoded legality model. The highest allowed value here is ${maxLegal}.`;
+  modal?.classList.add('show');
+}
+function closeOvrGuardModal(){
+  document.querySelector('#ovrGuardModal')?.classList.remove('show');
+  pendingOvrChange=null,activeAttributeSlider=null;
+}
+function maxLegalValueForChange(attr,requested,oldManual,h){
+  let low=oldManual[attr]??25, high=requested, best=low;
+  for(let v=low;v<=high;v++){
+    let test={...oldManual,[attr]:v};
+    const lockedTest=computeRatingsWithLocks(test,h,lockedAttrs);
+    if(lockedTest.conflicts.length)break;
+    const score=directOverallFor(lockedTest.unconstrained,h).score;
+    if(score<=99.0)best=v; else break;
+  }
+  return best;
+}
+
+
+function terminateActiveAttributeDrag(){
+  const inp=activeAttributeSlider;
+  if(!inp)return;
+  try{
+    // If a PointerEvent owns capture, release it before replacing the node.
+    if(typeof inp.hasPointerCapture==='function' && window.event?.pointerId != null && inp.hasPointerCapture(window.event.pointerId)){
+      inp.releasePointerCapture(window.event.pointerId);
+    }
+  }catch(e){}
+  try{inp.blur()}catch(e){}
+  try{inp.disabled=true}catch(e){}
+  activeAttributeSlider=null;
+}
+
+function attemptAttributeChange(a,value){
+  const h=+document.querySelector('#height').value,w=+document.querySelector('#weight').value,wing=+document.querySelector('#wing').value;
+  const cap=betaMaxCap(a,h,w,wing);
+  value=Math.min(+value,cap);
+  const oldManual={...manual};
+  const before=ratings[a]??manual[a]??25;
+
+  // Once the build is at 99, every attribute slider is increase-locked.
+  // Lowering remains allowed so the user can create budget again.
+  if(isAt99Ovr() && value>before){
+    terminateActiveAttributeDrag();
+    renderAttrs();
+    renderUnlocks();
+    renderOptimizer();
+    updateBuilderHero();
+    return false;
+  }
+  manual[a]=value;
+
+  const result=computeRatingsWithLocks(manual,h,lockedAttrs);
+
+  // LOCK GUARD: any direct or cascading pressure above a locked rating is blocked.
+  if(result.conflicts.length){
+    // A native iOS range can keep moving under a modal until the finger lifts.
+    // Kill that active control first, then restore the last legal rating and rebuild it.
+    terminateActiveAttributeDrag();
+    manual=oldManual;
+    solve();
+    renderAttrs();
+    renderUnlocks();
+    renderOptimizer();
+    updateBuilderHero();
+    showLockConflictModal({attr:a,value},result.conflicts);
+    return false;
+  }
+
+  // 99 OVR GUARD: don't allow the user to keep spending forever.
+  const score=directOverallFor(result.unconstrained,h).score;
+  if(false && score>99.0){
+    const maxLegal=maxLegalValueForChange(a,value,oldManual,h);
+    terminateActiveAttributeDrag();
+    manual=oldManual;
+    solve();
+    renderAttrs();
+    renderUnlocks();
+    renderOptimizer();
+    updateBuilderHero();
+    showOvrGuardModal({attr:a,value},maxLegal,score);
+    return false;
+  }
+
+  ratings=result.ratings;
+  lastLockConflicts=[];
+
+  const landed=directOverallFor(ratings,h);
+  if(landed.display>=99){
+    terminateActiveAttributeDrag();
+    renderAttrs();
+    renderUnlocks();
+    renderOptimizer();
+    let o=directOverallFor(ratings,h);
+    let el=document.querySelector('#builderOvr');if(el)el.textContent=o.display;
+    let attrOvr=document.querySelector('#attrOvrLive');if(attrOvr)attrOvr.textContent=o.display;
+    updateBuilderHero();
+    return true;
+  }
+
+  updateAfterAttributeDrag();
+  return true;
+}
+
+function renderAll(){solve();renderAttrs();renderUnlocks();renderOptimizer();let h=+document.querySelector('#height').value,o=directOverallFor(ratings,h);let el=document.querySelector('#builderOvr');if(el)el.textContent=o.display;updateBuilderHero()}
+function rangePct(value,min=25,max=99){return Math.max(0,Math.min(100,(value-min)/(max-min)*100))}
+function paintRange(inp,value){
+  if(!inp)return;
+  const min=+(inp.min||25), max=+(inp.max||99);
+  const safe=Math.max(min,Math.min(max,+value));
+  inp.value=safe;
+  inp.style.setProperty('--range-pct',rangePct(safe,min,max)+'%');
+}
+function updateVisibleAttributeUI(){
+  solve();
+  let h=+document.querySelector('#height').value,w=+document.querySelector('#weight').value,wing=+document.querySelector('#wing').value;
+  const at99=isAt99Ovr();
+  const maxNotice=document.querySelector('#ovrMaxNotice');
+  if(maxNotice)maxNotice.classList.toggle('show',at99);
+  document.querySelectorAll('#attrs .attr').forEach(div=>{
+    let a=div.dataset.attr;if(!a)return;
+    let cap=betaMaxCap(a,h,w,wing),val=Math.min(ratings[a]??25,cap),man=Math.min(manual[a]??25,cap);
+    div.classList.toggle('lockedAttr',lockedAttrs.has(a));
+    let valueEl=div.querySelector('.attrValue');
+    if(valueEl)valueEl.innerHTML=`${val} <span class="muted">/ ${cap}</span>`;
+    let inp=div.querySelector('input[type=range]');
+    if(inp){
+      const legalMax=at99?Math.min(val,cap):cap;
+      inp.max=legalMax;
+      paintRange(inp,Math.min(val,legalMax));
+    }
+    if(inp){inp.dataset.manual=man;inp.disabled=lockedAttrs.has(a);}
+    let lockBtn=div.querySelector('.attrLock');
+    if(lockBtn){
+      lockBtn.classList.toggle('locked',lockedAttrs.has(a));
+      lockBtn.textContent=lockedAttrs.has(a)?'🔒':'🔓';
+      lockBtn.setAttribute('aria-label',`${lockedAttrs.has(a)?'Unlock':'Lock'} ${nice[a]}`);
+    }
+    let lockHint=div.querySelector('.lockHint');
+    if(lockHint)lockHint.textContent=lockedAttrs.has(a)?`Locked at ${val} — linked attributes cannot raise it.`:'';
+    let forcedEl=div.querySelector('.forced');
+    if(forcedEl)forcedEl.textContent=val>man?`Forced to ${val} by linked attributes (+${val-man})`:'';
+    let capEl=div.querySelector('.cap');
+    if(capEl){
+      capEl.className='cap '+(val>cap?'low':'');
+      const capLabel=capLabelFor(h,w,wing);
+      capEl.textContent=`${capLabel} ${cap}${val>cap?' • current value exceeds max':''}`;
+    }
+    let cb=div.querySelector('.cbrow');
+    if(cb)cb.innerHTML=betaCapBreakers(a,val,cap,h,ratings).boosts.filter(Boolean).map(v=>`<span class="cb">+${v}</span>`).join('');
+  });
+}
+function updateAfterAttributeDrag(){
+  solve();
+  updateVisibleAttributeUI();
+  renderUnlocks();
+  renderOptimizer();
+  let h=+document.querySelector('#height').value,o=directOverallFor(ratings,h);
+  let el=document.querySelector('#builderOvr');if(el)el.textContent=o.display;
+  let attrOvr=document.querySelector('#attrOvrLive');if(attrOvr)attrOvr.textContent=o.display;
+  updateBuilderHero();
+}
+function renderAttrs(){
+  solve();
+  document.querySelectorAll('#tabs button').forEach(b=>b.classList.toggle('active',b.dataset.g===active));
+  let box=document.querySelector('#attrs');box.innerHTML='';
+  let h=+document.querySelector('#height').value,w=+document.querySelector('#weight').value,wing=+document.querySelector('#wing').value;
+  const at99=isAt99Ovr();
+  const maxNotice=document.querySelector('#ovrMaxNotice');
+  if(maxNotice)maxNotice.classList.toggle('show',at99);
+  for(const a of attrGroups[active]){
+    let cap=betaMaxCap(a,h,w,wing),val=Math.min(ratings[a]??25,cap),man=Math.min(manual[a]??25,cap);
+    let forced=val>man?`Forced to ${val} by linked attributes (+${val-man})`:'';
+    let div=document.createElement('div');div.className='attr';div.dataset.attr=a;
+    div.classList.toggle('lockedAttr',lockedAttrs.has(a));
+    div.innerHTML=`<div class="attrTop">
+      <b>${nice[a]}</b>
+      <div class="attrRight">
+        <button class="attrLock ${lockedAttrs.has(a)?'locked':''}" data-lock="${a}" aria-label="${lockedAttrs.has(a)?'Unlock':'Lock'} ${nice[a]}" title="${lockedAttrs.has(a)?'Unlock':'Lock'} ${nice[a]}">${lockedAttrs.has(a)?'🔒':'🔓'}</button>
+        <b class="attrValue">${val} <span class="muted">/ ${cap}</span></b>
+      </div>
+    </div>
+      <input type="range" min="25" max="${at99?Math.min(val,cap):cap}" value="${Math.min(val,cap)}" data-a="${a}" data-manual="${man}" style="--range-pct:${rangePct(Math.min(val,cap),25,(at99?Math.min(val,cap):cap))}%" ${lockedAttrs.has(a)?'disabled':''}>
+      <div class="cap ${val>cap?'low':''}">${capLabelFor(h,w,wing)} ${cap}${val>cap?' • current value exceeds max':''}</div>
+      <div class="cbrow">${betaCapBreakers(a,val,cap,h,ratings).boosts.filter(Boolean).map(v=>`<span class="cb">+${v}</span>`).join('')}</div>
+      <div class="forced">${forced}</div>
+      <div class="lockHint">${lockedAttrs.has(a)?`Locked at ${val} — linked attributes cannot raise it.`:''}</div>`;
+    box.appendChild(div);
+  }
+  box.querySelectorAll('.attrLock').forEach(btn=>{btn.onclick=()=>toggleAttributeLock(btn.dataset.lock)});
+  box.querySelectorAll('input[type=range]').forEach(inp=>{
+    const markActive=e=>{ activeAttributeSlider=e.currentTarget; };
+    const clearActive=e=>{ if(activeAttributeSlider===e.currentTarget)activeAttributeSlider=null; };
+    inp.addEventListener('pointerdown',markActive,{passive:true});
+    inp.addEventListener('touchstart',markActive,{passive:true});
+    inp.addEventListener('mousedown',markActive,{passive:true});
+    inp.addEventListener('pointerup',clearActive,{passive:true});
+    inp.addEventListener('touchend',clearActive,{passive:true});
+    inp.addEventListener('mouseup',clearActive,{passive:true});
+    inp.addEventListener('change',clearActive,{passive:true});
+    inp.addEventListener('input',e=>{
+      activeAttributeSlider=e.currentTarget;
+      let a=e.currentTarget.dataset.a;
+      attemptAttributeChange(a,+e.currentTarget.value);
+    },{passive:true});
+  });
+  updateVisibleAttributeUI();
+}
+
+function iconInitials(name){
+  const skip=new Set(['of','the','and','for','to']);
+  const words=String(name||'').replace(/[^A-Za-z0-9 ]/g,' ').split(/\s+/).filter(Boolean).filter(w=>!skip.has(w.toLowerCase()));
+  if(!words.length)return '2K';
+  if(words.length===1)return words[0].slice(0,2).toUpperCase();
+  return (words[0][0]+words[1][0]).toUpperCase();
+}
+function escapeAttr(v){
+  return String(v??'')
+    .replaceAll('&','&amp;')
+    .replaceAll('"','&quot;')
+    .replaceAll('<','&lt;')
+    .replaceAll('>','&gt;');
+}
+function badgeIconHTML(name,tier,category='Badge'){
+  const cls=tier==='Hall of Fame'?'hof':String(tier||'bronze').toLowerCase();
+  const detail=`${tier} • ${category}`;
+  return `<span class="badgeIcon ${cls}"
+      data-icon-kind="badge"
+      data-icon-name="${escapeAttr(name)}"
+      data-icon-detail="${escapeAttr(detail)}"
+      title="${escapeAttr(`${tier} ${name}`)}">
+    <canvas class="gameIconCanvas" data-game-kind="badge" data-game-name="${escapeAttr(name)}" width="72" height="72"></canvas>
+    <span class="iconMark">${iconInitials(name)}</span>
+  </span>`;
+}
+function takeoverIconHTML(name,category,requirement=''){
+  const cls=String(category||'universal').toLowerCase().replace(/\s+/g,'');
+  const detail=`${category}${requirement?` • ${requirement}`:''}`;
+  return `<span class="takeoverIcon ${cls}"
+      data-icon-kind="takeover"
+      data-icon-name="${escapeAttr(name)}"
+      data-icon-detail="${escapeAttr(detail)}"
+      title="${escapeAttr(name)}">
+    <canvas class="gameIconCanvas" data-game-kind="takeover" data-game-name="${escapeAttr(name)}" width="72" height="72"></canvas>
+    <span class="iconMark">${iconInitials(name)}</span>
+  </span>`;
+}
+
+let badgeArtManifest=null;
+let takeoverArtManifest=null;
+const astcSourceCache=new Map();
+const astcBytesCache=new Map();
+let astcDecoderPromise=null;
+
+async function loadGameArtManifests(){
+  try{
+    [badgeArtManifest,takeoverArtManifest]=await Promise.all([
+      fetch('./assets/badges/manifest.json?v=10.1').then(r=>{
+        if(!r.ok)throw new Error('Badge art manifest failed');
+        return r.json();
+      }),
+      fetch('./assets/takeovers/manifest.json?v=10.1').then(r=>{
+        if(!r.ok)throw new Error('Takeover art manifest failed');
+        return r.json();
+      })
+    ]);
+  }catch(err){
+    console.warn('Real game-art manifests unavailable; initials fallback will remain.',err);
+  }
+}
+
+async function fetchAstcBytes(url){
+  if(!astcBytesCache.has(url)){
+    astcBytesCache.set(url,fetch(url).then(r=>{
+      if(!r.ok)throw new Error(`Texture fetch failed: ${r.status}`);
+      return r.arrayBuffer();
+    }).then(b=>new Uint8Array(b)));
+  }
+  return astcBytesCache.get(url);
+}
+
+function compileTextureShader(gl,type,source){
+  const shader=gl.createShader(type);
+  gl.shaderSource(shader,source);
+  gl.compileShader(shader);
+  if(!gl.getShaderParameter(shader,gl.COMPILE_STATUS)){
+    throw new Error(gl.getShaderInfoLog(shader)||'Shader compile failed');
+  }
+  return shader;
+}
+
+async function decodeAstcWithWebGL(url,width,height){
+  const key=`webgl|${url}|${width}x${height}`;
+  if(astcSourceCache.has(key))return astcSourceCache.get(key);
+
+  const promise=(async()=>{
+    const raw=await fetchAstcBytes(url);
+    const canvas=document.createElement('canvas');
+    canvas.width=width;
+    canvas.height=height;
+
+    const gl=canvas.getContext('webgl',{
+      alpha:true,
+      premultipliedAlpha:false,
+      preserveDrawingBuffer:true
+    });
+    if(!gl)throw new Error('WebGL unavailable');
+
+    const ext=gl.getExtension('WEBGL_compressed_texture_astc');
+    if(!ext)throw new Error('Native ASTC unavailable');
+
+    const vs=compileTextureShader(gl,gl.VERTEX_SHADER,
+      `attribute vec2 a_pos;
+       varying vec2 v_uv;
+       void main(){
+         v_uv=vec2((a_pos.x+1.0)*0.5,1.0-(a_pos.y+1.0)*0.5);
+         gl_Position=vec4(a_pos,0.0,1.0);
+       }`
+    );
+    const fs=compileTextureShader(gl,gl.FRAGMENT_SHADER,
+      `precision mediump float;
+       varying vec2 v_uv;
+       uniform sampler2D u_tex;
+       void main(){gl_FragColor=texture2D(u_tex,v_uv);}`
+    );
+
+    const program=gl.createProgram();
+    gl.attachShader(program,vs);
+    gl.attachShader(program,fs);
+    gl.linkProgram(program);
+    if(!gl.getProgramParameter(program,gl.LINK_STATUS)){
+      throw new Error(gl.getProgramInfoLog(program)||'Shader link failed');
+    }
+
+    gl.useProgram(program);
+
+    const buffer=gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER,buffer);
+    gl.bufferData(
+      gl.ARRAY_BUFFER,
+      new Float32Array([-1,-1,1,-1,-1,1,1,1]),
+      gl.STATIC_DRAW
+    );
+
+    const loc=gl.getAttribLocation(program,'a_pos');
+    gl.enableVertexAttribArray(loc);
+    gl.vertexAttribPointer(loc,2,gl.FLOAT,false,0,0);
+
+    const texture=gl.createTexture();
+    gl.bindTexture(gl.TEXTURE_2D,texture);
+    gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);
+
+    gl.compressedTexImage2D(
+      gl.TEXTURE_2D,
+      0,
+      ext.COMPRESSED_RGBA_ASTC_6x6_KHR,
+      width,
+      height,
+      0,
+      raw
+    );
+
+    const err=gl.getError();
+    if(err!==gl.NO_ERROR)throw new Error(`ASTC upload failed (${err})`);
+
+    gl.viewport(0,0,width,height);
+    gl.clearColor(0,0,0,0);
+    gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.drawArrays(gl.TRIANGLE_STRIP,0,4);
+    gl.finish();
+
+    return canvas;
+  })();
+
+  astcSourceCache.set(key,promise);
+  return promise;
+}
+
+async function getAstcDecoder(){
+  if(!astcDecoderPromise){
+    astcDecoderPromise=(async()=>{
+      const mod=await import('https://cdn.jsdelivr.net/npm/texture2ddecoder-wasm@1.2.1/dist/index.mjs');
+      await mod.initialize({
+        wasmPath:'https://cdn.jsdelivr.net/npm/texture2ddecoder-wasm@1.2.1/wasm'
+      });
+      return mod;
+    })();
+  }
+  return astcDecoderPromise;
+}
+
+async function decodeAstcWithWasm(url,width,height){
+  const key=`wasm|${url}|${width}x${height}`;
+  if(astcSourceCache.has(key))return astcSourceCache.get(key);
+
+  const promise=(async()=>{
+    const [raw,decoder]=await Promise.all([fetchAstcBytes(url),getAstcDecoder()]);
+    const decoded=await decoder.decode_astc(raw,width,height,6,6);
+    if(!decoded)throw new Error('Software ASTC decode failed');
+
+    const canvas=document.createElement('canvas');
+    canvas.width=width;
+    canvas.height=height;
+    const ctx=canvas.getContext('2d');
+    const image=ctx.createImageData(width,height);
+
+    // Texture2DDecoder returns BGRA.
+    for(let i=0;i<decoded.length;i+=4){
+      image.data[i]=decoded[i+2];
+      image.data[i+1]=decoded[i+1];
+      image.data[i+2]=decoded[i];
+      image.data[i+3]=decoded[i+3];
+    }
+    ctx.putImageData(image,0,0);
+    return canvas;
+  })();
+
+  astcSourceCache.set(key,promise);
+  return promise;
+}
+
+async function getAstcSource(url,width,height){
+  try{
+    return await decodeAstcWithWebGL(url,width,height);
+  }catch(nativeError){
+    try{
+      return await decodeAstcWithWasm(url,width,height);
+    }catch(wasmError){
+      console.warn('ASTC decode failed',url,nativeError,wasmError);
+      throw wasmError;
+    }
+  }
+}
+
+async function paintBadgeGameArt(canvas,name){
+  const icon=badgeArtManifest?.icons?.[name];
+  if(!icon)return false;
+
+  const atlas=badgeArtManifest?.atlases?.[icon.atlasPathId];
+  if(!atlas)return false;
+
+  const source=await getAstcSource(atlas.file,atlas.width,atlas.height);
+  const [x,y,w,h]=icon.rect;
+  const ctx=canvas.getContext('2d');
+  const pad=2;
+
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  // The decoded atlas canvas has already been vertically normalized by the
+  // WebGL/WASM decoder. Using atlas.height-y-h here double-flipped the SpriteAtlas
+  // lookup and caused unrelated/blank badge artwork to be cropped.
+  const sourceY=y;
+  const rotation=((icon.settingsRaw||0)>>2)&15;
+
+  ctx.save();
+  if(rotation===1){
+    // SpritePackingRotation.FlipHorizontal
+    ctx.translate(canvas.width,0);
+    ctx.scale(-1,1);
+  }else if(rotation===2){
+    // SpritePackingRotation.FlipVertical
+    ctx.translate(0,canvas.height);
+    ctx.scale(1,-1);
+  }else if(rotation===3){
+    // SpritePackingRotation.Rotate180
+    ctx.translate(canvas.width,canvas.height);
+    ctx.rotate(Math.PI);
+  }
+
+  ctx.drawImage(
+    source,
+    x,sourceY,w,h,
+    pad,pad,canvas.width-pad*2,canvas.height-pad*2
+  );
+  ctx.restore();
+
+  canvas.classList.add('loaded');
+  return true;
+}
+
+async function paintTakeoverGameArt(canvas,name){
+  const meta=takeoverArtManifest?.[name];
+  if(!meta)return false;
+
+  const source=await getAstcSource(meta.file,meta.width,meta.height);
+  const ctx=canvas.getContext('2d');
+  const pad=2;
+
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.drawImage(
+    source,
+    0,0,meta.width,meta.height,
+    pad,pad,canvas.width-pad*2,canvas.height-pad*2
+  );
+
+  canvas.classList.add('loaded');
+  return true;
+}
+
+function hydrateGameIconCanvases(root=document){
+  root.querySelectorAll('canvas.gameIconCanvas:not([data-icon-loading])').forEach(canvas=>{
+    canvas.dataset.iconLoading='1';
+    const kind=canvas.dataset.gameKind;
+    const name=canvas.dataset.gameName;
+    const work=kind==='badge'
+      ? paintBadgeGameArt(canvas,name)
+      : paintTakeoverGameArt(canvas,name);
+
+    Promise.resolve(work).catch(err=>{
+      console.warn('Could not paint game icon',kind,name,err);
+      canvas.classList.add('failed');
+    });
+  });
+}
+
+function showIconInfo(kind,name,detail,sourceIcon){
+  const backdrop=document.querySelector('#iconInfoBackdrop');
+  const preview=document.querySelector('#iconInfoPreview');
+
+  document.querySelector('#iconInfoType').textContent=kind==='badge'?'Badge':'Takeover';
+  document.querySelector('#iconInfoName').textContent=name;
+  document.querySelector('#iconInfoDetail').textContent=detail||'';
+
+  if(preview){
+    preview.innerHTML=sourceIcon?.outerHTML||'';
+    preview.querySelectorAll('canvas.gameIconCanvas').forEach(c=>{
+      c.removeAttribute('data-icon-loading');
+      c.classList.remove('loaded','failed');
+    });
+    hydrateGameIconCanvases(preview);
+  }
+
+  backdrop?.classList.add('show');
+  backdrop?.setAttribute('aria-hidden','false');
+}
+
+function closeIconInfo(){
+  const backdrop=document.querySelector('#iconInfoBackdrop');
+  backdrop?.classList.remove('show');
+  backdrop?.setAttribute('aria-hidden','true');
+}
+
+
+function auditUnlockDefinitions(){
+  const issues=[];
+  const auditRequirement=(label,text)=>{
+    if(!text||text==='-'||/Always available/i.test(text||''))return;
+    for(const clause of text.split(/\s+(?:AND|OR)\s+/i)){
+      const m=clause.trim().match(/^(\d+)\s+(.+)$/);
+      if(!m){issues.push(`${label}: cannot parse "${clause.trim()}"`);continue}
+      const stat=m[2].trim();
+      if(!nameToAttr[stat])issues.push(`${label}: unknown attribute "${stat}"`)
+    }
+  };
+
+  for(const b of badges){
+    for(const tier of ['Bronze','Silver','Gold','Hall of Fame'])
+      auditRequirement(`${tier} ${b.name}`,b[tier]);
+
+    if(b.heightRequirement&&b.heightRequirement!=='-'&&
+       !/(MIN|MAX) HEIGHT:\s*\d+'\d+"/i.test(b.heightRequirement))
+      issues.push(`${b.name}: invalid height requirement "${b.heightRequirement}"`)
+  }
+
+  for(const t of takeovers)auditRequirement(`${t.name} takeover`,t.requirement);
+
+  const dish=takeovers.find(t=>t.name==='Dishmaster');
+  if(!dish)issues.push('Dishmaster definition missing');
+  else{
+    if(parseReq(dish.requirement,{PassAccuracy:79}).ok)
+      issues.push('Dishmaster incorrectly unlocks at 79 Pass Accuracy');
+    if(!parseReq(dish.requirement,{PassAccuracy:80}).ok)
+      issues.push('Dishmaster fails to unlock at 80 Pass Accuracy')
+  }
+
+  if(issues.length)console.error('Unlock audit failed:',issues);
+  else console.info(`Unlock audit passed: ${badges.length} badges / ${takeovers.length} takeovers`);
+  return issues
+}
+
+function currentOvrScore(){
+  const h=+document.querySelector('#height').value;
+  return directOverallFor(ratings,h).score;
+}
+function currentDisplayedOvr(){
+  const h=+document.querySelector('#height').value;
+  return directOverallFor(ratings,h).display;
+}
+function isAt99Ovr(){
+  return currentDisplayedOvr()>=99;
+}
+
+function renderUnlocks(){
+  let h=+document.querySelector('#height').value;
+  let unlocked=badges.map(b=>({b,t:getBadgeTier(b,h)})).filter(x=>x.t);
+  let rank={'Hall of Fame':4,'Gold':3,'Silver':2,'Bronze':1};
+  unlocked.sort((a,b)=>rank[b.t]-rank[a.t]||a.b.name.localeCompare(b.b.name));
+
+  const badgeList=document.querySelector('#badgeList');
+  if(badgeList){
+    badgeList.innerHTML=unlocked.length?unlocked.map(x=>`<div class="item unlockItem">
+      ${badgeIconHTML(x.b.name,x.t,x.b.category)}
+      <div class="unlockItemText">
+        <b>${x.b.name}</b>
+        <span class="tiny muted">${x.b.category}</span>
+      </div>
+      <span class="tier ${x.t==='Hall of Fame'?'hof':x.t.toLowerCase()}">${x.t}</span>
+    </div>`).join(''):'<div class="muted">No badge thresholds reached yet.</div>';
+  }
+
+  let available=takeovers.filter(t=>parseReq(t.requirement).ok);
+  const takeList=document.querySelector('#takeList');
+  if(takeList){
+    takeList.innerHTML=available.length?available.map(t=>`<div class="item unlockItem">
+      ${takeoverIconHTML(t.name,t.category,t.requirement)}
+      <div class="unlockItemText">
+        <b>${t.name}</b>
+        <span class="tiny muted">${t.requirement}</span>
+      </div>
+      <span class="tier">${t.category}</span>
+    </div>`).join(''):'<div class="muted">No takeover thresholds reached yet.</div>';
+  }
+
+  bindTapTooltips();
+  hydrateGameIconCanvases();
+};
+const optimizerAttrs=['ShotClose','DrivingLayup','DrivingDunk','StandingDunk','PostControl','ShotMidrange','ShotThree','ShotFreeThrow','PassAccuracy','BallControl','SpeedWithBall','InteriorDefense','PerimeterDefense','Steal','Block','ReboundOffense','ReboundDefense','Speed','Agility','Strength','Vertical'];
+let optimizerPriorities={};
+let optimizerSourceType='builder',optimizerSourceBuildId=null,optimizerWorkingRatings=null,optimizerWorkingManual=null,optimizerSourceBody=null,optimizerSourceLocks=[];
+function priorityFor(a){
+  const p=document.querySelector('#preset')?.value||'custom';
+  if(p==='custom')return optimizerPriorities[a]??5;
+  return presets[p]?.[a]??1;
+}
+function syncOptimizerCurrentRating(a,value){
+  if(lockedAttrs.has(a)){
+    showTapTooltip(`${nice[a]} is locked in Builder. Unlock it there before changing its Current Rating.`);
+    renderGoals();
+    return;
+  }
+  attemptAttributeChange(a,+value);
+  renderGoals();
+}
+function nextBadgeThresholdForAttr(a,have,h){
+  let opts=[];
+  for(const b of badges){
+    if(!heightAllowed(b.heightRequirement,h))continue;
+    for(const tier of ['bronze','silver','gold','hof']){
+      const req=b[tier]; if(!req||req==='-')continue;
+      const nums=[...req.matchAll(/(\d+)\s+([A-Za-z0-9 \-]+)/g)];
+      for(const m of nums){
+        const need=+m[1], nm=m[2].trim(), mapped=nameToAttr[nm];
+        if(mapped===a && need>have) opts.push({need,label:`${tier==='hof'?'Hall of Fame':tier[0].toUpperCase()+tier.slice(1)} ${b.name}`});
+      }
+    }
+  }
+  opts.sort((x,y)=>x.need-y.need);
+  return opts[0]||null;
+}
+function nextTakeoverThresholdForAttr(a,have){
+  let opts=[];
+  for(const t of takeovers){
+    if(/Always available/i.test(t.requirement||''))continue;
+    const nums=[...(t.requirement||'').matchAll(/(\d+)\s+([A-Za-z0-9 \-]+)/g)];
+    for(const m of nums){
+      const need=+m[1], nm=m[2].trim(), mapped=nameToAttr[nm];
+      if(mapped===a && need>have)opts.push({need,label:`${t.name} takeover`});
+    }
+  }
+  opts.sort((x,y)=>x.need-y.need);
+  return opts[0]||null;
+}
+function optimizerOpportunity(a,have,priority,h,w,wing){
+  const cap=betaMaxCap(a,h,w,wing);
+  if(have>=cap)return {score:0,cap,need:null,label:'At max potential',gap:0};
+  const badge=nextBadgeThresholdForAttr(a,have,h);
+  const take=nextTakeoverThresholdForAttr(a,have);
+  let candidate=null;
+  for(const x of [badge,take].filter(Boolean)){
+    if(x.need<=cap && (!candidate||x.need<candidate.need))candidate=x;
+  }
+  if(!candidate){
+    const soft=Math.min(cap,have+5);
+    candidate={need:soft,label:'general improvement'};
+  }
+  const gap=Math.max(1,candidate.need-have);
+  const score=Math.round(priority*100/gap);
+  return {score,cap,need:candidate.need,label:candidate.label,gap};
+}
+
+function getSavedBuildList(){return JSON.parse(localStorage.getItem('2k27-builds')||'[]')}
+function cloneCurrentBuilderIntoOptimizer(){
+  solve();
+  optimizerSourceType='builder';optimizerSourceBuildId=null;
+  optimizerWorkingRatings={...ratings};optimizerWorkingManual={...manual};
+  optimizerSourceBody={pos:document.querySelector('#position').value,h:+document.querySelector('#height').value,w:+document.querySelector('#weight').value,wing:+document.querySelector('#wing').value};
+  optimizerSourceLocks=[...lockedAttrs];
+  const label=document.querySelector('#optimizerSourceLabel');if(label)label.textContent='Source: Current Builder';
+  renderGoals();
+}
+function loadSavedBuildIntoOptimizerById(id){
+  const list=getSavedBuildList(),b=list.find(x=>String(x.id)===String(id));if(!b)return;
+  optimizerSourceType='saved';optimizerSourceBuildId=b.id;
+  optimizerWorkingRatings={...(b.ratings||b.manual||{})};optimizerWorkingManual={...(b.manual||b.ratings||{})};
+  optimizerSourceBody={pos:b.pos,h:+b.h,w:+b.w,wing:+b.wing};
+  optimizerSourceLocks=[...(b.locks||[])];
+  const label=document.querySelector('#optimizerSourceLabel');if(label)label.textContent=`Source: ${b.name||'Saved Build'}`;
+  document.querySelector('#optimizerSavedModal')?.classList.remove('show');
+  renderGoals();
+}
+function openSavedBuildPickerForOptimizer(){
+  const list=getSavedBuildList(),box=document.querySelector('#optimizerSavedList');
+  if(box){
+    box.innerHTML=list.length?list.map(b=>`<div class="item savedPick" data-id="${b.id}"><div class="itemTop"><b>${b.name||'Saved Build'}</b><span class="tier">${b.h?feet(b.h):''}</span></div><div class="tiny muted">${(b.pos||'').replaceAll('_',' ')} • ${b.w||'?'} lb • ${b.wing?feet(b.wing):'?'} WS</div></div>`).join(''):'<div class="muted">No saved builds yet.</div>';
+    box.querySelectorAll('.savedPick').forEach(el=>el.onclick=()=>loadSavedBuildIntoOptimizerById(el.dataset.id));
+  }
+  document.querySelector('#optimizerSavedModal')?.classList.add('show');
+}
+function optimizerBaseRatings(){
+  if(optimizerSourceType==='builder'){
+    solve();
+    optimizerWorkingRatings={...ratings};optimizerWorkingManual={...manual};
+    optimizerSourceBody={pos:document.querySelector('#position').value,h:+document.querySelector('#height').value,w:+document.querySelector('#weight').value,wing:+document.querySelector('#wing').value};
+    optimizerSourceLocks=[...lockedAttrs];
+  }
+  return optimizerWorkingRatings||ratings;
+}
+function optimizerBody(){
+  return optimizerSourceBody||{pos:document.querySelector('#position').value,h:+document.querySelector('#height').value,w:+document.querySelector('#weight').value,wing:+document.querySelector('#wing').value}
+}
+function nextOptimizedName(base){
+  const list=getSavedBuildList(),root=(base||'Build').replace(/\s—\sOptimized(?:\s\d+)?$/,'');
+  if(!list.some(x=>x.name===`${root} — Optimized`))return `${root} — Optimized`;
+  let n=2;while(list.some(x=>x.name===`${root} — Optimized ${n}`))n++;
+  return `${root} — Optimized ${n}`;
+}
+function optimizeRatingsCopy(baseRatings,h,w,wing,sourceLocks,priorities){
+  let current={...baseRatings};
+  const lockedBase={};
+  for(const a of sourceLocks)lockedBase[a]=current[a]??25;
+
+  function legalCandidate(test){
+    const solved=solveObject(test,h);
+    for(const a of directAttrs){
+      const cap=betaMaxCap(a,h,w,wing);
+      if((solved[a]??25)>cap)return null;
+    }
+    for(const a of sourceLocks){
+      if((solved[a]??25)!==lockedBase[a])return null;
+    }
+    return solved;
+  }
+
+  let guard=0;
+  while(directOverallFor(current,h).display<99 && guard++<1800){
+    let best=null;
+    const beforeOvr=directOverallFor(current,h).score;
+
+    for(const a of optimizerAttrs){
+      if(sourceLocks.includes(a))continue;
+      const priority=priorities[a]??1;
+      if(priority<=1)continue;
+      const cap=betaMaxCap(a,h,w,wing);
+      const have=current[a]??25;
+      if(have>=cap)continue;
+
+      const proposed={...current,[a]:have+1};
+      const solved=legalCandidate(proposed);
+      if(!solved)continue;
+
+      const after=directOverallFor(solved,h);
+      const delta=Math.max(.015,after.score-beforeOvr);
+
+      const badgeBefore=nextBadgeThresholdForAttr(a,have,h);
+      const takeBefore=nextTakeoverThresholdForAttr(a,have);
+      let thresholdBonus=1;
+      if(badgeBefore && badgeBefore.need===have+1)thresholdBonus+=1.25;
+      if(takeBefore && takeBefore.need===have+1)thresholdBonus+=.8;
+
+      const value=(priority*thresholdBonus)/delta;
+      if(!best||value>best.value)best={a,solved,value,after}
+    }
+
+    if(!best)break;
+    current=best.solved;
+
+    if(best.after.display>=99)break
+  }
+  return current
+}
+function saveOptimizedCopy(){
+  const list=getSavedBuildList(),baseRatings={...optimizerBaseRatings()},ob=optimizerBody();
+  let pos=ob.pos,h=ob.h,w=ob.w,wing=ob.wing;
+  let sourceName=`${feet(h)} ${pos.replaceAll('_',' ')}`,locks=[...optimizerSourceLocks];
+
+  if(optimizerSourceType==='saved'){
+    const src=list.find(x=>String(x.id)===String(optimizerSourceBuildId));
+    if(src)sourceName=src.name||sourceName
+  }
+
+  const priorities=currentGoals();
+  const optimized=optimizeRatingsCopy(baseRatings,h,w,wing,locks,priorities);
+  const name=nextOptimizedName(sourceName);
+
+  list.unshift({
+    id:Date.now(),name,pos,h,w,wing,
+    ratings:{...optimized},manual:{...optimized},locks:[...locks],
+    optimized:true,
+    optimizedFrom:optimizerSourceType==='saved'?optimizerSourceBuildId:null,
+    sourceName,
+    savedAt:Date.now()
+  });
+  localStorage.setItem('2k27-builds',JSON.stringify(list));
+  if(typeof renderSaved==='function')renderSaved();
+  if(typeof refreshComparePickers==='function')refreshComparePickers();
+  showTapTooltip(`${name} saved as a new build. Original unchanged.`);
+}
+
+function currentGoals(){
+  let g={};
+  for(const a of optimizerAttrs)g[a]=priorityFor(a);
+  return g;
+}
+function renderGoals(){
+  if(!document.querySelector('#goalRows'))return;
+  const baseRatings=optimizerBaseRatings();
+  const p=document.querySelector('#preset')?.value||'custom';
+  const ob=optimizerBody(),h=ob.h,w=ob.w,wing=ob.wing;
+  const note=document.querySelector('#optimizerModeNote');
+  if(note)note.textContent=p==='custom'
+    ?'Custom mode: set each Priority from 1–10. Current Rating is synced with the Builder.'
+    :'Preset mode: priority weights are locked to the selected profile. Current Rating still reflects your Builder.';
+  document.querySelector('#goalRows').innerHTML=optimizerAttrs.map(a=>{
+    const have=baseRatings[a]??25,cap=betaMaxCap(a,h,w,wing),prio=priorityFor(a);
+    const validated=!!maxPotentialNative;
+    return `<div class="goalRow" data-a="${a}">
+      <b>${nice[a]}${validated?'<span class="validatedCapTag">2K NATIVE</span>':''}</b>
+      <div>
+        <span class="tiny muted">Current Rating</span>
+        <input class="goalCurrent" type="number" min="25" max="${cap}" value="${Math.min(have,cap)}" readonly>
+        <div class="tiny muted">Max ${cap}${optimizerSourceLocks.includes(a)?' • locked':''}</div>
+      </div>
+      <div>
+        <span class="tiny muted">Priority</span>
+        <div class="priorityWrap">
+          <input class="gw" type="range" min="1" max="10" value="${prio}" ${p==='custom'?'':'disabled'} style="--range-pct:${(prio-1)/9*100}%">
+          <span class="priorityValue">${prio}</span>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+  document.querySelectorAll('#goalRows .goalRow').forEach(row=>{
+    const a=row.dataset.a;
+    const cur=row.querySelector('.goalCurrent');
+    const pr=row.querySelector('.gw');
+    if(cur)cur.onclick=()=>showTapTooltip('Current Rating comes from your Builder or loaded saved build.');
+    if(pr)pr.oninput=e=>{
+      optimizerPriorities[a]=+e.currentTarget.value;
+      row.querySelector('.priorityValue').textContent=e.currentTarget.value;
+      e.currentTarget.style.setProperty('--range-pct',((+e.currentTarget.value-1)/9*100)+'%');
+      renderOptimizer();
+    };
+  });
+  renderOptimizer();
+}
+function renderOptimizer(){
+  if(!document.querySelector('#fitScore')||!rules)return;
+  const baseRatings=optimizerBaseRatings();
+  const ob=optimizerBody(),h=ob.h,w=ob.w,wing=ob.wing;
+  const ovr=directOverallFor(baseRatings,h);
+  document.querySelector('#fitScore').textContent=ovr.display;
+  const priorities=currentGoals();
+  const highCount=Object.values(priorities).filter(v=>v>=8).length;
+  document.querySelector('#priorityCount').textContent=highCount;
+  document.querySelector('#optimizerLockCount').textContent=optimizerSourceLocks.length;
+  document.querySelector('#fitLabel').textContent='Recommendations are ranked by priority, distance to the next useful threshold, body-profile max potential, and current locks.';
+
+  let opportunities=[];
+  for(const a of optimizerAttrs){
+    const have=baseRatings[a]??25,priority=priorities[a]??1;
+    if(priority<=1||optimizerSourceLocks.includes(a))continue;
+    const op=optimizerOpportunity(a,have,priority,h,w,wing);
+    if(op.score>0)opportunities.push({a,have,priority,...op});
+  }
+  opportunities.sort((a,b)=>b.score-a.score||b.priority-a.priority||a.gap-b.gap);
+  document.querySelector('#targetCheck').innerHTML=opportunities.slice(0,10).map((x,i)=>{
+    const klass=x.score>=250?'high':x.score>=120?'mid':'';
+    return `<div class="item">
+      <div class="itemTop"><b>#${i+1} ${nice[x.a]}</b><span class="opportunityScore ${klass}">${x.priority}/10 priority</span></div>
+      <div class="tiny">Current <b>${x.have}</b> → next useful point <b>${x.need}</b> <span class="muted">(max ${x.cap})</span></div>
+      <div class="tiny muted" style="margin-top:4px">${x.label} • ${x.gap} rating point${x.gap===1?'':'s'} away</div>
+    </div>`;
+  }).join('')||'<div class="muted">No upgrade opportunities remain under the current body caps and priorities.</div>';
+
+  const savedRatingsRef=ratings;ratings=baseRatings;
+  let high=badges.map(b=>({b,t:getBadgeTier(b,h)})).filter(x=>x.t==='Gold'||x.t==='Hall of Fame').slice(0,8);
+  let av=takeovers.filter(t=>parseReq(t.requirement).ok&&!t.name.startsWith('Default')).slice(0,6);
+  ratings=savedRatingsRef;
+  document.querySelector('#optimizerUnlocks').innerHTML=[
+    ...high.map(x=>`<div class="item"><b>${x.b.name}</b> <span class="tier ${x.t==='Hall of Fame'?'hof':'gold'}">${x.t}</span></div>`),
+    ...av.map(t=>`<div class="item"><b>${t.name}</b> <span class="tier">Takeover</span></div>`)
+  ].join('')||'<div class="muted">Raise attributes to see meaningful unlocks.</div>';
+}
+function saveBuild(){solve();let list=JSON.parse(localStorage.getItem('2k27-builds')||'[]');let pos=document.querySelector('#position').value,h=+document.querySelector('#height').value,w=+document.querySelector('#weight').value,wing=+document.querySelector('#wing').value;list.unshift({id:Date.now(),name:`${feet(h)} ${pos.replaceAll('_',' ')}`,pos,h,w,wing,ratings:{...ratings},manual:{...manual},locks:[...lockedAttrs]});localStorage.setItem('2k27-builds',JSON.stringify(list.slice(0,30)));refreshComparePickers();alert('Build saved on this device.')}
+function openSavedBuild(id){
+  const list=JSON.parse(localStorage.getItem('2k27-builds')||'[]');
+  const b=list.find(x=>String(x.id)===String(id));if(!b)return;
+  document.querySelector('#position').value=b.pos;
+  loadHeights();
+  document.querySelector('#height').value=b.h;
+  loadBody();
+  document.querySelector('#weight').value=b.w;
+  document.querySelector('#wing').value=b.wing;
+  manual={...(b.manual||b.ratings||{})};
+  ratings={...(b.ratings||b.manual||{})};
+  lockedAttrs=new Set(b.locks||[]);
+  updateBody();
+  showPage('builder');
+}
+function renderSaved(){
+  const box=document.querySelector('#savedList');if(!box)return;
+  let list=JSON.parse(localStorage.getItem('2k27-builds')||'[]');
+  box.innerHTML=list.length?list.map(b=>`<div class="item">
+    <div class="itemTop"><b>${b.name}</b><div style="display:flex;gap:6px"><button class="btn tiny" onclick="openSavedBuild(${b.id})">Open</button><button class="btn tiny" onclick="deleteSaved(${b.id})">Delete</button></div></div>
+    <div class="muted">${feet(b.h)} • ${b.w} lb • ${feet(b.wing)} wingspan</div>
+    <div class="tiny" style="margin-top:7px">3PT ${b.ratings.ShotThree||25} • Dunk ${b.ratings.DrivingDunk||25} • Per D ${b.ratings.PerimeterDefense||25} • Handle ${b.ratings.BallControl||25}</div>
+  </div>`).join(''):'<div class="muted">No saved builds yet.</div>';
+}
+function deleteSaved(id){let list=JSON.parse(localStorage.getItem('2k27-builds')||'[]').filter(x=>x.id!==id);localStorage.setItem('2k27-builds',JSON.stringify(list));renderSaved();refreshComparePickers()}
+
+
+async function hardClearBuildLabCaches(){
+  try{
+    if('serviceWorker' in navigator){
+      const regs=await navigator.serviceWorker.getRegistrations();
+      for(const reg of regs) await reg.unregister();
+    }
+    if('caches' in window){
+      const keys=await caches.keys();
+      for(const key of keys) await caches.delete(key);
+    }
+  }catch(e){console.warn('hard cache clear skipped',e)}
+}
+
+async function clearOldBuildLabCaches(){
+  try{
+    if('serviceWorker' in navigator){
+      const regs = await navigator.serviceWorker.getRegistrations();
+      for(const reg of regs) await reg.unregister();
+    }
+    if('caches' in window){
+      const keys = await caches.keys();
+      for(const key of keys){
+        if(key.startsWith('2k27-build-lab-')) await caches.delete(key);
+      }
+    }
+  }catch(e){ console.warn('Cache cleanup skipped',e); }
+}
+hardClearBuildLabCaches().then(clearOldBuildLabCaches).finally(init);
+
+</script><div class="footer">Build Lab v10.1 • Reverse-engineered from the user-supplied NBA 2K HQ client for private build-planning use. Max-potential body caps use the decoded native NBA 2K HQ v1.1.3 tuning. Cap Breakers remain explicitly marked preview where parity is not yet proven.</div>
+<div id="tapTooltip" aria-live="polite"></div>
+<div id="lockConflictModal" role="dialog" aria-modal="true" aria-labelledby="lockConflictTitle">
+  <div class="lockModalCard">
+    <div class="lockModalIcon">🔒</div>
+    <h3 id="lockConflictTitle">Locked attribute conflict</h3>
+    <p id="lockConflictMessage">This change needs to increase an attribute you locked.</p>
+    <div id="lockConflictList" class="lockConflictList"></div>
+    <div class="lockModalActions">
+      <button class="btn" id="keepLockedBtn">Keep Locked</button>
+      <button class="btn primary" id="unlockApplyBtn">Unlock & Apply</button>
+    </div>
+  </div>
+</div>
+
+
+<div id="ovrGuardModal" role="dialog" aria-modal="true" aria-labelledby="ovrGuardTitle">
+  <div class="ovrModalCard">
+    <div class="ovrModalIcon">99</div>
+    <h3 id="ovrGuardTitle">99 OVR limit reached</h3>
+    <p id="ovrGuardMessage">That change would push the build beyond the current 99 OVR legality model.</p>
+    <div class="ovrModalActions">
+      <button class="btn" id="cancelOvrChangeBtn">Cancel</button>
+      <button class="btn primary" id="useMaxLegalBtn">Use Max Allowed</button>
+    </div>
+    <div class="ovrLimitNote">This guard uses the decoded 2K displayed-OVR weighting path.</div>
+  </div>
+</div>
+
+
+<div id="optimizerSavedModal" class="simpleModal" role="dialog" aria-modal="true">
+  <div class="simpleModalCard">
+    <div class="simpleModalHead"><h3>Load Saved Build</h3><button class="btn tiny" id="closeOptimizerSavedModal">Close</button></div>
+    <div id="optimizerSavedList" class="list"></div>
+  </div>
+</div>
+
+
+<div id="iconInfoBackdrop" class="iconInfoBackdrop" aria-hidden="true">
+  <div class="iconInfoSheet" role="dialog" aria-modal="true" aria-labelledby="iconInfoName">
+    <button id="iconInfoClose" class="iconInfoClose" aria-label="Close icon information">×</button>
+    <div id="iconInfoPreview" class="iconInfoPreview"></div>
+    <div class="iconInfoCopy">
+      <div id="iconInfoType" class="iconInfoType"></div>
+      <div id="iconInfoName" class="iconInfoName"></div>
+      <div id="iconInfoDetail" class="iconInfoDetail"></div>
+    </div>
+  </div>
+</div>
+
+</body></html>

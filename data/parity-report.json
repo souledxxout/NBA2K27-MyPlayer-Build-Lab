@@ -1,0 +1,31 @@
+{
+  "version": "10.1",
+  "maxPotential": {
+    "nativeDecoded": true,
+    "sourceResource": "GameLib/careermode_progression_tuning",
+    "tuningVersionObserved": "202750199.13140076714178692083.993560759169487438",
+    "engine": "25 + (99-25) \u00d7 height multiplier \u00d7 interpolated weight multiplier \u00d7 interpolated wingspan multiplier, float32, ARM64 ties-to-even rounding, clamp 25\u201399",
+    "legalBodyProfilesEvaluated": 18935,
+    "attributeEvaluations": 397635,
+    "currentScreenshotRegression": "84/84 exact across 4 current validated profiles",
+    "latestValidation": {
+      "position": "SG",
+      "height": "6'7\"",
+      "weight": "194 lb",
+      "wingspan": "6'8\"",
+      "source": "supplied 2KHQ screenshot",
+      "matchMode": "native decoded formula; 21/21 exact"
+    },
+    "legacyRecordingDiscrepancy": "6'5\" / 190 lb / 6'5\" older recording differs from current v1.1.3 decoded tuning and is not used as an override."
+  },
+  "linkedAttributes": "Extracted AssociatedAttributeConstraints; active.",
+  "badges": "Extracted/encoded thresholds; active.",
+  "takeovers": "Extracted/encoded thresholds; active.",
+  "overall": {
+    "engine": "15 player types + 21 direct attribute weights + AttributeRatingWeightScale(rating-1) + HeightBasedOverallLerp + nearest-integer display",
+    "validatedCases": 2,
+    "validatedMatches": 2
+  },
+  "capBreakers": "Native step arithmetic recovered; exact screenshot regression still pending.",
+  "icons": "Real badge/takeover art from supplied Unity assets; tier-colored badges; mobile tap details."
+}

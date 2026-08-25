@@ -1,0 +1,613 @@
+{
+  "atlases": {
+    "-6910668847902367468": {
+      "file": "assets/badges/atlas_0.astcbin",
+      "width": 2048,
+      "height": 2048,
+      "format": 50
+    },
+    "-5752144055569293036": {
+      "file": "assets/badges/atlas_1.astcbin",
+      "width": 2048,
+      "height": 2048,
+      "format": 50
+    },
+    "3256884684795666708": {
+      "file": "assets/badges/atlas_2.astcbin",
+      "width": 2048,
+      "height": 2048,
+      "format": 50
+    },
+    "5996874532249067796": {
+      "file": "assets/badges/atlas_3.astcbin",
+      "width": 2048,
+      "height": 2048,
+      "format": 50
+    }
+  },
+  "icons": {
+    "Aerial Wizard": {
+      "atlasPathId": "3256884684795666708",
+      "rect": [
+        1800.0,
+        0.0,
+        218.0,
+        256.0
+      ],
+      "asset": "icon_mycareer_badge_aerial_wizard_0",
+      "settingsRaw": 67
+    },
+    "Float Game": {
+      "atlasPathId": "-6910668847902367468",
+      "rect": [
+        440.0,
+        773.0,
+        213.0,
+        251.0
+      ],
+      "asset": "icon_mycareer_badge_float_game_0",
+      "settingsRaw": 71
+    },
+    "Ghost Stepper": {
+      "atlasPathId": "-6910668847902367468",
+      "rect": [
+        0.0,
+        516.0,
+        213.0,
+        251.0
+      ],
+      "asset": "icon_mycareer_badge_ghost_stepper_0",
+      "settingsRaw": 67
+    },
+    "Hook Specialist": {
+      "atlasPathId": "-6910668847902367468",
+      "rect": [
+        1320.0,
+        516.0,
+        213.0,
+        251.0
+      ],
+      "asset": "icon_mycareer_badge_hook_specialist_0",
+      "settingsRaw": 67
+    },
+    "Layup Mixmaster": {
+      "atlasPathId": "-6910668847902367468",
+      "rect": [
+        220.0,
+        516.0,
+        213.0,
+        251.0
+      ],
+      "asset": "icon_mycareer_badge_layup_mixmaster_0",
+      "settingsRaw": 67
+    },
+    "Paint Prodigy": {
+      "atlasPathId": "-6910668847902367468",
+      "rect": [
+        660.0,
+        773.0,
+        213.0,
+        251.0
+      ],
+      "asset": "icon_mycareer_badge_paint_prodigy_0",
+      "settingsRaw": 71
+    },
+    "Physical Finisher": {
+      "atlasPathId": "-5752144055569293036",
+      "rect": [
+        1332.0,
+        1566.0,
+        213.0,
+        251.0
+      ],
+      "asset": "icon_mycareer_badge_physical_finisher_0",
+      "settingsRaw": 67
+    },
+    "Post Powerhouse": {
+      "atlasPathId": "-6910668847902367468",
+      "rect": [
+        1760.0,
+        258.0,
+        213.0,
+        251.0
+      ],
+      "asset": "icon_mycareer_badge_post_powerhouse_0",
+      "settingsRaw": 67
+    },
+    "Post Spin Catalyst": {
+      "atlasPathId": "-5752144055569293036",
+      "rect": [
+        1772.0,
+        1306.0,
+        213.0,
+        251.0
+      ],
+      "asset": "icon_mycareer_badge_post_spin_catalyst_0",
+      "settingsRaw": 67
+    },
+    "Posterizer": {
+      "atlasPathId": "-5752144055569293036",
+      "rect": [
+        1125.0,
+        526.0,
+        218.0,
+        256.0
+      ],
+      "asset": "icon_mycareer_badge_posterizer_0",
+      "settingsRaw": 67
+    },
+    "Rise Up": {
+      "atlasPathId": "3256884684795666708",
+      "rect": [
+        1800.0,
+        1578.0,
+        218.0,
+        256.0
+      ],
+      "asset": "icon_mycareer_badge_rise_up_0",
+      "settingsRaw": 67
+    },
+    "Arc Cadence": {
+      "atlasPathId": "-6910668847902367468",
+      "rect": [
+        440.0,
+        0.0,
+        213.0,
+        251.0
+      ],
+      "asset": "icon_mycareer_badge_arc_cadence_0",
+      "settingsRaw": 67
+    },
+    "Deadeye": {
+      "atlasPathId": "-5752144055569293036",
+      "rect": [
+        0.0,
+        524.0,
+        218.0,
+        256.0
+      ],
+      "asset": "icon_mycareer_badge_deadeye_scoring_0",
+      "settingsRaw": 67
+    },
+    "Limitless Range": {
+      "atlasPathId": "5996874532249067796",
+      "rect": [
+        225.0,
+        1299.0,
+        218.0,
+        256.0
+      ],
+      "asset": "icon_mycareer_badge_limitless_range_0",
+      "settingsRaw": 67
+    },
+    "Mini Marksman": {
+      "atlasPathId": "-6910668847902367468",
+      "rect": [
+        0.0,
+        258.0,
+        213.0,
+        251.0
+      ],
+      "asset": "icon_mycareer_badge_mini_marksman_0",
+      "settingsRaw": 67
+    },
+    "Post Fade Phenom": {
+      "atlasPathId": "-6910668847902367468",
+      "rect": [
+        880.0,
+        258.0,
+        213.0,
+        251.0
+      ],
+      "asset": "icon_mycareer_badge_post_fade_phenom_0",
+      "settingsRaw": 67
+    },
+    "Quick Trigger": {
+      "atlasPathId": "5996874532249067796",
+      "rect": [
+        225.0,
+        1036.0,
+        218.0,
+        256.0
+      ],
+      "asset": "icon_mycareer_badge_quickdraw_0",
+      "settingsRaw": 67
+    },
+    "Set and Fire": {
+      "atlasPathId": "-6910668847902367468",
+      "rect": [
+        0.0,
+        1030.0,
+        213.0,
+        251.0
+      ],
+      "asset": "icon_mycareer_badge_set_and_fire_0",
+      "settingsRaw": 67
+    },
+    "Smooth Operator": {
+      "atlasPathId": "-6910668847902367468",
+      "rect": [
+        1100.0,
+        773.0,
+        213.0,
+        251.0
+      ],
+      "asset": "icon_mycareer_badge_smooth_operator_0",
+      "settingsRaw": 71
+    },
+    "Static Middy": {
+      "atlasPathId": "-6910668847902367468",
+      "rect": [
+        1539.0,
+        0.0,
+        213.0,
+        251.0
+      ],
+      "asset": "icon_mycareer_badge_static_middy_0",
+      "settingsRaw": 71
+    },
+    "Ankle Assassin": {
+      "atlasPathId": "-5752144055569293036",
+      "rect": [
+        892.0,
+        1570.0,
+        213.0,
+        251.0
+      ],
+      "asset": "icon_mycareer_badge_ankle_assassin_0",
+      "settingsRaw": 67
+    },
+    "Bail Out": {
+      "atlasPathId": "3256884684795666708",
+      "rect": [
+        0.0,
+        1052.0,
+        218.0,
+        256.0
+      ],
+      "asset": "icon_mycareer_badge_bail_out_0",
+      "settingsRaw": 67
+    },
+    "Break Starter": {
+      "atlasPathId": "-5752144055569293036",
+      "rect": [
+        899.0,
+        0.0,
+        218.0,
+        256.0
+      ],
+      "asset": "icon_mycareer_badge_breakstarter_0",
+      "settingsRaw": 71
+    },
+    "Dimer": {
+      "atlasPathId": "-5752144055569293036",
+      "rect": [
+        0.0,
+        787.0,
+        218.0,
+        256.0
+      ],
+      "asset": "icon_mycareer_badge_dimer_0",
+      "settingsRaw": 67
+    },
+    "Handles for Days": {
+      "atlasPathId": "3256884684795666708",
+      "rect": [
+        225.0,
+        1051.0,
+        218.0,
+        256.0
+      ],
+      "asset": "icon_mycareer_badge_handlesfordays_0",
+      "settingsRaw": 67
+    },
+    "Lightning Launch": {
+      "atlasPathId": "-6910668847902367468",
+      "rect": [
+        220.0,
+        258.0,
+        213.0,
+        251.0
+      ],
+      "asset": "icon_mycareer_badge_lightning_laun_0",
+      "settingsRaw": 67
+    },
+    "Pace": {
+      "atlasPathId": "-6910668847902367468",
+      "rect": [
+        1100.0,
+        516.0,
+        213.0,
+        251.0
+      ],
+      "asset": "icon_mycareer_badge_pace_0",
+      "settingsRaw": 67
+    },
+    "Strong Handle": {
+      "atlasPathId": "-6910668847902367468",
+      "rect": [
+        220.0,
+        773.0,
+        213.0,
+        251.0
+      ],
+      "asset": "icon_mycareer_badge_strong_handle_0",
+      "settingsRaw": 71
+    },
+    "Unpluckable": {
+      "atlasPathId": "5996874532249067796",
+      "rect": [
+        1125.0,
+        1314.0,
+        218.0,
+        256.0
+      ],
+      "asset": "icon_mycareer_badge_unpluckable_0",
+      "settingsRaw": 67
+    },
+    "Versatile Visionary": {
+      "atlasPathId": "-6910668847902367468",
+      "rect": [
+        1100.0,
+        258.0,
+        213.0,
+        251.0
+      ],
+      "asset": "icon_mycareer_badge_versatile_visionary_0",
+      "settingsRaw": 67
+    },
+    "Ankle Braces": {
+      "atlasPathId": "-5752144055569293036",
+      "rect": [
+        675.0,
+        789.0,
+        218.0,
+        256.0
+      ],
+      "asset": "icon_mycareer_badge_ankle_braces_0",
+      "settingsRaw": 67
+    },
+    "Challenger": {
+      "atlasPathId": "5996874532249067796",
+      "rect": [
+        1651.0,
+        0.0,
+        218.0,
+        256.0
+      ],
+      "asset": "icon_mycareer_badge_challenger_0",
+      "settingsRaw": 67
+    },
+    "Glove": {
+      "atlasPathId": "-5752144055569293036",
+      "rect": [
+        1125.0,
+        0.0,
+        218.0,
+        256.0
+      ],
+      "asset": "icon_mycareer_badge_glove_0",
+      "settingsRaw": 67
+    },
+    "High-Flying Denier": {
+      "atlasPathId": "-6910668847902367468",
+      "rect": [
+        1100.0,
+        1031.0,
+        213.0,
+        251.0
+      ],
+      "asset": "icon_mycareer_badge_high_flying_denier_0",
+      "settingsRaw": 67
+    },
+    "Immovable Enforcer": {
+      "atlasPathId": "-6910668847902367468",
+      "rect": [
+        1540.0,
+        258.0,
+        213.0,
+        251.0
+      ],
+      "asset": "icon_mycareer_badge_immovable_enforcer_0",
+      "settingsRaw": 67
+    },
+    "Interceptor": {
+      "atlasPathId": "3256884684795666708",
+      "rect": [
+        224.0,
+        525.0,
+        218.0,
+        256.0
+      ],
+      "asset": "icon_mycareer_badge_interceptor_0",
+      "settingsRaw": 71
+    },
+    "Off-Ball Pest": {
+      "atlasPathId": "5996874532249067796",
+      "rect": [
+        1689.0,
+        263.0,
+        218.0,
+        256.0
+      ],
+      "asset": "icon_mycareer_badge_offballpest_0",
+      "settingsRaw": 67
+    },
+    "Paint Patroller": {
+      "atlasPathId": "-5752144055569293036",
+      "rect": [
+        1552.0,
+        1307.0,
+        213.0,
+        251.0
+      ],
+      "asset": "icon_mycareer_badge_paint_patroller_0",
+      "settingsRaw": 67
+    },
+    "Pick Dodger": {
+      "atlasPathId": "3256884684795666708",
+      "rect": [
+        1575.0,
+        1315.0,
+        218.0,
+        256.0
+      ],
+      "asset": "icon_mycareer_badge_screencrusher_0",
+      "settingsRaw": 67
+    },
+    "Post Lockdown": {
+      "atlasPathId": "3256884684795666708",
+      "rect": [
+        450.0,
+        263.0,
+        218.0,
+        256.0
+      ],
+      "asset": "icon_mycareer_badge_postlockdown_0",
+      "settingsRaw": 67
+    },
+    "Seatbelt": {
+      "atlasPathId": "-6910668847902367468",
+      "rect": [
+        660.0,
+        258.0,
+        213.0,
+        251.0
+      ],
+      "asset": "icon_mycareer_badge_seatbelt_0",
+      "settingsRaw": 67
+    },
+    "Wall Up": {
+      "atlasPathId": "-6910668847902367468",
+      "rect": [
+        220.0,
+        1031.0,
+        213.0,
+        251.0
+      ],
+      "asset": "icon_mycareer_badge_wall_up_0",
+      "settingsRaw": 67
+    },
+    "Boxout Boss": {
+      "atlasPathId": "-6910668847902367468",
+      "rect": [
+        440.0,
+        1031.0,
+        213.0,
+        251.0
+      ],
+      "asset": "icon_mycareer_badge_boxout_boss_0",
+      "settingsRaw": 67
+    },
+    "Breaker": {
+      "atlasPathId": "-6910668847902367468",
+      "rect": [
+        440.0,
+        516.0,
+        213.0,
+        251.0
+      ],
+      "asset": "icon_mycareer_badge_breaker_0",
+      "settingsRaw": 67
+    },
+    "Crasher": {
+      "atlasPathId": "-6910668847902367468",
+      "rect": [
+        0.0,
+        773.0,
+        213.0,
+        251.0
+      ],
+      "asset": "icon_mycareer_badge_crasher_0",
+      "settingsRaw": 71
+    },
+    "Possession Closer": {
+      "atlasPathId": "-6910668847902367468",
+      "rect": [
+        880.0,
+        773.0,
+        213.0,
+        251.0
+      ],
+      "asset": "icon_mycareer_badge_possession_closer_0",
+      "settingsRaw": 71
+    },
+    "Sync Snatcher": {
+      "atlasPathId": "-5752144055569293036",
+      "rect": [
+        670.0,
+        1052.0,
+        213.0,
+        252.0
+      ],
+      "asset": "icon_mycareer_badge_sync_snatcher_0",
+      "settingsRaw": 67
+    },
+    "Brick Wall": {
+      "atlasPathId": "5996874532249067796",
+      "rect": [
+        1799.0,
+        1314.0,
+        218.0,
+        256.0
+      ],
+      "asset": "icon_mycareer_badge_brickwall_0",
+      "settingsRaw": 71
+    },
+    "Bruiser": {
+      "atlasPathId": "-6910668847902367468",
+      "rect": [
+        1320.0,
+        773.0,
+        213.0,
+        251.0
+      ],
+      "asset": "icon_mycareer_badge_bruiser_0",
+      "settingsRaw": 71
+    },
+    "Flash": {
+      "atlasPathId": "-6910668847902367468",
+      "rect": [
+        660.0,
+        1031.0,
+        213.0,
+        251.0
+      ],
+      "asset": "icon_mycareer_badge_flash_0",
+      "settingsRaw": 67
+    },
+    "Pogo Stick": {
+      "atlasPathId": "-5752144055569293036",
+      "rect": [
+        450.0,
+        526.0,
+        218.0,
+        256.0
+      ],
+      "asset": "icon_mycareer_badge_pogostick_0",
+      "settingsRaw": 67
+    },
+    "Slippery Off-Ball": {
+      "atlasPathId": "-5752144055569293036",
+      "rect": [
+        0.0,
+        262.0,
+        218.0,
+        256.0
+      ],
+      "asset": "icon_mycareer_badge_slipperyoffball_0",
+      "settingsRaw": 71
+    },
+    "Work Horse": {
+      "atlasPathId": "5996874532249067796",
+      "rect": [
+        0.0,
+        1299.0,
+        218.0,
+        256.0
+      ],
+      "asset": "icon_mycareer_badge_work_horse_0",
+      "settingsRaw": 67
+    }
+  }
+}

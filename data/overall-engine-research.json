@@ -1,0 +1,29 @@
+{
+  "source": "User-supplied NBA 2K HQ Unity/IL2CPP data: CareerMode_Progression_Attributes + native ATTRIBUTES overall method family",
+  "status": "displayed OVR engine upgraded; 2 supplied regression states match",
+  "recovered": {
+    "candidatePlayerTypes": 15,
+    "directBuilderAttributes": 21,
+    "heightIndexMapping": "HEIGHT index = heightInInches - 64",
+    "baseWeights": "HeightBasedAttributeWeight[HEIGHT][PLAYERTYPE][PLAYERDATA_ATTRIBUTE]",
+    "ratingWeightScale": "AttributeRatingWeightScale is applied using the preceding purchased rating step (rating - 1) for ratings above 75; ratings <=75 use scale 1.0",
+    "playerTypeScore": "sum((heightWeight * ratingScale) * rating) / sum(heightWeight * ratingScale)",
+    "heightTransform": "HeightBasedOverallLerp transforms the raw player-type score into [25,99]",
+    "selection": "highest transformed score across 15 player types",
+    "displayRounding": "nearest integer",
+    "importantCorrection": "The previously documented 155-derived-slot blocker was incorrect for this builder path. The extracted HeightBasedAttributeWeight table maps the 21 direct builder attributes."
+  },
+  "validation": [
+    {
+      "case": "SG 6'5, DD93 linked state",
+      "2KHQ": 65,
+      "engine": 65
+    },
+    {
+      "case": "SG 6'4 / 205 / 6'7, finishing max linked state",
+      "2KHQ": 87,
+      "engine": 87
+    }
+  ],
+  "remainingValidationNeed": "More completed/near-completed builds would broaden regression coverage, but the two previously failing supplied states now match."
+}

@@ -1,0 +1,62 @@
+[
+  {
+    "position": "SHOOTING_GUARD",
+    "height": 77,
+    "weight": 195,
+    "wingspan": 80,
+    "source": "2KHQ recording",
+    "observed": {
+      "ShotClose": 99,
+      "DrivingLayup": 99,
+      "DrivingDunk": 95,
+      "StandingDunk": 68,
+      "PostControl": 88,
+      "ShotMidrange": 96,
+      "ShotThree": 93,
+      "ShotFreeThrow": 99,
+      "PassAccuracy": 99,
+      "BallControl": 95,
+      "SpeedWithBall": 88,
+      "InteriorDefense": 78,
+      "PerimeterDefense": 95,
+      "Steal": 99,
+      "Block": 67,
+      "ReboundOffense": 71,
+      "ReboundDefense": 73,
+      "Speed": 96,
+      "Agility": 95,
+      "Strength": 73,
+      "Vertical": 99
+    }
+  },
+  {
+    "position": "SHOOTING_GUARD",
+    "height": 77,
+    "weight": 190,
+    "wingspan": 77,
+    "source": "2KHQ recording frame f65_60",
+    "observed": {
+      "ShotClose": 94,
+      "DrivingLayup": 94,
+      "DrivingDunk": 92,
+      "StandingDunk": 66,
+      "PostControl": 87,
+      "ShotMidrange": 99,
+      "ShotThree": 97,
+      "ShotFreeThrow": 99,
+      "PassAccuracy": 99,
+      "BallControl": 95,
+      "SpeedWithBall": 89,
+      "InteriorDefense": 77,
+      "PerimeterDefense": 91,
+      "Steal": 94,
+      "Block": 64,
+      "ReboundOffense": 67,
+      "ReboundDefense": 69,
+      "Speed": 97,
+      "Agility": 95,
+      "Strength": 73,
+      "Vertical": 99
+    }
+  }
+]
