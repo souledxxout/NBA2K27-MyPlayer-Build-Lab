@@ -21,7 +21,7 @@
 ## v10.3
 - Fixed the remaining takeover-art disappearance during height/weight/wingspan changes.
 - Takeover artwork now caches the successfully rendered 72×72 pixel result and reuses it when slider changes rebuild the takeover list, avoiding blank WebGL/ASTC redraws while preserving click/details behavior.
-# NBA 2K27 Build Lab v10.11 — HQ Cap Breaker Parity
+# NBA 2K27 Build Lab v10.13 — HQ Cap Breaker Parity
 
 All-position web/PWA build planner based on the user-supplied NBA 2K HQ Android client and public badge/takeover data supplied in the conversation.
 
@@ -365,16 +365,32 @@ All other displayed maxes for this body already matched the supplied 2KHQ screen
 - This is a global budget rule, not an attribute/body special-case. It allows alternate legal distributions to trade budget while preventing the extra points v10.8 allowed.
 
 
-## v10.11 — HQ Cap Breaker step parity
+## v10.13 — HQ Cap Breaker step parity
 
 - Corrected the Cap Breaker weight source: the native boost function uses the raw height/player-type attribute weight table, not the rating-scaled OVR weights.
 - Player type is selected once from the starting build state and remains fixed across all five sequential Cap Breaker steps.
-- Added `data/hq-capbreaker-regression-v10.11.json` from the supplied HQ screenshots.
+- Added `data/hq-capbreaker-regression-v10.13.json` from the supplied HQ screenshots.
 - The corrected function reproduces all 20 visible HQ Cap Breaker sequences in the regression build.
 
 
-## v10.11
+## v10.13
 - Added **Auto Max Badges** directly under Save Build.
 - Body profile stays fixed while a beam search rebuilds attributes under the HQ-calibrated affordability ceiling.
 - Defense / Balanced / Offense toggles; Balanced is selected by default.
 - Unique badge count is always the primary objective; style mode breaks ties between equal-count builds.
+
+
+## v10.13 — Badge Tokens
+- Adds live Badge Token Potential for Finishing, Shooting, Playmaking, Defense, Rebounding, and Physicals.
+- Uses the public `lightmatmul/nba2k27-builder-dataset` measurements captured from the NBA 2K HQ native rules engine (`BADGES_GetBadgeTokenPotential`).
+- Token potential is calculated additively from the current 21 attribute ratings at the selected height.
+- Badge detail popups show the exact token cost for the current and next badge tier when token data is available.
+- Token tables load after the core builder so the large external dataset does not block initial rendering.
+- Dataset capture: api_version 202750199; live_tuning_version 993560759169487438; captured 2026-08-22.
+
+
+## v10.13 share flow
+- Builder Share now copies the build URL without displaying the long URL.
+- A share popup confirms the copy and displays a QR code for the exact build.
+- Saved builds in My Builds now include the same Share action.
+- QR rendering uses the public QRServer image endpoint; clipboard sharing still works if QR rendering is unavailable.

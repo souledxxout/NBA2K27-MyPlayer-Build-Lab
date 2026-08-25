@@ -707,7 +707,19 @@ body{color-scheme:dark}
 }
 
 
-/* ===== v10.11 Auto Max Badges ===== */
+/* ===== v10.13 Badge Token Potential ===== */
+.badgeTokenStrip{margin-top:16px;padding-top:14px;border-top:1px solid #2e3239}
+.badgeTokenStrip h4{margin:0 0 10px;font-size:11px;letter-spacing:.18em;color:#8f97a4}
+.badgeTokenGrid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:7px}
+.badgeTokenCell{background:#0f1217;border:1px solid #2c3139;border-radius:10px;padding:9px 8px;min-width:0}
+.badgeTokenCell small{display:block;color:#959daa;font-size:9px;letter-spacing:.04em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.badgeTokenCell b{display:block;margin-top:2px;font-size:19px;color:#f4f6f8}
+.badgeTokenCell.finishing b{color:#f5a14b}.badgeTokenCell.shooting b{color:#61d779}.badgeTokenCell.playmaking b{color:#58bce7}.badgeTokenCell.defense b{color:#7375ff}.badgeTokenCell.rebounding b{color:#d16ca0}.badgeTokenCell.physicals b{color:#8db4df}
+.badgeTokenStatus{margin-top:7px;color:#79818d;font-size:10px;line-height:1.35}
+.iconInfoMetaRow.tokens{border-color:#31516b;background:#0d1a24}.iconInfoMetaRow.tokens span{color:#8ed0ff}
+@media(max-width:700px){.badgeTokenGrid{grid-template-columns:repeat(3,1fr)}.badgeTokenCell{padding:8px 7px}.badgeTokenCell b{font-size:17px}}
+
+/* ===== v10.13 Auto Max Badges ===== */
 .autoMaxBadgeRow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:10px}
 .autoMaxBadgeBtn{font-weight:800;white-space:nowrap}
 .autoBadgeModes{display:inline-flex;border:1px solid #363a43;border-radius:9px;overflow:hidden;background:#0e1014}
@@ -718,8 +730,21 @@ body{color-scheme:dark}
 .autoBadgeStatus.good{color:var(--green)}
 .autoBadgeStatus.warn{color:var(--amber)}
 @media(max-width:560px){.autoMaxBadgeRow{align-items:stretch}.autoMaxBadgeBtn{flex:1 1 100%}.autoBadgeModes{display:grid;grid-template-columns:repeat(3,1fr);width:100%}.autoBadgeModes button{padding:9px 5px}.autoBadgeStatus{font-size:11px}}
+
+/* ===== v10.13 Share popup + QR ===== */
+.shareModalBackdrop{position:fixed;inset:0;background:rgba(0,0,0,.72);display:none;align-items:center;justify-content:center;padding:18px;z-index:9999;backdrop-filter:blur(4px)}
+.shareModalBackdrop.open{display:flex}
+.shareModal{width:min(360px,100%);background:#17191f;border:1px solid #343842;border-radius:16px;box-shadow:0 24px 80px rgba(0,0,0,.55);padding:20px;text-align:center}
+.shareModal h3{margin:0 0 6px;font-size:20px}
+.shareModal p{margin:0 0 14px;color:var(--muted);font-size:13px}
+.shareQrWrap{width:244px;height:244px;max-width:100%;margin:0 auto 15px;background:#fff;border-radius:12px;display:flex;align-items:center;justify-content:center;padding:8px;overflow:hidden}
+.shareQrWrap img{display:block;width:100%;height:100%;object-fit:contain}
+.shareQrFallback{color:#17191f;font-size:12px;line-height:1.35;padding:16px}
+.shareModalActions{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.shareToastGood{color:var(--green)!important;font-weight:750}
+@media(max-width:420px){.shareModal{padding:17px}.shareQrWrap{width:220px;height:220px}}
 </style></head><body><div class="wrap">
-<div class="top"><div><h1>NBA 2K27 Build Lab</h1><div id="deployMarker" style="margin-top:10px;font-size:12px;color:#ff7b82;font-weight:700;letter-spacing:.04em">MOBILE BUILD 10.11 • NATIVE MAX PARITY</div><p>Builder • My Builds • Compare</p></div><div class="pill">Engine v10.11</div></div>
+<div class="top"><div><h1>NBA 2K27 Build Lab</h1><div id="deployMarker" style="margin-top:10px;font-size:12px;color:#ff7b82;font-weight:700;letter-spacing:.04em">MOBILE BUILD 10.13 • NATIVE MAX PARITY</div><p>Builder • My Builds • Compare</p></div><div class="pill">Engine v10.13</div></div>
 <div class="nav"><button class="active" data-page="builder">Builder</button><button data-page="saved">My Builds</button><button data-page="compare">Compare</button></div>
 
 
@@ -789,6 +814,14 @@ body{color-scheme:dark}
         <div class="potentialHead">MAX POTENTIAL ATTRIBUTES</div>
         <div class="potentialGrid" id="potentialGrid"></div>
 
+        <div class="badgeTokenStrip">
+          <h4>BADGE TOKEN POTENTIAL</h4>
+          <div class="badgeTokenGrid" id="badgeTokenGrid">
+            <div class="badgeTokenCell"><small>Loading HQ token data…</small><b>—</b></div>
+          </div>
+          <div class="badgeTokenStatus" id="badgeTokenStatus">Exact HQ-engine token data loads separately from the builder so the page stays responsive.</div>
+        </div>
+
         <div class="unlockStrip">
           <h4>MAX POTENTIAL BADGES <span id="potentialBadgeTotal"></span></h4>
           <div class="unlockChips" id="potentialBadgeChips"></div>
@@ -827,9 +860,20 @@ body{color-scheme:dark}
 <section id="compare" class="page"><div class="card"><h2>Build Compare</h2><p class="muted">Select up to four saved builds and compare their body setup, overall and attribute ratings side by side.</p><div id="comparePickers" class="cols"></div><div class="field"><button id="runCompare" class="btn primary">Compare Selected</button></div></div><div class="card" style="margin-top:14px"><div id="compareOutput" class="wideTable"><div class="muted">Save some builds first, then compare them here.</div></div></div></section>
 <section id="saved" class="page"><div class="card"><h2>My Builds</h2><div id="savedList" class="saved"></div></div></section>
 
-<div class="footer">Build Lab v10.11 • Extracted 2K27 tuning drives linked attributes, badges/takeovers, displayed OVR, and native max-potential body caps across every legal profile.</div></div>
+<div class="shareModalBackdrop" id="shareModalBackdrop" role="dialog" aria-modal="true" aria-labelledby="shareModalTitle">
+  <div class="shareModal">
+    <h3 id="shareModalTitle">Build link copied</h3>
+    <p id="shareModalStatus" class="shareToastGood">Paste the link anywhere, or scan this QR code.</p>
+    <div class="shareQrWrap" id="shareQrWrap"><div class="shareQrFallback">Generating QR code…</div></div>
+    <div class="shareModalActions">
+      <button class="btn primary" id="shareCopyAgain" type="button">Copy Again</button>
+      <button class="btn" id="shareClose" type="button">Close</button>
+    </div>
+  </div>
+</div>
+<div class="footer">Build Lab v10.13 • Extracted 2K27 tuning drives linked attributes, badges/takeovers, displayed OVR, and native max-potential body caps across every legal profile.</div></div>
 <script>
-console.log('NBA 2K27 Build Lab v10.11');
+console.log('NBA 2K27 Build Lab v10.13');
 const attrGroups={Finishing:['ShotClose','DrivingLayup','DrivingDunk','StandingDunk','PostControl'],Shooting:['ShotMidrange','ShotThree','ShotFreeThrow'],Playmaking:['PassAccuracy','BallControl','SpeedWithBall'],Defense:['InteriorDefense','PerimeterDefense','Steal','Block','ReboundOffense','ReboundDefense'],Physicals:['Speed','Agility','Strength','Vertical']};
 const nice={ShotClose:'Close Shot',DrivingLayup:'Driving Layup',DrivingDunk:'Driving Dunk',StandingDunk:'Standing Dunk',PostControl:'Post Control',ShotMidrange:'Mid-Range',ShotThree:'3PT',ShotFreeThrow:'Free Throw',PassAccuracy:'Pass Accuracy',BallControl:'Ball Handle',SpeedWithBall:'Speed With Ball',InteriorDefense:'Interior Defense',PerimeterDefense:'Perimeter Defense',Steal:'Steal',Block:'Block',ReboundOffense:'Offensive Rebound',ReboundDefense:'Defensive Rebound',Speed:'Speed',Agility:'Agility',Strength:'Strength',Vertical:'Vertical'};
 const nameToAttr={
@@ -851,7 +895,7 @@ const nameToAttr={
 'Speed':'Speed','Agility':'Agility',
 'Strength':'Strength','Str':'Strength',
 'Vertical':'Vertical','Vert':'Vertical'
-};let rules,badges,takeovers,maxHeightMult,maxPotentialNative,validation,heightWeights,heightLerp,capResearch,ratingWeightScale,validatedCapsData,parityReport,ratings={},manual={},active='Finishing',lastAutoResults=[],lockedAttrs=new Set(),lastLockConflicts=[],pendingLockedChange=null,tapTooltipTimer=null,pendingOvrChange=null,activeAttributeSlider=null;
+};let rules,badges,takeovers,maxHeightMult,maxPotentialNative,validation,heightWeights,heightLerp,capResearch,ratingWeightScale,validatedCapsData,parityReport,badgeTokenContrib=null,badgeTokenCosts=null,badgeTokenIndex=null,badgeTokenCostIndex=null,ratings={},manual={},active='Finishing',lastAutoResults=[],lockedAttrs=new Set(),lastLockConflicts=[],pendingLockedChange=null,tapTooltipTimer=null,pendingOvrChange=null,activeAttributeSlider=null;
 function feet(i){return `${Math.floor(i/12)}'${i%12}"`}
 function heightAllowed(req,h){
   if(!req||req==='-')return true;
@@ -937,6 +981,57 @@ function solve(){
   lastLockConflicts=result.conflicts;
   return result;
 }
+const BADGE_TOKEN_CONTRIB_URL='https://raw.githubusercontent.com/lightmatmul/nba2k27-builder-dataset/main/badges/token_contributions.json';
+const BADGE_TOKEN_COST_URL='https://raw.githubusercontent.com/lightmatmul/nba2k27-builder-dataset/main/badges/token_costs.json';
+const badgeTokenDisciplineOrder=['Finishing','Shooting','Playmaking','Defense','Rebounding','Physicals'];
+const tokenAttrName={ShotClose:'close_shot',DrivingLayup:'driving_layup',DrivingDunk:'driving_dunk',StandingDunk:'standing_dunk',PostControl:'post_control',ShotMidrange:'mid_range',ShotThree:'three_point',ShotFreeThrow:'free_throw',PassAccuracy:'pass_accuracy',BallControl:'ball_handle',SpeedWithBall:'speed_with_ball',InteriorDefense:'interior_defense',PerimeterDefense:'perimeter_defense',Steal:'steal',Block:'block',ReboundOffense:'offensive_rebound',ReboundDefense:'defensive_rebound',Speed:'speed',Agility:'agility',Strength:'strength',Vertical:'vertical'};
+function tokenBadgeSlug(name){const n=String(name||'');const overrides={'Pogo Stick':'pogostick','Slippery Off-Ball':'slippery_offball'};return overrides[n]||n.toLowerCase().replace(/[^a-z0-9]+/g,'_').replace(/^_|_$/g,'')}
+async function loadBadgeTokenData(){
+  const st=document.querySelector('#badgeTokenStatus');
+  try{
+    const [contrib,costs]=await Promise.all([
+      fetch(BADGE_TOKEN_CONTRIB_URL,{cache:'force-cache'}).then(r=>{if(!r.ok)throw new Error('token contributions '+r.status);return r.json()}),
+      fetch(BADGE_TOKEN_COST_URL,{cache:'force-cache'}).then(r=>{if(!r.ok)throw new Error('token costs '+r.status);return r.json()})
+    ]);
+    badgeTokenContrib=contrib;badgeTokenCosts=costs;
+    badgeTokenIndex=new Map();
+    for(const row of contrib.data||[])badgeTokenIndex.set(`${row.height_inches}|${row.name}|${row.rating}`,row.tokens);
+    badgeTokenCostIndex=new Map();
+    for(const row of costs.data||[])badgeTokenCostIndex.set(`${row.height_inches}|${row.name}|${row.tier}`,row.cost);
+    if(st)st.textContent='HQ engine data • live potential from your current attributes';
+    renderBadgeTokens();
+  }catch(err){
+    console.warn('Badge Token data unavailable',err);
+    if(st)st.textContent='Badge Token data could not load. Builder functions are unaffected.';
+    const g=document.querySelector('#badgeTokenGrid');if(g)g.innerHTML='<div class="badgeTokenCell"><small>Token data</small><b>—</b></div>';
+  }
+}
+function currentBadgeTokenPotential(){
+  const h=+document.querySelector('#height')?.value;
+  const totals=[0,0,0,0,0,0];
+  if(!badgeTokenIndex||!h)return totals;
+  for(const attr of directAttrs){
+    const nm=tokenAttrName[attr];if(!nm)continue;
+    const rating=Math.max(25,Math.min(99,Math.round(ratings[attr]??25)));
+    const row=badgeTokenIndex.get(`${h}|${nm}|${rating}`);
+    if(row)for(let i=0;i<6;i++)totals[i]+=Number(row[i]||0);
+  }
+  return totals;
+}
+function renderBadgeTokens(){
+  const g=document.querySelector('#badgeTokenGrid');if(!g)return;
+  if(!badgeTokenIndex){g.innerHTML='<div class="badgeTokenCell"><small>Loading HQ token data…</small><b>—</b></div>';return;}
+  const totals=currentBadgeTokenPotential();
+  g.innerHTML=badgeTokenDisciplineOrder.map((d,i)=>`<div class="badgeTokenCell ${d.toLowerCase()}"><small>${d}</small><b>${totals[i]}</b></div>`).join('');
+}
+function badgeTokenCost(name,tier,height){
+  if(!badgeTokenCostIndex||!name||!tier||!height)return null;
+  const tierKey=String(tier).toLowerCase().replaceAll(' ','_');
+  const slug=tokenBadgeSlug(name);
+  const v=badgeTokenCostIndex.get(`${height}|${slug}|${tierKey}`);
+  return Number.isFinite(v)?v:null;
+}
+
 function showPage(id){
   document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x.dataset.page===id));
   document.querySelectorAll('.page').forEach(x=>x.classList.toggle('active',x.id===id));
@@ -956,18 +1051,18 @@ function initNav(){
   document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>showPage(b.dataset.page));
 }
 async function init(){await loadGameArtManifests();[rules,badges,takeovers,maxHeightMult,maxPotentialNative,validation,heightWeights,heightLerp,capResearch,ratingWeightScale,validatedCapsData,parityReport]=await Promise.all([
-fetch('./data/builder-rules.json?v=10.11').then(r=>r.json()),
-fetch('./data/badges.json?v=10.11').then(r=>r.json()),
-fetch('./data/takeovers.json?v=10.11').then(r=>r.json()),
-fetch('./data/max-potential-height-multipliers.json?v=10.11').then(r=>r.json()),
-fetch('./data/max-potential-native-tuning.json?v=10.11').then(r=>r.json()),
-fetch('./data/max-potential-validation.json?v=10.11').then(r=>r.json()),
-fetch('./data/height-attribute-weights.json?v=10.11').then(r=>r.json()),
-fetch('./data/height-overall-lerp.json?v=10.11').then(r=>r.json()),
-fetch('./data/capbreaker-research.json?v=10.11').then(r=>r.json()),
-fetch('./data/attribute-rating-weight-scale.json?v=10.11').then(r=>r.json()),
-fetch('./data/validated-cap-profiles.json?v=10.11').then(r=>r.json()),
-fetch('./data/parity-report.json?v=10.11').then(r=>r.json())
+fetch('./data/builder-rules.json?v=10.13').then(r=>r.json()),
+fetch('./data/badges.json?v=10.13').then(r=>r.json()),
+fetch('./data/takeovers.json?v=10.13').then(r=>r.json()),
+fetch('./data/max-potential-height-multipliers.json?v=10.13').then(r=>r.json()),
+fetch('./data/max-potential-native-tuning.json?v=10.13').then(r=>r.json()),
+fetch('./data/max-potential-validation.json?v=10.13').then(r=>r.json()),
+fetch('./data/height-attribute-weights.json?v=10.13').then(r=>r.json()),
+fetch('./data/height-overall-lerp.json?v=10.13').then(r=>r.json()),
+fetch('./data/capbreaker-research.json?v=10.13').then(r=>r.json()),
+fetch('./data/attribute-rating-weight-scale.json?v=10.13').then(r=>r.json()),
+fetch('./data/validated-cap-profiles.json?v=10.13').then(r=>r.json()),
+fetch('./data/parity-report.json?v=10.13').then(r=>r.json())
 ]);let legacyBadgeCount=document.querySelector('#badgeCount');if(legacyBadgeCount)legacyBadgeCount.textContent=badges.length;let legacyTakeCount=document.querySelector('#takeCount');if(legacyTakeCount)legacyTakeCount.textContent=takeovers.length;let p=document.querySelector('#position');Object.keys(rules.positions).forEach(x=>p.add(new Option(x.replaceAll('_',' '),x)));p.value='SHOOTING_GUARD';
 p.onchange=()=>{loadHeights();syncPositionSegment();};
 document.querySelectorAll('#positionSegment button').forEach(btn=>btn.onclick=()=>{
@@ -980,7 +1075,11 @@ document.querySelector('#heightRange').oninput=e=>{
   sel.selectedIndex=+e.target.value;
   loadBody();
   syncHeightRange();
-};document.querySelector('#weight').oninput=()=>{updateBody();updateBuilderHero();};document.querySelector('#wing').oninput=()=>{updateBody();updateBuilderHero();};document.querySelector('#tabs').innerHTML=Object.keys(attrGroups).map(g=>`<button data-g="${g}">${g}</button>`).join('');document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>{active=b.dataset.g;renderAttrs()});document.querySelector('#resetBuild').onclick=resetBuilder;document.querySelector('#saveBuild').onclick=saveBuild;document.querySelector('#shareBuild').onclick=()=>{let u=shareCurrent();alert('Share link copied.\n'+u)};
+};document.querySelector('#weight').oninput=()=>{updateBody();updateBuilderHero();};document.querySelector('#wing').oninput=()=>{updateBody();updateBuilderHero();};document.querySelector('#tabs').innerHTML=Object.keys(attrGroups).map(g=>`<button data-g="${g}">${g}</button>`).join('');document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>{active=b.dataset.g;renderAttrs()});document.querySelector('#resetBuild').onclick=resetBuilder;document.querySelector('#saveBuild').onclick=saveBuild;document.querySelector('#shareBuild').onclick=shareCurrent;
+document.querySelector('#shareClose').onclick=()=>document.querySelector('#shareModalBackdrop').classList.remove('open');
+document.querySelector('#shareCopyAgain').onclick=async()=>{if(!lastSharedBuildUrl)return;const ok=await copyTextSafe(lastSharedBuildUrl);const t=document.querySelector('#shareModalTitle'),st=document.querySelector('#shareModalStatus');if(ok){t.textContent='Build link copied';st.textContent='Paste the link anywhere, or scan this QR code.';st.classList.add('shareToastGood')}else{t.textContent='Copy blocked';st.textContent='Your browser blocked clipboard access. You can still scan the QR code.';st.classList.remove('shareToastGood')}};
+document.querySelector('#shareModalBackdrop').onclick=e=>{if(e.target===e.currentTarget)e.currentTarget.classList.remove('open')};
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelector('#shareModalBackdrop')?.classList.remove('open')});
 let autoBadgeMode='balanced';
 const autoBadgeModeButtons=[...document.querySelectorAll('#autoBadgeModes button')];
 autoBadgeModeButtons.forEach(btn=>btn.onclick=()=>{
@@ -1018,6 +1117,8 @@ if(iconInfoBackdrop)iconInfoBackdrop.onclick=e=>{if(e.target===iconInfoBackdrop)
 const unlockAuditIssues=auditUnlockDefinitions();
 if(unlockAuditIssues.length)console.error(unlockAuditIssues);
 hydrateGameIconCanvases();
+// Token tables are ~4 MB combined; load them after the core builder is usable.
+setTimeout(loadBadgeTokenData,0);
 }
 function resetBuilder(){
   terminateActiveAttributeDrag();
@@ -1321,7 +1422,41 @@ function quickCompareAuto(i){
 function saveAutoResult(i){let x=lastAutoResults[i];if(!x)return;saveBuildObject(x,`Auto #${i+1} ${feet(x.h)} ${x.pos.replaceAll('_',' ')}`);refreshComparePickers();alert('Build saved.')}
 function saveBuildObject(x,name){let list=JSON.parse(localStorage.getItem('2k27-builds')||'[]');list.unshift({id:Date.now()+Math.random(),name,pos:x.pos,h:x.h,w:x.w,wing:x.wing,ratings:{...x.ratings},manual:{...x.ratings}});localStorage.setItem('2k27-builds',JSON.stringify(list.slice(0,30)))}
 function buildSharePayload(b){return btoa(unescape(encodeURIComponent(JSON.stringify({p:b.pos,h:b.h,w:b.w,s:b.wing,r:b.ratings})))).replaceAll('+','-').replaceAll('/','_').replaceAll('=','')}
-function shareCurrent(){solve();let b={pos:document.querySelector('#position').value,h:+document.querySelector('#height').value,w:+document.querySelector('#weight').value,wing:+document.querySelector('#wing').value,ratings:{...ratings}};let u=location.href.split('#')[0]+'#build='+buildSharePayload(b);navigator.clipboard?.writeText(u);return u}
+let lastSharedBuildUrl='';
+function buildShareUrl(b){return location.href.split('#')[0]+'#build='+buildSharePayload(b)}
+async function copyTextSafe(text){
+  try{if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(text);return true}}catch(e){}
+  try{const ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.focus();ta.select();const ok=document.execCommand('copy');ta.remove();return !!ok}catch(e){return false}
+}
+function openSharePopup(url){
+  lastSharedBuildUrl=url;
+  const back=document.querySelector('#shareModalBackdrop'),wrap=document.querySelector('#shareQrWrap'),status=document.querySelector('#shareModalStatus'),title=document.querySelector('#shareModalTitle');
+  if(!back||!wrap)return;
+  title.textContent='Build link copied';
+  status.textContent='Paste the link anywhere, or scan this QR code.';
+  status.classList.add('shareToastGood');
+  wrap.innerHTML='';
+  const img=new Image();
+  img.alt='QR code for this MyPLAYER build';
+  img.width=228;img.height=228;
+  img.onload=()=>{wrap.innerHTML='';wrap.appendChild(img)};
+  img.onerror=()=>{wrap.innerHTML='<div class=\"shareQrFallback\">QR code could not load right now.<br>The build link is still copied.</div>'};
+  img.src='https://api.qrserver.com/v1/create-qr-code/?size=228x228&margin=0&data='+encodeURIComponent(url);
+  back.classList.add('open');
+}
+async function shareBuildObject(b){
+  const u=buildShareUrl(b);
+  const copied=await copyTextSafe(u);
+  openSharePopup(u);
+  if(!copied){const t=document.querySelector('#shareModalTitle'),st=document.querySelector('#shareModalStatus');if(t)t.textContent='Build ready to share';if(st){st.textContent='Clipboard access was blocked. Tap Copy Again, or scan the QR code.';st.classList.remove('shareToastGood')}}
+  return u;
+}
+async function shareCurrent(){solve();let b={pos:document.querySelector('#position').value,h:+document.querySelector('#height').value,w:+document.querySelector('#weight').value,wing:+document.querySelector('#wing').value,ratings:{...ratings}};return shareBuildObject(b)}
+async function shareSavedBuild(id){
+  const list=JSON.parse(localStorage.getItem('2k27-builds')||'[]');
+  const b=list.find(x=>String(x.id)===String(id));if(!b)return;
+  return shareBuildObject({pos:b.pos,h:b.h,w:b.w,wing:b.wing,ratings:{...(b.ratings||b.manual||{})}});
+}
 function loadShareHash(){let m=location.hash.match(/#build=([^&]+)/);if(!m)return;try{let s=m[1].replaceAll('-','+').replaceAll('_','/');while(s.length%4)s+='=';let b=JSON.parse(decodeURIComponent(escape(atob(s))));document.querySelector('#position').value=b.p;loadHeights();document.querySelector('#height').value=b.h;loadBody();document.querySelector('#weight').value=b.w;document.querySelector('#wing').value=b.s;manual={...b.r};lockedAttrs.clear();updateBody()}catch(e){console.warn('Invalid shared build',e)}}
 function refreshComparePickers(){let box=document.querySelector('#comparePickers');if(!box)return;let list=JSON.parse(localStorage.getItem('2k27-builds')||'[]');box.innerHTML=[0,1,2,3].map(i=>`<div class="field"><label>Build ${i+1}</label><select class="compareSel"><option value="">— None —</option>${list.map((b,j)=>`<option value="${j}">${escapeAttr(b.name||'Saved Build')} • ${feet(b.h)} ${b.w}lb</option>`).join('')}</select></div>`).join('')}
 function runCompare(){let list=JSON.parse(localStorage.getItem('2k27-builds')||'[]'),sel=[...document.querySelectorAll('.compareSel')].map(x=>x.value).filter(x=>x!=='').map(x=>list[+x]).filter(Boolean);const out=document.querySelector('#compareOutput');if(!out)return;if(!sel.length){out.innerHTML='<div class="muted">Choose at least one saved build.</div>';return}let rows=['Height','Weight','Wingspan','OVR',...directAttrs];let head=`<tr><th>Metric</th>${sel.map((b,i)=>`<th>Build ${i+1}</th>`).join('')}</tr>`;let body=rows.map(metric=>{let vals=sel.map(b=>{const br=b.ratings||b.manual||{};if(metric==='Height')return feet(b.h);if(metric==='Weight')return `${b.w} lb`;if(metric==='Wingspan')return feet(b.wing);if(metric==='OVR')return directOverallFor(br,b.h).display;return br[metric]??25});return `<tr><td>${nice[metric]||metric}</td>${vals.map(v=>`<td>${v}</td>`).join('')}</tr>`}).join('');out.innerHTML=`<table class="compareTable count-${sel.length}">${head}${body}</table>`}
@@ -1559,7 +1694,7 @@ function attemptAttributeChange(a,value){
   return true;
 }
 
-function renderAll(){solve();renderAttrs();renderUnlocks();let h=+document.querySelector('#height').value,o=directOverallFor(ratings,h);let el=document.querySelector('#builderOvr');if(el)el.textContent=o.display;updateBuilderHero()}
+function renderAll(){solve();renderAttrs();renderUnlocks();renderBadgeTokens();let h=+document.querySelector('#height').value,o=directOverallFor(ratings,h);let el=document.querySelector('#builderOvr');if(el)el.textContent=o.display;updateBuilderHero()}
 function rangePct(value,min=25,max=99){return Math.max(0,Math.min(100,(value-min)/(max-min)*100))}
 function paintRange(inp,value){
   if(!inp)return;
@@ -1713,11 +1848,11 @@ let astcDecoderPromise=null;
 async function loadGameArtManifests(){
   try{
     [badgeArtManifest,takeoverArtManifest]=await Promise.all([
-      fetch('./assets/badges/manifest.json?v=10.11').then(r=>{
+      fetch('./assets/badges/manifest.json?v=10.13').then(r=>{
         if(!r.ok)throw new Error('Badge art manifest failed');
         return r.json();
       }),
-      fetch('./assets/takeovers/manifest.json?v=10.11').then(r=>{
+      fetch('./assets/takeovers/manifest.json?v=10.13').then(r=>{
         if(!r.ok)throw new Error('Takeover art manifest failed');
         return r.json();
       })
@@ -2051,6 +2186,10 @@ function iconInfoHTML(kind,name,detail){
   }else{
     meta+=`<div class="iconInfoMetaRow next"><b>Next: Max tier reached</b><span>Hall of Fame is the highest build-creation tier.</span></div>`;
   }
+  const currentCost=current?badgeTokenCost(b.name,current,h):null;
+  if(current&&currentCost!==null)meta+=`<div class="iconInfoMetaRow tokens"><b>${escapeAttr(current)} Token Cost</b><span>${currentCost} ${escapeAttr(b.category)} Badge Token${currentCost===1?'':'s'} to equip</span></div>`;
+  const nextCost=next?.tier?badgeTokenCost(b.name,next.tier,h):null;
+  if(next?.tier&&nextCost!==null)meta+=`<div class="iconInfoMetaRow tokens"><b>${escapeAttr(next.tier)} Token Cost</b><span>${nextCost} ${escapeAttr(b.category)} Badge Token${nextCost===1?'':'s'} to equip at that tier</span></div>`;
   if(b.heightRequirement&&b.heightRequirement!=='-')meta+=`<div class="iconInfoMetaRow"><b>Height requirement</b><span>${escapeAttr(b.heightRequirement)}</span></div>`;
   return {description:b.description||'',meta};
 }
@@ -2293,7 +2432,7 @@ function renderSaved(){
   const box=document.querySelector('#savedList');if(!box)return;
   let list=JSON.parse(localStorage.getItem('2k27-builds')||'[]');
   box.innerHTML=list.length?list.map(b=>`<div class="item">
-    <div class="itemTop"><b>${escapeAttr(b.name||'Saved Build')}</b><div style="display:flex;gap:6px;flex-wrap:wrap"><button class="btn tiny" onclick="openSavedBuild(${b.id})">Open</button><button class="btn tiny" onclick="renameSaved(${b.id})">Rename</button><button class="btn tiny" onclick="deleteSaved(${b.id})">Delete</button></div></div>
+    <div class="itemTop"><b>${escapeAttr(b.name||'Saved Build')}</b><div style="display:flex;gap:6px;flex-wrap:wrap"><button class="btn tiny" onclick="openSavedBuild(${b.id})">Open</button><button class="btn tiny" onclick="shareSavedBuild(${b.id})">Share</button><button class="btn tiny" onclick="renameSaved(${b.id})">Rename</button><button class="btn tiny" onclick="deleteSaved(${b.id})">Delete</button></div></div>
     <div class="muted">${feet(b.h)} • ${b.w} lb • ${feet(b.wing)} wingspan</div>
     <div class="tiny" style="margin-top:7px">3PT ${b.ratings.ShotThree||25} • Dunk ${b.ratings.DrivingDunk||25} • Per D ${b.ratings.PerimeterDefense||25} • Handle ${b.ratings.BallControl||25}</div>
   </div>`).join(''):'<div class="muted">No saved builds yet.</div>';
@@ -2340,7 +2479,7 @@ async function clearOldBuildLabCaches(){
 }
 hardClearBuildLabCaches().then(clearOldBuildLabCaches).finally(init);
 
-</script><div class="footer">Build Lab v10.11 • Reverse-engineered from the user-supplied NBA 2K HQ client for private build-planning use. Max-potential body caps use the decoded native NBA 2K HQ v1.1.3 tuning. Cap Breaker step math is HQ-validated against the supplied regression build (20/20 visible sequences).</div>
+</script><div class="footer">Build Lab v10.13 • Reverse-engineered from the user-supplied NBA 2K HQ client for private build-planning use. Max-potential body caps use the decoded native NBA 2K HQ v1.1.3 tuning. Cap Breaker step math is HQ-validated against the supplied regression build (20/20 visible sequences).</div>
 <div id="tapTooltip" aria-live="polite"></div>
 <div id="lockConflictModal" role="dialog" aria-modal="true" aria-labelledby="lockConflictTitle">
   <div class="lockModalCard">
