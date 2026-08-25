@@ -1,4 +1,4 @@
-## v10.4
+## v10.6
 - Removed the Optimizer page and navigation entry.
 - Fixed Compare Selected so saved builds render a comparison table.
 - Added Rename to saved builds.
@@ -334,3 +334,13 @@ All other displayed maxes for this body already matched the supplied 2KHQ screen
 - Badge/takeover icons are now clickable for a richer detail sheet.
 - Badge details show a gameplay description, current tier, next tier requirement, current relevant slider ratings, and height restrictions when applicable.
 - Takeover details show a gameplay description, unlock requirement, and current relevant slider ratings.
+
+
+## v10.6
+- Compare results table now sizes itself to the number of selected builds instead of stretching empty space across the full card. One- and two-build comparisons stay compact; three- and four-build comparisons expand as needed.
+
+
+## v10.6 compare layout
+- Compare chart headers now use Build 1, Build 2, etc.
+- Body is split into Height, Weight, and Wingspan lines.
+- Compare table fits all selected builds on mobile without horizontal scrolling.
