@@ -6,7 +6,8 @@
     "Silver": "70 Driving Dunk OR 70 Standing Dunk",
     "Gold": "80 Driving Dunk OR 80 Standing Dunk",
     "Hall of Fame": "94 Driving Dunk OR 93 Standing Dunk",
-    "heightRequirement": "-"
+    "heightRequirement": "-",
+    "description": "Helps finish alley-oops and offensive-rebound putback dunks more consistently."
   },
   {
     "category": "Finishing",
@@ -15,7 +16,8 @@
     "Silver": "80 Close Shot OR 85 Driving Layup",
     "Gold": "90 Close Shot OR 93 Driving Layup",
     "Hall of Fame": "96 Close Shot OR 95 Driving Layup",
-    "heightRequirement": "-"
+    "heightRequirement": "-",
+    "description": "Improves success on floater attempts around the lane and paint."
   },
   {
     "category": "Finishing",
@@ -24,7 +26,8 @@
     "Silver": "77 Close Shot OR 77 Post Control",
     "Gold": "86 Close Shot OR 86 Post Control",
     "Hall of Fame": "94 Close Shot OR 94 Post Control",
-    "heightRequirement": "-"
+    "heightRequirement": "-",
+    "description": "Improves step-through finishes and close shots created after a shot fake."
   },
   {
     "category": "Finishing",
@@ -33,7 +36,8 @@
     "Silver": "75 Close Shot AND 65 Post Control",
     "Gold": "87 Close Shot AND 80 Post Control",
     "Hall of Fame": "94 Close Shot AND 90 Post Control",
-    "heightRequirement": "-"
+    "heightRequirement": "-",
+    "description": "Improves the effectiveness of post hook shots."
   },
   {
     "category": "Finishing",
@@ -42,7 +46,8 @@
     "Silver": "83 Driving Layup",
     "Gold": "90 Driving Layup",
     "Hall of Fame": "99 Driving Layup",
-    "heightRequirement": "MAX HEIGHT: 6'10\""
+    "heightRequirement": "MAX HEIGHT: 6'10\"",
+    "description": "Improves success on acrobatic, fancy, and creatively timed layup attempts."
   },
   {
     "category": "Finishing",
@@ -51,7 +56,8 @@
     "Silver": "85 Close Shot",
     "Gold": "90 Close Shot",
     "Hall of Fame": "96 Close Shot",
-    "heightRequirement": "MIN HEIGHT: 6'3\""
+    "heightRequirement": "MIN HEIGHT: 6'3\"",
+    "description": "Improves quick scoring attempts from close range while working inside the paint."
   },
   {
     "category": "Finishing",
@@ -60,7 +66,8 @@
     "Silver": "80 Driving Layup AND 70 Strength",
     "Gold": "90 Driving Layup AND 80 Strength",
     "Hall of Fame": "96 Driving Layup AND 90 Strength",
-    "heightRequirement": "-"
+    "heightRequirement": "-",
+    "description": "Helps finish layups through contact and physical resistance at the rim."
   },
   {
     "category": "Finishing",
@@ -69,7 +76,8 @@
     "Silver": "75 Post Control AND 79 Strength",
     "Gold": "85 Post Control AND 86 Strength",
     "Hall of Fame": "95 Post Control AND 95 Strength",
-    "heightRequirement": "MIN HEIGHT: 6'5\""
+    "heightRequirement": "MIN HEIGHT: 6'5\"",
+    "description": "Improves backdowns and drop-step strength when attacking from the post."
   },
   {
     "category": "Finishing",
@@ -78,7 +86,8 @@
     "Silver": "83 Post Control",
     "Gold": "91 Post Control",
     "Hall of Fame": "99 Post Control",
-    "heightRequirement": "MIN HEIGHT: 6'1\""
+    "heightRequirement": "MIN HEIGHT: 6'1\"",
+    "description": "Makes post spins and post drives more effective and harder to strip."
   },
   {
     "category": "Finishing",
@@ -87,7 +96,8 @@
     "Silver": "87 Driving Dunk AND 75 Vertical",
     "Gold": "93 Driving Dunk AND 80 Vertical",
     "Hall of Fame": "99 Driving Dunk AND 90 Vertical",
-    "heightRequirement": "-"
+    "heightRequirement": "-",
+    "description": "Improves the chance of completing driving dunks through or over defenders."
   },
   {
     "category": "Finishing",
@@ -96,7 +106,8 @@
     "Silver": "81 Standing Dunk AND 62 Vertical",
     "Gold": "90 Standing Dunk AND 66 Vertical",
     "Hall of Fame": "99 Standing Dunk AND 70 Vertical",
-    "heightRequirement": "MIN HEIGHT: 6'5\""
+    "heightRequirement": "MIN HEIGHT: 6'5\"",
+    "description": "Improves standing dunk finishes when attacking from inside the paint."
   },
   {
     "category": "Shooting",
@@ -105,7 +116,8 @@
     "Silver": "86 3PT",
     "Gold": "91 3PT",
     "Hall of Fame": "98 3PT",
-    "heightRequirement": "MAX HEIGHT: 6'11\""
+    "heightRequirement": "MAX HEIGHT: 6'11\"",
+    "description": "Improves moving three-point attempts such as pull-ups, hops, and spin jumpers."
   },
   {
     "category": "Shooting",
@@ -114,7 +126,8 @@
     "Silver": "85 Mid-Range OR 85 3PT",
     "Gold": "92 Mid-Range OR 92 3PT",
     "Hall of Fame": "99 Mid-Range OR 99 3PT",
-    "heightRequirement": "-"
+    "heightRequirement": "-",
+    "description": "Reduces the impact of late defensive closeouts on jump shots."
   },
   {
     "category": "Shooting",
@@ -123,7 +136,8 @@
     "Silver": "89 3PT",
     "Gold": "93 3PT",
     "Hall of Fame": "99 3PT",
-    "heightRequirement": "-"
+    "heightRequirement": "-",
+    "description": "Extends the effective shooting range for deep three-point attempts."
   },
   {
     "category": "Shooting",
@@ -132,7 +146,8 @@
     "Silver": "79 Mid-Range OR 79 3PT",
     "Gold": "94 Mid-Range OR 94 3PT",
     "Hall of Fame": "99 Mid-Range OR 99 3PT",
-    "heightRequirement": "MAX HEIGHT: 6'4\""
+    "heightRequirement": "MAX HEIGHT: 6'4\"",
+    "description": "Helps shorter shooters deal with contests from taller defenders."
   },
   {
     "category": "Shooting",
@@ -141,7 +156,8 @@
     "Silver": "71 Mid-Range AND 74 Post Control",
     "Gold": "84 Mid-Range AND 84 Post Control",
     "Hall of Fame": "91 Mid-Range AND 93 Post Control",
-    "heightRequirement": "-"
+    "heightRequirement": "-",
+    "description": "Improves post fades and post hop-shot attempts."
   },
   {
     "category": "Shooting",
@@ -150,7 +166,8 @@
     "Silver": "88 Mid-Range OR 88 3PT",
     "Gold": "95 Mid-Range OR 95 3PT",
     "Hall of Fame": "99 Mid-Range OR 99 3PT",
-    "heightRequirement": "-"
+    "heightRequirement": "-",
+    "description": "Improves no-dip jump-shot attempts for faster catch-and-shoot releases."
   },
   {
     "category": "Shooting",
@@ -159,7 +176,8 @@
     "Silver": "78 3PT",
     "Gold": "89 3PT",
     "Hall of Fame": "97 3PT",
-    "heightRequirement": "-"
+    "heightRequirement": "-",
+    "description": "Boosts three-point shooting when the player is fully set before the shot."
   },
   {
     "category": "Shooting",
@@ -168,7 +186,8 @@
     "Silver": "87 Mid-Range",
     "Gold": "93 Mid-Range",
     "Hall of Fame": "99 Mid-Range",
-    "heightRequirement": "MAX HEIGHT: 6'11\""
+    "heightRequirement": "MAX HEIGHT: 6'11\"",
+    "description": "Improves moving mid-range jumpers including pull-ups, hops, and spin shots."
   },
   {
     "category": "Shooting",
@@ -177,7 +196,8 @@
     "Silver": "75 Mid-Range",
     "Gold": "85 Mid-Range",
     "Hall of Fame": "95 Mid-Range",
-    "heightRequirement": "-"
+    "heightRequirement": "-",
+    "description": "Boosts stand-still mid-range jump shots when the player is set."
   },
   {
     "category": "Playmaking",
@@ -186,7 +206,8 @@
     "Silver": "86 Ball Handle",
     "Gold": "93 Ball Handle",
     "Hall of Fame": "96 Ball Handle",
-    "heightRequirement": "MAX HEIGHT: 6'10\""
+    "heightRequirement": "MAX HEIGHT: 6'10\"",
+    "description": "Improves dribble moves used to break down, cross up, or stumble a defender."
   },
   {
     "category": "Playmaking",
@@ -195,7 +216,8 @@
     "Silver": "93 Pass Accuracy",
     "Gold": "96 Pass Accuracy",
     "Hall of Fame": "99 Pass Accuracy",
-    "heightRequirement": "-"
+    "heightRequirement": "-",
+    "description": "Improves passes made while leaving a jump shot or layup and helps under pressure."
   },
   {
     "category": "Playmaking",
@@ -204,7 +226,8 @@
     "Silver": "77 Pass Accuracy",
     "Gold": "89 Pass Accuracy",
     "Hall of Fame": "97 Pass Accuracy",
-    "heightRequirement": "-"
+    "heightRequirement": "-",
+    "description": "Improves long outlet passes thrown quickly after securing a defensive rebound."
   },
   {
     "category": "Playmaking",
@@ -213,7 +236,8 @@
     "Silver": "70 Pass Accuracy",
     "Gold": "86 Pass Accuracy",
     "Hall of Fame": "95 Pass Accuracy",
-    "heightRequirement": "-"
+    "heightRequirement": "-",
+    "description": "Improves teammates\u2019 shooting results after they receive your pass in scoring position."
   },
   {
     "category": "Playmaking",
@@ -222,7 +246,8 @@
     "Silver": "81 Ball Handle",
     "Gold": "90 Ball Handle",
     "Hall of Fame": "95 Ball Handle",
-    "heightRequirement": "MAX HEIGHT: 7'0\""
+    "heightRequirement": "MAX HEIGHT: 7'0\"",
+    "description": "Reduces stamina loss while chaining together multiple dribble moves."
   },
   {
     "category": "Playmaking",
@@ -231,7 +256,8 @@
     "Silver": "75 Speed With Ball",
     "Gold": "86 Speed With Ball",
     "Hall of Fame": "91 Speed With Ball",
-    "heightRequirement": "MAX HEIGHT: 6'11\""
+    "heightRequirement": "MAX HEIGHT: 6'11\"",
+    "description": "Improves the speed of launches and first steps when attacking from the perimeter."
   },
   {
     "category": "Playmaking",
@@ -240,7 +266,8 @@
     "Silver": "80 Speed With Ball",
     "Gold": "88 Speed With Ball",
     "Hall of Fame": "93 Speed With Ball",
-    "heightRequirement": "MAX HEIGHT: 6'10\""
+    "heightRequirement": "MAX HEIGHT: 6'10\"",
+    "description": "Improves a ball handler\u2019s sprint speed while advancing with the ball."
   },
   {
     "category": "Playmaking",
@@ -249,7 +276,8 @@
     "Silver": "67 Ball Handle AND 82 Strength",
     "Gold": "73 Ball Handle AND 89 Strength",
     "Hall of Fame": "78 Ball Handle AND 95 Strength",
-    "heightRequirement": "MAX HEIGHT: 6'11\""
+    "heightRequirement": "MAX HEIGHT: 6'11\"",
+    "description": "Helps maintain control of the dribble when defenders apply body pressure."
   },
   {
     "category": "Playmaking",
@@ -258,7 +286,8 @@
     "Silver": "86 Post Control OR 80 Ball Handle",
     "Gold": "96 Post Control OR 92 Ball Handle",
     "Hall of Fame": "97 Ball Handle",
-    "heightRequirement": "-"
+    "heightRequirement": "-",
+    "description": "Makes it harder for defenders to knock the ball loose with steal attempts."
   },
   {
     "category": "Playmaking",
@@ -267,7 +296,8 @@
     "Silver": "80 Pass Accuracy",
     "Gold": "90 Pass Accuracy",
     "Hall of Fame": "99 Pass Accuracy",
-    "heightRequirement": "-"
+    "heightRequirement": "-",
+    "description": "Improves difficult passes through tight windows, including quick and alley-oop passes."
   },
   {
     "category": "Defense",
@@ -276,7 +306,8 @@
     "Silver": "86 Perimeter D AND 82 Agility",
     "Gold": "93 Perimeter D AND 89 Agility",
     "Hall of Fame": "95 Perimeter D AND 92 Agility",
-    "heightRequirement": "MAX HEIGHT: 6'9\""
+    "heightRequirement": "MAX HEIGHT: 6'9\"",
+    "description": "Reduces the chance of being broken down or stumbled by opposing dribble moves."
   },
   {
     "category": "Defense",
@@ -285,7 +316,8 @@
     "Silver": "82 Perimeter D",
     "Gold": "91 Perimeter D",
     "Hall of Fame": "97 Perimeter D",
-    "heightRequirement": "MAX HEIGHT: 6'8\""
+    "heightRequirement": "MAX HEIGHT: 6'8\"",
+    "description": "Improves well-timed contests against perimeter jump shooters."
   },
   {
     "category": "Defense",
@@ -294,7 +326,8 @@
     "Silver": "83 Steal",
     "Gold": "93 Steal",
     "Hall of Fame": "99 Steal",
-    "heightRequirement": "MAX HEIGHT: 7'0\""
+    "heightRequirement": "MAX HEIGHT: 7'0\"",
+    "description": "Improves on-ball steals and strips against ball handlers and layup attempts."
   },
   {
     "category": "Defense",
@@ -303,7 +336,8 @@
     "Silver": "78 Block AND 74 Vertical",
     "Gold": "88 Block AND 80 Vertical",
     "Hall of Fame": "92 Block AND 83 Vertical",
-    "heightRequirement": "MIN HEIGHT: 6'3\""
+    "heightRequirement": "MIN HEIGHT: 6'3\"",
+    "description": "Improves speed and leaping when pursuing chase-down block opportunities."
   },
   {
     "category": "Defense",
@@ -312,7 +346,8 @@
     "Silver": "72 Perimeter D AND 82 Strength",
     "Gold": "84 Perimeter D AND 85 Strength",
     "Hall of Fame": "91 Perimeter D AND 92 Strength",
-    "heightRequirement": "-"
+    "heightRequirement": "-",
+    "description": "Improves physical resistance when defending drivers and ball handlers head-on."
   },
   {
     "category": "Defense",
@@ -321,7 +356,8 @@
     "Silver": "77 Steal",
     "Gold": "90 Steal",
     "Hall of Fame": "97 Steal",
-    "heightRequirement": "-"
+    "heightRequirement": "-",
+    "description": "Improves the ability to tip or intercept passes in passing lanes."
   },
   {
     "category": "Defense",
@@ -330,7 +366,8 @@
     "Silver": "76 Interior D OR 68 Perimeter D",
     "Gold": "85 Interior D OR 80 Perimeter D",
     "Hall of Fame": "93 Interior D OR 89 Perimeter D",
-    "heightRequirement": "-"
+    "heightRequirement": "-",
+    "description": "Improves physical off-ball defense and makes it harder for matchups to cut free."
   },
   {
     "category": "Defense",
@@ -339,7 +376,8 @@
     "Silver": "71 Interior D AND 84 Block",
     "Gold": "77 Interior D AND 93 Block",
     "Hall of Fame": "84 Interior D AND 99 Block",
-    "heightRequirement": "MIN HEIGHT: 6'5\""
+    "heightRequirement": "MIN HEIGHT: 6'5\"",
+    "description": "Improves rim protection, including blocks and contests near the basket."
   },
   {
     "category": "Defense",
@@ -348,7 +386,8 @@
     "Silver": "83 Perimeter D AND 81 Agility",
     "Gold": "90 Perimeter D AND 88 Agility",
     "Hall of Fame": "97 Perimeter D AND 91 Agility",
-    "heightRequirement": "MAX HEIGHT: 6'10\""
+    "heightRequirement": "MAX HEIGHT: 6'10\"",
+    "description": "Improves navigation through and around screens while defending."
   },
   {
     "category": "Defense",
@@ -357,7 +396,8 @@
     "Silver": "82 Interior D AND 74 Strength",
     "Gold": "88 Interior D AND 80 Strength",
     "Hall of Fame": "93 Interior D AND 88 Strength",
-    "heightRequirement": "MIN HEIGHT: 6'5\""
+    "heightRequirement": "MIN HEIGHT: 6'5\"",
+    "description": "Improves defense against post moves and increases the chance of forcing strips."
   },
   {
     "category": "Defense",
@@ -366,7 +406,8 @@
     "Silver": "85 Perimeter D AND 77 Agility",
     "Gold": "91 Perimeter D AND 80 Agility",
     "Hall of Fame": "99 Perimeter D AND 86 Agility",
-    "heightRequirement": "MAX HEIGHT: 6'9\""
+    "heightRequirement": "MAX HEIGHT: 6'9\"",
+    "description": "Improves body-up defense so drives are easier to contain and redirect."
   },
   {
     "category": "Defense",
@@ -375,7 +416,8 @@
     "Silver": "85 Interior D AND 80 Strength",
     "Gold": "95 Interior D AND 90 Strength",
     "Hall of Fame": "99 Interior D AND 92 Strength",
-    "heightRequirement": "MIN HEIGHT: 6'5\""
+    "heightRequirement": "MIN HEIGHT: 6'5\"",
+    "description": "Improves hands-up shot contests while defending inside the paint."
   },
   {
     "category": "Rebounding",
@@ -384,7 +426,8 @@
     "Silver": "75 Defensive Rebound AND 70 Strength",
     "Gold": "90 Defensive Rebound AND 89 Strength",
     "Hall of Fame": "98 Defensive Rebound AND 94 Strength",
-    "heightRequirement": "MIN HEIGHT: 6'3\""
+    "heightRequirement": "MIN HEIGHT: 6'3\"",
+    "description": "Improves the strength and effectiveness of defensive boxouts."
   },
   {
     "category": "Rebounding",
@@ -393,7 +436,8 @@
     "Silver": "82 Offensive Rebound AND 79 Strength",
     "Gold": "92 Offensive Rebound AND 90 Strength",
     "Hall of Fame": "98 Offensive Rebound AND 96 Strength",
-    "heightRequirement": "MIN HEIGHT: 6'3\""
+    "heightRequirement": "MIN HEIGHT: 6'3\"",
+    "description": "Improves the ability to fight through and defeat an opponent\u2019s boxout."
   },
   {
     "category": "Rebounding",
@@ -402,7 +446,8 @@
     "Silver": "80 Offensive Rebound AND 65 Vertical",
     "Gold": "93 Offensive Rebound AND 67 Vertical",
     "Hall of Fame": "99 Offensive Rebound AND 70 Vertical",
-    "heightRequirement": "-"
+    "heightRequirement": "-",
+    "description": "Improves tracking and securing offensive rebounds."
   },
   {
     "category": "Rebounding",
@@ -411,7 +456,8 @@
     "Silver": "87 Defensive Rebound AND 65 Vertical",
     "Gold": "95 Defensive Rebound AND 67 Vertical",
     "Hall of Fame": "99 Defensive Rebound AND 70 Vertical",
-    "heightRequirement": "-"
+    "heightRequirement": "-",
+    "description": "Improves tracking and securing defensive rebounds."
   },
   {
     "category": "Rebounding",
@@ -420,7 +466,8 @@
     "Silver": "70 Offensive Rebound OR 70 Defensive Rebound",
     "Gold": "82 Offensive Rebound OR 82 Defensive Rebound",
     "Hall of Fame": "90 Offensive Rebound OR 90 Defensive Rebound",
-    "heightRequirement": "-"
+    "heightRequirement": "-",
+    "description": "Rewards perfectly timed rebound jumps with an extra rebounding and vertical boost."
   },
   {
     "category": "Physicals",
@@ -429,7 +476,8 @@
     "Silver": "83 Strength",
     "Gold": "95 Strength",
     "Hall of Fame": "99 Strength",
-    "heightRequirement": "MIN HEIGHT: 6'5\""
+    "heightRequirement": "MIN HEIGHT: 6'5\"",
+    "description": "Improves the strength and effectiveness of screens set on defenders."
   },
   {
     "category": "Physicals",
@@ -438,7 +486,8 @@
     "Silver": "84 Strength",
     "Gold": "93 Strength",
     "Hall of Fame": "99 Strength",
-    "heightRequirement": "-"
+    "heightRequirement": "-",
+    "description": "Drains more opponent stamina when making physical contact."
   },
   {
     "category": "Physicals",
@@ -447,7 +496,8 @@
     "Silver": "82 Speed AND 78 Agility",
     "Gold": "87 Speed AND 81 Agility",
     "Hall of Fame": "95 Speed AND 91 Agility",
-    "heightRequirement": "-"
+    "heightRequirement": "-",
+    "description": "Improves off-ball movement speed during transition on offense and defense."
   },
   {
     "category": "Physicals",
@@ -456,7 +506,8 @@
     "Silver": "70 Vertical",
     "Gold": "80 Vertical",
     "Hall of Fame": "90 Vertical",
-    "heightRequirement": "-"
+    "heightRequirement": "-",
+    "description": "Allows quicker repeat jumps after rebounds, blocks, and jump-shot contests."
   },
   {
     "category": "Physicals",
@@ -465,7 +516,8 @@
     "Silver": "73 Speed AND 65 Agility",
     "Gold": "85 Speed AND 77 Agility",
     "Hall of Fame": "94 Speed AND 90 Agility",
-    "heightRequirement": "MAX HEIGHT: 6'9\""
+    "heightRequirement": "MAX HEIGHT: 6'9\"",
+    "description": "Improves movement through traffic when trying to get open away from the ball."
   },
   {
     "category": "Physicals",
@@ -474,6 +526,7 @@
     "Silver": "75 Agility OR 75 Strength",
     "Gold": "85 Agility OR 85 Strength",
     "Hall of Fame": "95 Agility OR 95 Strength",
-    "heightRequirement": "-"
+    "heightRequirement": "-",
+    "description": "Improves speed and success when pursuing loose balls."
   }
 ]

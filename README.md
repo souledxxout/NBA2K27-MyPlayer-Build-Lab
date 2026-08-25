@@ -1,4 +1,4 @@
-# NBA 2K27 Build Lab v10.1 — v7 Full Private Beta
+# NBA 2K27 Build Lab v10.2 — v7 Full Private Beta
 
 All-position web/PWA build planner based on the user-supplied NBA 2K HQ Android client and public badge/takeover data supplied in the conversation.
 
@@ -315,3 +315,12 @@ All other displayed maxes for this body already matched the supplied 2KHQ screen
 - Current validated screenshots match 84/84 attribute ceilings across four profiles, including the 6'7" / 194 lb / 6'8" profile that previously exposed the parsing bug.
 - The older 6'5" / 190 lb / 6'5" recording is retained as a legacy-tuning/profile discrepancy instead of overriding the current v1.1.3 native data.
 - Cap Breakers remain a preview; this max-potential change does not claim full Cap Breaker parity.
+
+
+## v10.2 interaction fixes
+
+- Fixed Builder Reset so it returns the player to the default Shooting Guard body profile and clears ratings/locks.
+- Stabilized badge/takeover artwork while height, weight, and wingspan controls are moving by preserving unchanged icon DOM instead of recreating canvases on every slider event.
+- Badge/takeover icons are now clickable for a richer detail sheet.
+- Badge details show a gameplay description, current tier, next tier requirement, current relevant slider ratings, and height restrictions when applicable.
+- Takeover details show a gameplay description, unlock requirement, and current relevant slider ratings.

@@ -744,6 +744,23 @@ body{color-scheme:dark}
 }
 
 
+
+/* ===== v10.2 interactive unlock details ===== */
+.iconInfoSheet{grid-template-columns:76px minmax(0,1fr);align-items:start}
+.iconInfoCopy{min-width:0}
+.iconInfoDescription{color:#e4e8ee;margin-top:8px;font-size:13px;line-height:1.5}
+.iconInfoMeta{display:grid;gap:8px;margin-top:12px}
+.iconInfoMetaRow{padding:9px 10px;border-radius:10px;background:#11141a;border:1px solid #2f3540}
+.iconInfoMetaRow b{display:block;color:#fff;font-size:12px;margin-bottom:3px}
+.iconInfoMetaRow span{color:#aeb5c0;font-size:12px;line-height:1.4}
+.iconInfoMetaRow.next{border-color:#62501e;background:#241e0d}
+.iconInfoMetaRow.next span{color:#f7d978}
+.iconInfoMetaRow.current{border-color:#244f43;background:#0d211b}
+.iconInfoMetaRow.current span{color:#71e3bd}
+.iconInfoMetaRow.requirement span{color:#e9edf3}
+.iconInfoMetaRow .reqCurrent{color:#ff5d68;font-weight:800}
+.iconInfoMetaRow .reqJoin{color:#e9edf3;font-weight:800}
+
 /* ===== v10.1 parity status polish ===== */
 .parityExact{
   color:#62e8a7;
@@ -1054,18 +1071,18 @@ function initNav(){
   document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>showPage(b.dataset.page));
 }
 async function init(){await loadGameArtManifests();[rules,badges,takeovers,maxHeightMult,maxPotentialNative,validation,heightWeights,heightLerp,capResearch,ratingWeightScale,validatedCapsData,parityReport]=await Promise.all([
-fetch('./data/builder-rules.json?v=10.1').then(r=>r.json()),
-fetch('./data/badges.json?v=10.1').then(r=>r.json()),
-fetch('./data/takeovers.json?v=10.1').then(r=>r.json()),
-fetch('./data/max-potential-height-multipliers.json?v=10.1').then(r=>r.json()),
-fetch('./data/max-potential-native-tuning.json?v=10.1').then(r=>r.json()),
-fetch('./data/max-potential-validation.json?v=10.1').then(r=>r.json()),
-fetch('./data/height-attribute-weights.json?v=10.1').then(r=>r.json()),
-fetch('./data/height-overall-lerp.json?v=10.1').then(r=>r.json()),
-fetch('./data/capbreaker-research.json?v=10.1').then(r=>r.json()),
-fetch('./data/attribute-rating-weight-scale.json?v=10.1').then(r=>r.json()),
-fetch('./data/validated-cap-profiles.json?v=10.1').then(r=>r.json()),
-fetch('./data/parity-report.json?v=10.1').then(r=>r.json())
+fetch('./data/builder-rules.json?v=10.2').then(r=>r.json()),
+fetch('./data/badges.json?v=10.2').then(r=>r.json()),
+fetch('./data/takeovers.json?v=10.2').then(r=>r.json()),
+fetch('./data/max-potential-height-multipliers.json?v=10.2').then(r=>r.json()),
+fetch('./data/max-potential-native-tuning.json?v=10.2').then(r=>r.json()),
+fetch('./data/max-potential-validation.json?v=10.2').then(r=>r.json()),
+fetch('./data/height-attribute-weights.json?v=10.2').then(r=>r.json()),
+fetch('./data/height-overall-lerp.json?v=10.2').then(r=>r.json()),
+fetch('./data/capbreaker-research.json?v=10.2').then(r=>r.json()),
+fetch('./data/attribute-rating-weight-scale.json?v=10.2').then(r=>r.json()),
+fetch('./data/validated-cap-profiles.json?v=10.2').then(r=>r.json()),
+fetch('./data/parity-report.json?v=10.2').then(r=>r.json())
 ]);let legacyBadgeCount=document.querySelector('#badgeCount');if(legacyBadgeCount)legacyBadgeCount.textContent=badges.length;let legacyTakeCount=document.querySelector('#takeCount');if(legacyTakeCount)legacyTakeCount.textContent=takeovers.length;let p=document.querySelector('#position');Object.keys(rules.positions).forEach(x=>p.add(new Option(x.replaceAll('_',' '),x)));p.value='SHOOTING_GUARD';
 p.onchange=()=>{loadHeights();syncPositionSegment();};
 document.querySelectorAll('#positionSegment button').forEach(btn=>btn.onclick=()=>{
@@ -1078,7 +1095,7 @@ document.querySelector('#heightRange').oninput=e=>{
   sel.selectedIndex=+e.target.value;
   loadBody();
   syncHeightRange();
-};document.querySelector('#weight').oninput=()=>{updateBody();updateBuilderHero();};document.querySelector('#wing').oninput=()=>{updateBody();updateBuilderHero();};document.querySelector('#tabs').innerHTML=Object.keys(attrGroups).map(g=>`<button data-g="${g}">${g}</button>`).join('');document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>{active=b.dataset.g;renderAttrs()});document.querySelector('#resetBuild').onclick=()=>{manual={};ratings={};lockedAttrs.clear();renderAll();updateBuilderHero();};document.querySelector('#saveBuild').onclick=saveBuild;document.querySelector('#shareBuild').onclick=()=>{let u=shareCurrent();alert('Share link copied.\n'+u)};document.querySelector('#preset').value='custom';
+};document.querySelector('#weight').oninput=()=>{updateBody();updateBuilderHero();};document.querySelector('#wing').oninput=()=>{updateBody();updateBuilderHero();};document.querySelector('#tabs').innerHTML=Object.keys(attrGroups).map(g=>`<button data-g="${g}">${g}</button>`).join('');document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>{active=b.dataset.g;renderAttrs()});document.querySelector('#resetBuild').onclick=resetBuilder;document.querySelector('#saveBuild').onclick=saveBuild;document.querySelector('#shareBuild').onclick=()=>{let u=shareCurrent();alert('Share link copied.\n'+u)};document.querySelector('#preset').value='custom';
 
 const useBuilderOpt=document.querySelector('#useBuilderInOptimizer');
 if(useBuilderOpt)useBuilderOpt.onclick=()=>cloneCurrentBuilderIntoOptimizer();
@@ -1117,6 +1134,21 @@ const unlockAuditIssues=auditUnlockDefinitions();
 if(unlockAuditIssues.length)console.error(unlockAuditIssues);
 hydrateGameIconCanvases();
 }
+function resetBuilder(){
+  terminateActiveAttributeDrag();
+  manual={}; ratings={}; lockedAttrs.clear(); lastLockConflicts=[]; pendingLockedChange=null; pendingOvrChange=null;
+  const p=document.querySelector('#position');
+  if(p)p.value='SHOOTING_GUARD';
+  active='Finishing';
+  loadHeights();
+  syncPositionSegment();
+  syncHeightRange();
+  document.querySelectorAll('#tabs button').forEach(b=>b.classList.toggle('active',b.dataset.g===active));
+  renderAll();
+  updateBuilderHero();
+  showTapTooltip('Builder reset to the default Shooting Guard profile.');
+}
+
 function loadHeights(){let pos=document.querySelector('#position').value,h=document.querySelector('#height');h.innerHTML='';rules.positions[pos].heights.forEach(x=>h.add(new Option(feet(x.height),x.height)));let def=rules.positions[pos].heights.find(x=>x.height===rules.positions[pos].defaultHeight)||rules.positions[pos].heights[Math.floor(rules.positions[pos].heights.length/2)];h.value=def.height;loadBody()}
 function loadBody(){let pos=document.querySelector('#position').value,hi=+document.querySelector('#height').value,row=rules.positions[pos].heights.find(x=>x.height===hi);let w=document.querySelector('#weight'),s=document.querySelector('#wing');w.min=row.minWeight;w.max=row.maxWeight;w.value=Math.round((row.minWeight+row.maxWeight)/2);s.min=row.minWingspan;s.max=row.maxWingspan;s.value=Math.round((row.minWingspan+row.maxWingspan)/2);manual={};lockedAttrs.clear();updateBody()}
 function updateBody(){let pos=document.querySelector('#position').value,hi=+document.querySelector('#height').value,row=rules.positions[pos].heights.find(x=>x.height===hi),w=+document.querySelector('#weight').value,wing=+document.querySelector('#wing').value;document.querySelector('#heightText').textContent=feet(hi);document.querySelector('#weightText').textContent=w+' lb';document.querySelector('#wingText').textContent=feet(wing);document.querySelector('#bodyread').innerHTML=`<b>${pos.replaceAll('_',' ')}</b><br>${feet(hi)} • ${w} lb • ${feet(wing)} wingspan<br><span class="muted">Legal range: ${row.minWeight}-${row.maxWeight} lb • ${feet(row.minWingspan)}-${feet(row.maxWingspan)}</span>`;renderAll()}
@@ -1417,10 +1449,18 @@ function buildPotentialSummary(){
   ratings=saveRatings;
 
   const bc=document.querySelector('#potentialBadgeChips');
-  if(bc)bc.innerHTML=ub.map(x=>`<div class="unlockChip iconChip" title="${x.t} ${x.b.name}" data-tip="${x.t} ${x.b.name}" role="button" tabindex="0">${badgeIconHTML(x.b.name,x.t,x.b.category)}</div>`).join('');
+  const potentialBadgeSig=ub.map(x=>`${x.b.name}|${x.t}`).join('||');
+  if(bc && bc.dataset.renderSig!==potentialBadgeSig){
+    bc.dataset.renderSig=potentialBadgeSig;
+    bc.innerHTML=ub.map(x=>`<div class="unlockChip iconChip" title="${x.t} ${x.b.name}" data-tip="${x.t} ${x.b.name}" role="button" tabindex="0">${badgeIconHTML(x.b.name,x.t,x.b.category)}</div>`).join('');
+  }
   const bt=document.querySelector('#potentialBadgeTotal'); if(bt)bt.textContent=`${ub.length} reachable`;
   const tc=document.querySelector('#potentialTakeChips');
-  if(tc)tc.innerHTML=av.map(t=>`<div class="unlockChip iconChip" title="${t.name} — ${t.requirement}" data-tip="${t.name} — ${t.requirement}" role="button" tabindex="0">${takeoverIconHTML(t.name,t.category,t.requirement)}</div>`).join('');
+  const potentialTakeSig=av.map(t=>t.name).join('||');
+  if(tc && tc.dataset.renderSig!==potentialTakeSig){
+    tc.dataset.renderSig=potentialTakeSig;
+    tc.innerHTML=av.map(t=>`<div class="unlockChip iconChip" title="${t.name} — ${t.requirement}" data-tip="${t.name} — ${t.requirement}" role="button" tabindex="0">${takeoverIconHTML(t.name,t.category,t.requirement)}</div>`).join('');
+  }
   const tt=document.querySelector('#potentialTakeTotal'); if(tt)tt.textContent=`${av.length} reachable`;
   bindTapTooltips();
 }
@@ -1770,11 +1810,11 @@ let astcDecoderPromise=null;
 async function loadGameArtManifests(){
   try{
     [badgeArtManifest,takeoverArtManifest]=await Promise.all([
-      fetch('./assets/badges/manifest.json?v=10.1').then(r=>{
+      fetch('./assets/badges/manifest.json?v=10.2').then(r=>{
         if(!r.ok)throw new Error('Badge art manifest failed');
         return r.json();
       }),
-      fetch('./assets/takeovers/manifest.json?v=10.1').then(r=>{
+      fetch('./assets/takeovers/manifest.json?v=10.2').then(r=>{
         if(!r.ok)throw new Error('Takeover art manifest failed');
         return r.json();
       })
@@ -2024,20 +2064,84 @@ function hydrateGameIconCanvases(root=document){
       ? paintBadgeGameArt(canvas,name)
       : paintTakeoverGameArt(canvas,name);
 
-    Promise.resolve(work).catch(err=>{
+    Promise.resolve(work).then(ok=>{
+      if(ok===false){
+        canvas.classList.add('failed');
+        canvas.removeAttribute('data-icon-loading');
+      }
+    }).catch(err=>{
       console.warn('Could not paint game icon',kind,name,err);
       canvas.classList.add('failed');
+      canvas.removeAttribute('data-icon-loading');
     });
   });
 }
 
+function requirementCurrentValues(req){
+  if(!req||req==='-'||/Always available/i.test(req))return 'No attribute requirement.';
+  const parts=[];
+  for(const m of req.matchAll(/(\d+)\s+([A-Za-z0-9 \-]+)/g)){
+    const need=+m[1],label=m[2].trim(),attr=nameToAttr[label];
+    const current=attr?(ratings[attr]??25):null;
+    parts.push(attr?`${label}: ${current} / ${need}`:`${label}: ${need} required`);
+  }
+  return parts.length?parts.join(' • '):req;
+}
+function nextBadgeTierInfo(badge,currentTier){
+  const tiers=[['Bronze','Bronze'],['Silver','Silver'],['Gold','Gold'],['Hall of Fame','Hall of Fame']];
+  const idx=tiers.findIndex(x=>x[0]===currentTier);
+  if(idx<0)return null;
+  if(idx===tiers.length-1)return {label:'Max tier reached',tier:null,requirement:null};
+  const next=tiers[idx+1][0];
+  return {label:`Next: ${next}`,tier:next,requirement:badge[next]||'-'};
+}
+function badgeRequirementWithCurrentHTML(req){
+  if(!req||req==='-')return escapeAttr(req||'-');
+  const chunks=req.split(/\s+(AND|OR)\s+/i);
+  return chunks.map((chunk,i)=>{
+    if(i%2===1)return `<span class="reqJoin">${escapeAttr(chunk.toUpperCase())}</span>`;
+    const m=chunk.trim().match(/^(\d+)\s+(.+)$/);
+    if(!m)return escapeAttr(chunk);
+    const need=+m[1],label=m[2].trim(),attr=nameToAttr[label];
+    const current=attr?(ratings[attr]??25):null;
+    const currentHTML=current===null?'':` <span class="reqCurrent">(${current})</span>`;
+    return `${need} ${escapeAttr(label)}${currentHTML}`;
+  }).join(' ');
+}
+function iconInfoHTML(kind,name,detail){
+  if(kind==='takeover'){
+    const t=takeovers.find(x=>x.name===name);
+    if(!t)return {description:'',meta:detail||''};
+    return {
+      description:t.description||'',
+      meta:`<div class="iconInfoMetaRow current"><b>Requirement</b><span>${escapeAttr(t.requirement||'Always available')}</span></div><div class="iconInfoMetaRow"><b>Your current sliders</b><span>${escapeAttr(requirementCurrentValues(t.requirement))}</span></div>`
+    };
+  }
+  const b=badges.find(x=>x.name===name);
+  if(!b)return {description:'',meta:detail||''};
+  const h=+document.querySelector('#height').value;
+  const current=getBadgeTier(b,h);
+  const next=current?nextBadgeTierInfo(b,current):{label:'Next: Bronze',tier:'Bronze',requirement:b.Bronze||'-'};
+  const nextReq=next?.requirement;
+  let meta='';
+  if(nextReq){
+    meta+=`<div class="iconInfoMetaRow next"><b>${escapeAttr(next.label)}</b></div>`;
+    meta+=`<div class="iconInfoMetaRow requirement"><b>${escapeAttr(next.tier||'Next')} Requirement:</b><span>${badgeRequirementWithCurrentHTML(nextReq)}</span></div>`;
+  }else{
+    meta+=`<div class="iconInfoMetaRow next"><b>Next: Max tier reached</b><span>Hall of Fame is the highest build-creation tier.</span></div>`;
+  }
+  if(b.heightRequirement&&b.heightRequirement!=='-')meta+=`<div class="iconInfoMetaRow"><b>Height requirement</b><span>${escapeAttr(b.heightRequirement)}</span></div>`;
+  return {description:b.description||'',meta};
+}
 function showIconInfo(kind,name,detail,sourceIcon){
   const backdrop=document.querySelector('#iconInfoBackdrop');
   const preview=document.querySelector('#iconInfoPreview');
+  const info=iconInfoHTML(kind,name,detail);
 
   document.querySelector('#iconInfoType').textContent=kind==='badge'?'Badge':'Takeover';
   document.querySelector('#iconInfoName').textContent=name;
-  document.querySelector('#iconInfoDetail').textContent=detail||'';
+  const detailEl=document.querySelector('#iconInfoDetail');
+  if(detailEl)detailEl.innerHTML=`<div class="iconInfoDescription">${escapeAttr(info.description||detail||'')}</div><div class="iconInfoMeta">${info.meta||''}</div>`;
 
   if(preview){
     preview.innerHTML=sourceIcon?.outerHTML||'';
@@ -2115,7 +2219,9 @@ function renderUnlocks(){
   unlocked.sort((a,b)=>rank[b.t]-rank[a.t]||a.b.name.localeCompare(b.b.name));
 
   const badgeList=document.querySelector('#badgeList');
-  if(badgeList){
+  const badgeSig=unlocked.map(x=>`${x.b.name}|${x.t}`).join('||');
+  if(badgeList && badgeList.dataset.renderSig!==badgeSig){
+    badgeList.dataset.renderSig=badgeSig;
     badgeList.innerHTML=unlocked.length?unlocked.map(x=>`<div class="item unlockItem">
       ${badgeIconHTML(x.b.name,x.t,x.b.category)}
       <div class="unlockItemText">
@@ -2128,7 +2234,9 @@ function renderUnlocks(){
 
   let available=takeovers.filter(t=>parseReq(t.requirement).ok);
   const takeList=document.querySelector('#takeList');
-  if(takeList){
+  const takeSig=available.map(t=>t.name).join('||');
+  if(takeList && takeList.dataset.renderSig!==takeSig){
+    takeList.dataset.renderSig=takeSig;
     takeList.innerHTML=available.length?available.map(t=>`<div class="item unlockItem">
       ${takeoverIconHTML(t.name,t.category,t.requirement)}
       <div class="unlockItemText">
@@ -2140,7 +2248,6 @@ function renderUnlocks(){
   }
 
   bindTapTooltips();
-  hydrateGameIconCanvases();
 };
 const optimizerAttrs=['ShotClose','DrivingLayup','DrivingDunk','StandingDunk','PostControl','ShotMidrange','ShotThree','ShotFreeThrow','PassAccuracy','BallControl','SpeedWithBall','InteriorDefense','PerimeterDefense','Steal','Block','ReboundOffense','ReboundDefense','Speed','Agility','Strength','Vertical'];
 let optimizerPriorities={};
