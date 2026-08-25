@@ -707,7 +707,7 @@ body{color-scheme:dark}
 }
 
 </style></head><body><div class="wrap">
-<div class="top"><div><h1>NBA 2K27 Build Lab</h1><div id="deployMarker" style="margin-top:10px;font-size:12px;color:#ff7b82;font-weight:700;letter-spacing:.04em">MOBILE BUILD 10.8 • NATIVE MAX PARITY</div><p>Builder • My Builds • Compare</p></div><div class="pill">Engine v10.8</div></div>
+<div class="top"><div><h1>NBA 2K27 Build Lab</h1><div id="deployMarker" style="margin-top:10px;font-size:12px;color:#ff7b82;font-weight:700;letter-spacing:.04em">MOBILE BUILD 10.9 • NATIVE MAX PARITY</div><p>Builder • My Builds • Compare</p></div><div class="pill">Engine v10.9</div></div>
 <div class="nav"><button class="active" data-page="builder">Builder</button><button data-page="saved">My Builds</button><button data-page="compare">Compare</button></div>
 
 
@@ -786,7 +786,7 @@ body{color-scheme:dark}
         <h2>Attributes</h2>
         <div class="attrOvrBadge"><small>OVR</small><b id="attrOvrLive">25</b></div>
       </div>
-      <div id="ovrMaxNotice" class="ovrMaxNotice">99 OVR reached — attribute sliders can only be lowered until OVR drops below 99.</div><div class="tabs" id="tabs"></div>
+      <div id="ovrMaxNotice" class="ovrMaxNotice">99 OVR build budget reached — lower another attribute to free room for additional upgrades.</div><div class="tabs" id="tabs"></div>
       <div class="attrs" id="attrs"></div>
     </div>
     <div class="card builderUnlockCard">
@@ -797,7 +797,7 @@ body{color-scheme:dark}
       <div id="takeList" class="list"></div>
     </div>
   </div>
-  <div class="note" style="margin-top:14px"><b>Parity status:</b> linked attributes, badge/takeover thresholds and the displayed OVR weighting path use extracted 2K tuning. Max-potential body caps now use the complete decoded native height/weight/wingspan tuning for every legal body profile.<br><b>99 OVR guard:</b> active — once displayed OVR reaches 99, attribute increases are frozen until you lower something.</div>
+  <div class="note" style="margin-top:14px"><b>Parity status:</b> linked attributes, badge/takeover thresholds and the displayed OVR weighting path use extracted 2K tuning. Max-potential body caps now use the complete decoded native height/weight/wingspan tuning for every legal body profile.<br><b>99 OVR guard:</b> HQ-calibrated — displayed 99 can still have a small amount of legal budget; increases stop only at the hidden affordability ceiling.</div>
 </section>
 
 
@@ -806,9 +806,9 @@ body{color-scheme:dark}
 <section id="compare" class="page"><div class="card"><h2>Build Compare</h2><p class="muted">Select up to four saved builds and compare their body setup, overall and attribute ratings side by side.</p><div id="comparePickers" class="cols"></div><div class="field"><button id="runCompare" class="btn primary">Compare Selected</button></div></div><div class="card" style="margin-top:14px"><div id="compareOutput" class="wideTable"><div class="muted">Save some builds first, then compare them here.</div></div></div></section>
 <section id="saved" class="page"><div class="card"><h2>My Builds</h2><div id="savedList" class="saved"></div></div></section>
 
-<div class="footer">Build Lab v10.8 • Extracted 2K27 tuning drives linked attributes, badges/takeovers, displayed OVR, and native max-potential body caps across every legal profile.</div></div>
+<div class="footer">Build Lab v10.9 • Extracted 2K27 tuning drives linked attributes, badges/takeovers, displayed OVR, and native max-potential body caps across every legal profile.</div></div>
 <script>
-console.log('NBA 2K27 Build Lab MOBILE BUILD 10.8');
+console.log('NBA 2K27 Build Lab MOBILE BUILD 10.9');
 const attrGroups={Finishing:['ShotClose','DrivingLayup','DrivingDunk','StandingDunk','PostControl'],Shooting:['ShotMidrange','ShotThree','ShotFreeThrow'],Playmaking:['PassAccuracy','BallControl','SpeedWithBall'],Defense:['InteriorDefense','PerimeterDefense','Steal','Block','ReboundOffense','ReboundDefense'],Physicals:['Speed','Agility','Strength','Vertical']};
 const nice={ShotClose:'Close Shot',DrivingLayup:'Driving Layup',DrivingDunk:'Driving Dunk',StandingDunk:'Standing Dunk',PostControl:'Post Control',ShotMidrange:'Mid-Range',ShotThree:'3PT',ShotFreeThrow:'Free Throw',PassAccuracy:'Pass Accuracy',BallControl:'Ball Handle',SpeedWithBall:'Speed With Ball',InteriorDefense:'Interior Defense',PerimeterDefense:'Perimeter Defense',Steal:'Steal',Block:'Block',ReboundOffense:'Offensive Rebound',ReboundDefense:'Defensive Rebound',Speed:'Speed',Agility:'Agility',Strength:'Strength',Vertical:'Vertical'};
 const nameToAttr={
@@ -1073,6 +1073,13 @@ function effectiveWeightsFor(height,pt,rObj){
   }
   return out
 }
+// HQ-validated hidden affordability ceiling.
+// The displayed OVR rounds to 99 before the builder's spend budget is fully exhausted.
+// A supplied HQ 6'5" SG regression state is legal at 98.73698, while the next +1
+// competing attribute states begin at 98.76967 / 98.80406. 98.75 cleanly separates
+// the known legal state from those first over-budget states without special-casing an attribute.
+const BUILDER_AFFORDABILITY_CEILING=98.75;
+
 function directOverallFor(r,height){
   // `display` is the rounded 25-99 number shown to the user. `legalScore` keeps
   // the unrounded/unclamped decoded score so a displayed 99 does not prematurely
@@ -1416,7 +1423,7 @@ function showOvrGuardModal(change,maxLegal,score){
   pendingOvrChange={...change,maxLegal,score};
   const modal=document.querySelector('#ovrGuardModal');
   const msg=document.querySelector('#ovrGuardMessage');
-  if(msg)msg.textContent=`${nice[change.attr]} ${change.value} would push this build to ${score.toFixed(1)} OVR in the decoded legality model. The highest allowed value here is ${maxLegal}.`;
+  if(msg)msg.textContent=`${nice[change.attr]} ${change.value} would push this build beyond the decoded 99 OVR affordability budget (internal score ${score.toFixed(2)}). The highest allowed value here is ${maxLegal}.`;
   modal?.classList.add('show');
 }
 function closeOvrGuardModal(){
@@ -1430,7 +1437,7 @@ function maxLegalValueForChange(attr,requested,oldManual,h){
     const lockedTest=computeRatingsWithLocks(test,h,lockedAttrs);
     if(lockedTest.conflicts.length)break;
     const score=directOverallFor(lockedTest.unconstrained,h).legalScore;
-    if(score<=99.0)best=v; else break;
+    if(score<=BUILDER_AFFORDABILITY_CEILING)best=v; else break;
   }
   return best;
 }
@@ -1457,8 +1464,8 @@ function attemptAttributeChange(a,value){
   const oldManual={...manual};
   const before=ratings[a]??manual[a]??25;
 
-  // Only freeze increases when the *unrounded* legality budget is exhausted.
-  // A displayed 99 can begin below 99.0 internally, so it may still have legal room.
+  // Only freeze increases when the HQ-calibrated hidden affordability budget is exhausted.
+  // Displayed 99 begins before this point, so legal 99-OVR spending can continue briefly.
   if(isAt99Ovr() && value>before){
     terminateActiveAttributeDrag();
     renderAttrs();
@@ -1486,9 +1493,9 @@ function attemptAttributeChange(a,value){
     return false;
   }
 
-  // 99 OVR GUARD: don't allow the user to keep spending forever.
+  // 99 OVR GUARD: enforce the HQ-calibrated hidden affordability ceiling.
   const score=directOverallFor(result.unconstrained,h).legalScore;
-  if(score>99.0){
+  if(score>BUILDER_AFFORDABILITY_CEILING){
     const maxLegal=maxLegalValueForChange(a,value,oldManual,h);
     terminateActiveAttributeDrag();
     manual=oldManual;
@@ -1506,8 +1513,8 @@ function attemptAttributeChange(a,value){
 
   const landed=directOverallFor(ratings,h);
   // Do not stop merely because the rounded display reaches 99. Continue allowing
-  // legal increases until the decoded unrounded score actually reaches the budget ceiling.
-  if(landed.legalScore>=99.0){
+  // legal increases until the decoded score reaches the HQ-calibrated affordability ceiling.
+  if(landed.legalScore>=BUILDER_AFFORDABILITY_CEILING){
     terminateActiveAttributeDrag();
   }
 
@@ -2088,7 +2095,7 @@ function currentDisplayedOvr(){
 function isAt99Ovr(){
   // This function means the 99-OVR *budget ceiling* is exhausted, not simply that
   // the rounded UI happens to display 99.
-  return currentOvrScore()>=99.0;
+  return currentOvrScore()>=BUILDER_AFFORDABILITY_CEILING;
 }
 
 function renderUnlocks(){
@@ -2195,7 +2202,7 @@ async function clearOldBuildLabCaches(){
 }
 hardClearBuildLabCaches().then(clearOldBuildLabCaches).finally(init);
 
-</script><div class="footer">Build Lab v10.8 • Reverse-engineered from the user-supplied NBA 2K HQ client for private build-planning use. Max-potential body caps use the decoded native NBA 2K HQ v1.1.3 tuning. Cap Breakers remain explicitly marked preview where parity is not yet proven.</div>
+</script><div class="footer">Build Lab v10.9 • Reverse-engineered from the user-supplied NBA 2K HQ client for private build-planning use. Max-potential body caps use the decoded native NBA 2K HQ v1.1.3 tuning. Cap Breakers remain explicitly marked preview where parity is not yet proven.</div>
 <div id="tapTooltip" aria-live="polite"></div>
 <div id="lockConflictModal" role="dialog" aria-modal="true" aria-labelledby="lockConflictTitle">
   <div class="lockModalCard">
@@ -2215,12 +2222,12 @@ hardClearBuildLabCaches().then(clearOldBuildLabCaches).finally(init);
   <div class="ovrModalCard">
     <div class="ovrModalIcon">99</div>
     <h3 id="ovrGuardTitle">99 OVR limit reached</h3>
-    <p id="ovrGuardMessage">That change would push the build beyond the current 99 OVR legality model.</p>
+    <p id="ovrGuardMessage">That change would push the build beyond the HQ-calibrated 99 OVR affordability budget.</p>
     <div class="ovrModalActions">
       <button class="btn" id="cancelOvrChangeBtn">Cancel</button>
       <button class="btn primary" id="useMaxLegalBtn">Use Max Allowed</button>
     </div>
-    <div class="ovrLimitNote">This guard uses the decoded 2K displayed-OVR weighting path.</div>
+    <div class="ovrLimitNote">This guard uses the decoded 2K weighting path with an HQ-validated hidden affordability ceiling.</div>
   </div>
 </div>
 

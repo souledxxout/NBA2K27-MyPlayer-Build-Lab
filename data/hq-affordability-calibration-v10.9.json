@@ -1,0 +1,28 @@
+{
+  "source": "User-supplied NBA 2K HQ screenshots, 2026-08-25",
+  "purpose": "Calibrate hidden 99 OVR affordability boundary against exact HQ build",
+  "globalAffordabilityCeiling": 98.75,
+  "body": {
+    "heightInches": 77,
+    "weightLb": 207,
+    "wingspanInches": 80
+  },
+  "knownLegal": {
+    "Strength": 63,
+    "Vertical": 81,
+    "decodedLegalScore": 98.73698196404993
+  },
+  "firstOverBudgetCandidates": [
+    {
+      "Strength": 64,
+      "Vertical": 81,
+      "decodedLegalScore": 98.76967136274426
+    },
+    {
+      "Strength": 63,
+      "Vertical": 82,
+      "decodedLegalScore": 98.80405544295337
+    }
+  ],
+  "interpretation": "98.75 separates the supplied HQ-legal state from both first +1 candidate states under the decoded OVR weighting path. Applied globally, not as a Vertical/Strength special-case."
+}
