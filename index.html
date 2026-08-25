@@ -707,7 +707,7 @@ body{color-scheme:dark}
 }
 
 </style></head><body><div class="wrap">
-<div class="top"><div><h1>NBA 2K27 Build Lab</h1><div id="deployMarker" style="margin-top:10px;font-size:12px;color:#ff7b82;font-weight:700;letter-spacing:.04em">MOBILE BUILD 10.7 • NATIVE MAX PARITY</div><p>Builder • My Builds • Compare</p></div><div class="pill">Engine v10.7</div></div>
+<div class="top"><div><h1>NBA 2K27 Build Lab</h1><div id="deployMarker" style="margin-top:10px;font-size:12px;color:#ff7b82;font-weight:700;letter-spacing:.04em">MOBILE BUILD 10.8 • NATIVE MAX PARITY</div><p>Builder • My Builds • Compare</p></div><div class="pill">Engine v10.8</div></div>
 <div class="nav"><button class="active" data-page="builder">Builder</button><button data-page="saved">My Builds</button><button data-page="compare">Compare</button></div>
 
 
@@ -806,9 +806,9 @@ body{color-scheme:dark}
 <section id="compare" class="page"><div class="card"><h2>Build Compare</h2><p class="muted">Select up to four saved builds and compare their body setup, overall and attribute ratings side by side.</p><div id="comparePickers" class="cols"></div><div class="field"><button id="runCompare" class="btn primary">Compare Selected</button></div></div><div class="card" style="margin-top:14px"><div id="compareOutput" class="wideTable"><div class="muted">Save some builds first, then compare them here.</div></div></div></section>
 <section id="saved" class="page"><div class="card"><h2>My Builds</h2><div id="savedList" class="saved"></div></div></section>
 
-<div class="footer">Build Lab v10.7 • Extracted 2K27 tuning drives linked attributes, badges/takeovers, displayed OVR, and native max-potential body caps across every legal profile.</div></div>
+<div class="footer">Build Lab v10.8 • Extracted 2K27 tuning drives linked attributes, badges/takeovers, displayed OVR, and native max-potential body caps across every legal profile.</div></div>
 <script>
-console.log('NBA 2K27 Build Lab MOBILE BUILD 10.7');
+console.log('NBA 2K27 Build Lab MOBILE BUILD 10.8');
 const attrGroups={Finishing:['ShotClose','DrivingLayup','DrivingDunk','StandingDunk','PostControl'],Shooting:['ShotMidrange','ShotThree','ShotFreeThrow'],Playmaking:['PassAccuracy','BallControl','SpeedWithBall'],Defense:['InteriorDefense','PerimeterDefense','Steal','Block','ReboundOffense','ReboundDefense'],Physicals:['Speed','Agility','Strength','Vertical']};
 const nice={ShotClose:'Close Shot',DrivingLayup:'Driving Layup',DrivingDunk:'Driving Dunk',StandingDunk:'Standing Dunk',PostControl:'Post Control',ShotMidrange:'Mid-Range',ShotThree:'3PT',ShotFreeThrow:'Free Throw',PassAccuracy:'Pass Accuracy',BallControl:'Ball Handle',SpeedWithBall:'Speed With Ball',InteriorDefense:'Interior Defense',PerimeterDefense:'Perimeter Defense',Steal:'Steal',Block:'Block',ReboundOffense:'Offensive Rebound',ReboundDefense:'Defensive Rebound',Speed:'Speed',Agility:'Agility',Strength:'Strength',Vertical:'Vertical'};
 const nameToAttr={
@@ -935,18 +935,18 @@ function initNav(){
   document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>showPage(b.dataset.page));
 }
 async function init(){await loadGameArtManifests();[rules,badges,takeovers,maxHeightMult,maxPotentialNative,validation,heightWeights,heightLerp,capResearch,ratingWeightScale,validatedCapsData,parityReport]=await Promise.all([
-fetch('./data/builder-rules.json?v=10.7').then(r=>r.json()),
-fetch('./data/badges.json?v=10.7').then(r=>r.json()),
-fetch('./data/takeovers.json?v=10.7').then(r=>r.json()),
-fetch('./data/max-potential-height-multipliers.json?v=10.7').then(r=>r.json()),
-fetch('./data/max-potential-native-tuning.json?v=10.7').then(r=>r.json()),
-fetch('./data/max-potential-validation.json?v=10.7').then(r=>r.json()),
-fetch('./data/height-attribute-weights.json?v=10.7').then(r=>r.json()),
-fetch('./data/height-overall-lerp.json?v=10.7').then(r=>r.json()),
-fetch('./data/capbreaker-research.json?v=10.7').then(r=>r.json()),
-fetch('./data/attribute-rating-weight-scale.json?v=10.7').then(r=>r.json()),
-fetch('./data/validated-cap-profiles.json?v=10.7').then(r=>r.json()),
-fetch('./data/parity-report.json?v=10.7').then(r=>r.json())
+fetch('./data/builder-rules.json?v=10.8').then(r=>r.json()),
+fetch('./data/badges.json?v=10.8').then(r=>r.json()),
+fetch('./data/takeovers.json?v=10.8').then(r=>r.json()),
+fetch('./data/max-potential-height-multipliers.json?v=10.8').then(r=>r.json()),
+fetch('./data/max-potential-native-tuning.json?v=10.8').then(r=>r.json()),
+fetch('./data/max-potential-validation.json?v=10.8').then(r=>r.json()),
+fetch('./data/height-attribute-weights.json?v=10.8').then(r=>r.json()),
+fetch('./data/height-overall-lerp.json?v=10.8').then(r=>r.json()),
+fetch('./data/capbreaker-research.json?v=10.8').then(r=>r.json()),
+fetch('./data/attribute-rating-weight-scale.json?v=10.8').then(r=>r.json()),
+fetch('./data/validated-cap-profiles.json?v=10.8').then(r=>r.json()),
+fetch('./data/parity-report.json?v=10.8').then(r=>r.json())
 ]);let legacyBadgeCount=document.querySelector('#badgeCount');if(legacyBadgeCount)legacyBadgeCount.textContent=badges.length;let legacyTakeCount=document.querySelector('#takeCount');if(legacyTakeCount)legacyTakeCount.textContent=takeovers.length;let p=document.querySelector('#position');Object.keys(rules.positions).forEach(x=>p.add(new Option(x.replaceAll('_',' '),x)));p.value='SHOOTING_GUARD';
 p.onchange=()=>{loadHeights();syncPositionSegment();};
 document.querySelectorAll('#positionSegment button').forEach(btn=>btn.onclick=()=>{
@@ -1054,9 +1054,12 @@ function directWeightsFor(height,pt){
   for(const x of heightWeights)if(x.heightIndex===hi&&x.playerType===pt)m[x.attribute]=x.weight;
   return m
 }
-function transformOverall(raw,height){
+function transformOverallUnclamped(raw,height){
   let l=heightLerp[String(heightIndex(height))]||[[25,99],[25,99]],a=l[0],b=l[1],den=(a[1]-a[0])||1;
-  return Math.max(25,Math.min(99,b[0]+(raw-a[0])*(b[1]-b[0])/den))
+  return b[0]+(raw-a[0])*(b[1]-b[0])/den
+}
+function transformOverall(raw,height){
+  return Math.max(25,Math.min(99,transformOverallUnclamped(raw,height)))
 }
 function ratingScaleFor(attr,rating){
   const idx=Math.min(99,Math.max(0,Math.floor(rating)-1));
@@ -1071,7 +1074,10 @@ function effectiveWeightsFor(height,pt,rObj){
   return out
 }
 function directOverallFor(r,height){
-  let best={score:25,display:25,playerType:0,raw:25};
+  // `display` is the rounded 25-99 number shown to the user. `legalScore` keeps
+  // the unrounded/unclamped decoded score so a displayed 99 does not prematurely
+  // exhaust the builder budget (for example 98.61 legitimately displays as 99).
+  let best={score:25,legalScore:25,display:25,playerType:0,raw:25};
   for(let pt=0;pt<15;pt++){
     const w=effectiveWeightsFor(height,pt,r);
     let sw=0,sv=0;
@@ -1080,8 +1086,11 @@ function directOverallFor(r,height){
       sv+=wt*(r[a]??25)
     }
     if(!sw)continue;
-    const raw=sv/sw,score=transformOverall(raw,height),display=Math.max(25,Math.min(99,Math.round(score)));
-    if(score>best.score)best={score,display,playerType:pt,raw}
+    const raw=sv/sw;
+    const legalScore=transformOverallUnclamped(raw,height);
+    const score=Math.max(25,Math.min(99,legalScore));
+    const display=Math.max(25,Math.min(99,Math.round(score)));
+    if(legalScore>best.legalScore)best={score,legalScore,display,playerType:pt,raw}
   }
   return best
 }
@@ -1420,7 +1429,7 @@ function maxLegalValueForChange(attr,requested,oldManual,h){
     let test={...oldManual,[attr]:v};
     const lockedTest=computeRatingsWithLocks(test,h,lockedAttrs);
     if(lockedTest.conflicts.length)break;
-    const score=directOverallFor(lockedTest.unconstrained,h).score;
+    const score=directOverallFor(lockedTest.unconstrained,h).legalScore;
     if(score<=99.0)best=v; else break;
   }
   return best;
@@ -1448,8 +1457,8 @@ function attemptAttributeChange(a,value){
   const oldManual={...manual};
   const before=ratings[a]??manual[a]??25;
 
-  // Once the build is at 99, every attribute slider is increase-locked.
-  // Lowering remains allowed so the user can create budget again.
+  // Only freeze increases when the *unrounded* legality budget is exhausted.
+  // A displayed 99 can begin below 99.0 internally, so it may still have legal room.
   if(isAt99Ovr() && value>before){
     terminateActiveAttributeDrag();
     renderAttrs();
@@ -1478,8 +1487,8 @@ function attemptAttributeChange(a,value){
   }
 
   // 99 OVR GUARD: don't allow the user to keep spending forever.
-  const score=directOverallFor(result.unconstrained,h).score;
-  if(false && score>99.0){
+  const score=directOverallFor(result.unconstrained,h).legalScore;
+  if(score>99.0){
     const maxLegal=maxLegalValueForChange(a,value,oldManual,h);
     terminateActiveAttributeDrag();
     manual=oldManual;
@@ -1496,16 +1505,10 @@ function attemptAttributeChange(a,value){
   lastLockConflicts=[];
 
   const landed=directOverallFor(ratings,h);
-  if(landed.display>=99){
+  // Do not stop merely because the rounded display reaches 99. Continue allowing
+  // legal increases until the decoded unrounded score actually reaches the budget ceiling.
+  if(landed.legalScore>=99.0){
     terminateActiveAttributeDrag();
-    renderAttrs();
-    renderUnlocks();
-    
-    let o=directOverallFor(ratings,h);
-    let el=document.querySelector('#builderOvr');if(el)el.textContent=o.display;
-    let attrOvr=document.querySelector('#attrOvrLive');if(attrOvr)attrOvr.textContent=o.display;
-    updateBuilderHero();
-    return true;
   }
 
   updateAfterAttributeDrag();
@@ -1666,11 +1669,11 @@ let astcDecoderPromise=null;
 async function loadGameArtManifests(){
   try{
     [badgeArtManifest,takeoverArtManifest]=await Promise.all([
-      fetch('./assets/badges/manifest.json?v=10.7').then(r=>{
+      fetch('./assets/badges/manifest.json?v=10.8').then(r=>{
         if(!r.ok)throw new Error('Badge art manifest failed');
         return r.json();
       }),
-      fetch('./assets/takeovers/manifest.json?v=10.7').then(r=>{
+      fetch('./assets/takeovers/manifest.json?v=10.8').then(r=>{
         if(!r.ok)throw new Error('Takeover art manifest failed');
         return r.json();
       })
@@ -2076,14 +2079,16 @@ function auditUnlockDefinitions(){
 
 function currentOvrScore(){
   const h=+document.querySelector('#height').value;
-  return directOverallFor(ratings,h).score;
+  return directOverallFor(ratings,h).legalScore;
 }
 function currentDisplayedOvr(){
   const h=+document.querySelector('#height').value;
   return directOverallFor(ratings,h).display;
 }
 function isAt99Ovr(){
-  return currentDisplayedOvr()>=99;
+  // This function means the 99-OVR *budget ceiling* is exhausted, not simply that
+  // the rounded UI happens to display 99.
+  return currentOvrScore()>=99.0;
 }
 
 function renderUnlocks(){
@@ -2190,7 +2195,7 @@ async function clearOldBuildLabCaches(){
 }
 hardClearBuildLabCaches().then(clearOldBuildLabCaches).finally(init);
 
-</script><div class="footer">Build Lab v10.7 • Reverse-engineered from the user-supplied NBA 2K HQ client for private build-planning use. Max-potential body caps use the decoded native NBA 2K HQ v1.1.3 tuning. Cap Breakers remain explicitly marked preview where parity is not yet proven.</div>
+</script><div class="footer">Build Lab v10.8 • Reverse-engineered from the user-supplied NBA 2K HQ client for private build-planning use. Max-potential body caps use the decoded native NBA 2K HQ v1.1.3 tuning. Cap Breakers remain explicitly marked preview where parity is not yet proven.</div>
 <div id="tapTooltip" aria-live="polite"></div>
 <div id="lockConflictModal" role="dialog" aria-modal="true" aria-labelledby="lockConflictTitle">
   <div class="lockModalCard">

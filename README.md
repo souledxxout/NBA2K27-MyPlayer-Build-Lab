@@ -1,9 +1,17 @@
-## v10.7
+## v10.8 — HQ rounded-99 parity fix
+
+- Fixed a premature 99 OVR freeze discovered by an exact HQ-vs-Build-Lab comparison.
+- Build Lab previously froze all increases as soon as the *displayed* OVR rounded to 99.
+- It now keeps the decoded unrounded legality score separately and only exhausts the budget at the true 99.0 ceiling.
+- Regression target from the HQ comparison: 6'5" / 207 lb / 6'8" wingspan profile with the matched ratings can move Vertical from 79 to at least 81 while still displaying 99 OVR.
+- No Vertical-specific exception was added; this fixes the underlying budget guard for every build.
+
+## v10.8
 - Compare table body data is now split into separate Metric rows: Height, Weight, and Wingspan.
 - Each build column now contains only the value for that row, making comparison columns narrower and easier to scan on mobile.
 - Compare headers remain Build 1, Build 2, etc.
 
-## v10.7
+## v10.8
 - Removed the Optimizer page and navigation entry.
 - Fixed Compare Selected so saved builds render a comparison table.
 - Added Rename to saved builds.
@@ -341,11 +349,11 @@ All other displayed maxes for this body already matched the supplied 2KHQ screen
 - Takeover details show a gameplay description, unlock requirement, and current relevant slider ratings.
 
 
-## v10.7
+## v10.8
 - Compare results table now sizes itself to the number of selected builds instead of stretching empty space across the full card. One- and two-build comparisons stay compact; three- and four-build comparisons expand as needed.
 
 
-## v10.7 compare layout
+## v10.8 compare layout
 - Compare chart headers now use Build 1, Build 2, etc.
 - Body is split into Height, Weight, and Wingspan lines.
 - Compare table fits all selected builds on mobile without horizontal scrolling.

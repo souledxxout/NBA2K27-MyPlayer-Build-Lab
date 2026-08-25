@@ -1,0 +1,37 @@
+{
+  "source": "User-supplied NBA 2K HQ screenshots, 2026-08-25",
+  "purpose": "Regression fixture for rounded-99 budget parity",
+  "body": {
+    "heightInches": 77,
+    "weightLb": 207,
+    "wingspanInches": 80
+  },
+  "ratings": {
+    "ShotClose": 75,
+    "DrivingLayup": 75,
+    "DrivingDunk": 95,
+    "StandingDunk": 50,
+    "PostControl": 32,
+    "ShotMidrange": 80,
+    "ShotThree": 89,
+    "ShotFreeThrow": 81,
+    "PassAccuracy": 76,
+    "BallControl": 81,
+    "SpeedWithBall": 84,
+    "InteriorDefense": 43,
+    "PerimeterDefense": 91,
+    "Steal": 79,
+    "Block": 63,
+    "ReboundOffense": 29,
+    "ReboundDefense": 53,
+    "Speed": 85,
+    "Agility": 83,
+    "Strength": 63,
+    "Vertical": 81
+  },
+  "expected": {
+    "displayedOverall": 99,
+    "verticalMustBeAllowed": 81
+  },
+  "note": "Previous Build Lab behavior froze at Vertical 79 because an internal score near 98.61 rounded to displayed 99. v10.8 separates displayed OVR from the unrounded legality budget."
+}
