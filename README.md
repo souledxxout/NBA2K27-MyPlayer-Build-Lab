@@ -21,7 +21,7 @@
 ## v10.3
 - Fixed the remaining takeover-art disappearance during height/weight/wingspan changes.
 - Takeover artwork now caches the successfully rendered 72×72 pixel result and reuses it when slider changes rebuild the takeover list, avoiding blank WebGL/ASTC redraws while preserving click/details behavior.
-# NBA 2K27 Build Lab v10.10 — HQ Cap Breaker Parity
+# NBA 2K27 Build Lab v10.11 — HQ Cap Breaker Parity
 
 All-position web/PWA build planner based on the user-supplied NBA 2K HQ Android client and public badge/takeover data supplied in the conversation.
 
@@ -365,9 +365,16 @@ All other displayed maxes for this body already matched the supplied 2KHQ screen
 - This is a global budget rule, not an attribute/body special-case. It allows alternate legal distributions to trade budget while preventing the extra points v10.8 allowed.
 
 
-## v10.10 — HQ Cap Breaker step parity
+## v10.11 — HQ Cap Breaker step parity
 
 - Corrected the Cap Breaker weight source: the native boost function uses the raw height/player-type attribute weight table, not the rating-scaled OVR weights.
 - Player type is selected once from the starting build state and remains fixed across all five sequential Cap Breaker steps.
-- Added `data/hq-capbreaker-regression-v10.10.json` from the supplied HQ screenshots.
+- Added `data/hq-capbreaker-regression-v10.11.json` from the supplied HQ screenshots.
 - The corrected function reproduces all 20 visible HQ Cap Breaker sequences in the regression build.
+
+
+## v10.11
+- Added **Auto Max Badges** directly under Save Build.
+- Body profile stays fixed while a beam search rebuilds attributes under the HQ-calibrated affordability ceiling.
+- Defense / Balanced / Offense toggles; Balanced is selected by default.
+- Unique badge count is always the primary objective; style mode breaks ties between equal-count builds.

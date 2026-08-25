@@ -706,8 +706,20 @@ body{color-scheme:dark}
   text-align:center;
 }
 
+
+/* ===== v10.11 Auto Max Badges ===== */
+.autoMaxBadgeRow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:10px}
+.autoMaxBadgeBtn{font-weight:800;white-space:nowrap}
+.autoBadgeModes{display:inline-flex;border:1px solid #363a43;border-radius:9px;overflow:hidden;background:#0e1014}
+.autoBadgeModes button{border:0;border-right:1px solid #363a43;background:#15171c;color:#aeb5c0;padding:8px 10px;cursor:pointer;font-size:12px;font-weight:750}
+.autoBadgeModes button:last-child{border-right:0}
+.autoBadgeModes button.active{background:#ef4444;color:#fff}
+.autoBadgeStatus{width:100%;font-size:12px;color:var(--muted);min-height:16px}
+.autoBadgeStatus.good{color:var(--green)}
+.autoBadgeStatus.warn{color:var(--amber)}
+@media(max-width:560px){.autoMaxBadgeRow{align-items:stretch}.autoMaxBadgeBtn{flex:1 1 100%}.autoBadgeModes{display:grid;grid-template-columns:repeat(3,1fr);width:100%}.autoBadgeModes button{padding:9px 5px}.autoBadgeStatus{font-size:11px}}
 </style></head><body><div class="wrap">
-<div class="top"><div><h1>NBA 2K27 Build Lab</h1><div id="deployMarker" style="margin-top:10px;font-size:12px;color:#ff7b82;font-weight:700;letter-spacing:.04em">MOBILE BUILD 10.9 • NATIVE MAX PARITY</div><p>Builder • My Builds • Compare</p></div><div class="pill">Engine v10.9</div></div>
+<div class="top"><div><h1>NBA 2K27 Build Lab</h1><div id="deployMarker" style="margin-top:10px;font-size:12px;color:#ff7b82;font-weight:700;letter-spacing:.04em">MOBILE BUILD 10.11 • NATIVE MAX PARITY</div><p>Builder • My Builds • Compare</p></div><div class="pill">Engine v10.11</div></div>
 <div class="nav"><button class="active" data-page="builder">Builder</button><button data-page="saved">My Builds</button><button data-page="compare">Compare</button></div>
 
 
@@ -762,6 +774,15 @@ body{color-scheme:dark}
           <button class="btn" id="shareBuild">Share</button>
           <button class="btn" id="resetBuild">Reset</button>
         </div>
+        <div class="autoMaxBadgeRow">
+          <button class="btn autoMaxBadgeBtn" id="autoMaxBadges">Auto Max Badges</button>
+          <div class="autoBadgeModes" id="autoBadgeModes" aria-label="Auto Max Badge style">
+            <button type="button" data-mode="defense">Defense</button>
+            <button type="button" class="active" data-mode="balanced">Balanced</button>
+            <button type="button" data-mode="offense">Offense</button>
+          </div>
+          <div class="autoBadgeStatus" id="autoBadgeStatus">Balanced selected • body settings stay fixed</div>
+        </div>
       </div>
 
       <div class="potentialPanel">
@@ -806,9 +827,9 @@ body{color-scheme:dark}
 <section id="compare" class="page"><div class="card"><h2>Build Compare</h2><p class="muted">Select up to four saved builds and compare their body setup, overall and attribute ratings side by side.</p><div id="comparePickers" class="cols"></div><div class="field"><button id="runCompare" class="btn primary">Compare Selected</button></div></div><div class="card" style="margin-top:14px"><div id="compareOutput" class="wideTable"><div class="muted">Save some builds first, then compare them here.</div></div></div></section>
 <section id="saved" class="page"><div class="card"><h2>My Builds</h2><div id="savedList" class="saved"></div></div></section>
 
-<div class="footer">Build Lab v10.10 • Extracted 2K27 tuning drives linked attributes, badges/takeovers, displayed OVR, and native max-potential body caps across every legal profile.</div></div>
+<div class="footer">Build Lab v10.11 • Extracted 2K27 tuning drives linked attributes, badges/takeovers, displayed OVR, and native max-potential body caps across every legal profile.</div></div>
 <script>
-console.log('NBA 2K27 Build Lab MOBILE BUILD 10.9');
+console.log('NBA 2K27 Build Lab v10.11');
 const attrGroups={Finishing:['ShotClose','DrivingLayup','DrivingDunk','StandingDunk','PostControl'],Shooting:['ShotMidrange','ShotThree','ShotFreeThrow'],Playmaking:['PassAccuracy','BallControl','SpeedWithBall'],Defense:['InteriorDefense','PerimeterDefense','Steal','Block','ReboundOffense','ReboundDefense'],Physicals:['Speed','Agility','Strength','Vertical']};
 const nice={ShotClose:'Close Shot',DrivingLayup:'Driving Layup',DrivingDunk:'Driving Dunk',StandingDunk:'Standing Dunk',PostControl:'Post Control',ShotMidrange:'Mid-Range',ShotThree:'3PT',ShotFreeThrow:'Free Throw',PassAccuracy:'Pass Accuracy',BallControl:'Ball Handle',SpeedWithBall:'Speed With Ball',InteriorDefense:'Interior Defense',PerimeterDefense:'Perimeter Defense',Steal:'Steal',Block:'Block',ReboundOffense:'Offensive Rebound',ReboundDefense:'Defensive Rebound',Speed:'Speed',Agility:'Agility',Strength:'Strength',Vertical:'Vertical'};
 const nameToAttr={
@@ -935,18 +956,18 @@ function initNav(){
   document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>showPage(b.dataset.page));
 }
 async function init(){await loadGameArtManifests();[rules,badges,takeovers,maxHeightMult,maxPotentialNative,validation,heightWeights,heightLerp,capResearch,ratingWeightScale,validatedCapsData,parityReport]=await Promise.all([
-fetch('./data/builder-rules.json?v=10.10').then(r=>r.json()),
-fetch('./data/badges.json?v=10.10').then(r=>r.json()),
-fetch('./data/takeovers.json?v=10.10').then(r=>r.json()),
-fetch('./data/max-potential-height-multipliers.json?v=10.10').then(r=>r.json()),
-fetch('./data/max-potential-native-tuning.json?v=10.10').then(r=>r.json()),
-fetch('./data/max-potential-validation.json?v=10.10').then(r=>r.json()),
-fetch('./data/height-attribute-weights.json?v=10.10').then(r=>r.json()),
-fetch('./data/height-overall-lerp.json?v=10.10').then(r=>r.json()),
-fetch('./data/capbreaker-research.json?v=10.10').then(r=>r.json()),
-fetch('./data/attribute-rating-weight-scale.json?v=10.10').then(r=>r.json()),
-fetch('./data/validated-cap-profiles.json?v=10.10').then(r=>r.json()),
-fetch('./data/parity-report.json?v=10.10').then(r=>r.json())
+fetch('./data/builder-rules.json?v=10.11').then(r=>r.json()),
+fetch('./data/badges.json?v=10.11').then(r=>r.json()),
+fetch('./data/takeovers.json?v=10.11').then(r=>r.json()),
+fetch('./data/max-potential-height-multipliers.json?v=10.11').then(r=>r.json()),
+fetch('./data/max-potential-native-tuning.json?v=10.11').then(r=>r.json()),
+fetch('./data/max-potential-validation.json?v=10.11').then(r=>r.json()),
+fetch('./data/height-attribute-weights.json?v=10.11').then(r=>r.json()),
+fetch('./data/height-overall-lerp.json?v=10.11').then(r=>r.json()),
+fetch('./data/capbreaker-research.json?v=10.11').then(r=>r.json()),
+fetch('./data/attribute-rating-weight-scale.json?v=10.11').then(r=>r.json()),
+fetch('./data/validated-cap-profiles.json?v=10.11').then(r=>r.json()),
+fetch('./data/parity-report.json?v=10.11').then(r=>r.json())
 ]);let legacyBadgeCount=document.querySelector('#badgeCount');if(legacyBadgeCount)legacyBadgeCount.textContent=badges.length;let legacyTakeCount=document.querySelector('#takeCount');if(legacyTakeCount)legacyTakeCount.textContent=takeovers.length;let p=document.querySelector('#position');Object.keys(rules.positions).forEach(x=>p.add(new Option(x.replaceAll('_',' '),x)));p.value='SHOOTING_GUARD';
 p.onchange=()=>{loadHeights();syncPositionSegment();};
 document.querySelectorAll('#positionSegment button').forEach(btn=>btn.onclick=()=>{
@@ -960,6 +981,15 @@ document.querySelector('#heightRange').oninput=e=>{
   loadBody();
   syncHeightRange();
 };document.querySelector('#weight').oninput=()=>{updateBody();updateBuilderHero();};document.querySelector('#wing').oninput=()=>{updateBody();updateBuilderHero();};document.querySelector('#tabs').innerHTML=Object.keys(attrGroups).map(g=>`<button data-g="${g}">${g}</button>`).join('');document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>{active=b.dataset.g;renderAttrs()});document.querySelector('#resetBuild').onclick=resetBuilder;document.querySelector('#saveBuild').onclick=saveBuild;document.querySelector('#shareBuild').onclick=()=>{let u=shareCurrent();alert('Share link copied.\n'+u)};
+let autoBadgeMode='balanced';
+const autoBadgeModeButtons=[...document.querySelectorAll('#autoBadgeModes button')];
+autoBadgeModeButtons.forEach(btn=>btn.onclick=()=>{
+  autoBadgeMode=btn.dataset.mode||'balanced';
+  autoBadgeModeButtons.forEach(x=>x.classList.toggle('active',x===btn));
+  const st=document.querySelector('#autoBadgeStatus');
+  if(st){st.className='autoBadgeStatus';st.textContent=`${autoBadgeMode[0].toUpperCase()+autoBadgeMode.slice(1)} selected • body settings stay fixed`;}
+});
+const autoMaxBadgeBtn=document.querySelector('#autoMaxBadges');if(autoMaxBadgeBtn)autoMaxBadgeBtn.onclick=()=>runAutoMaxBadges(autoBadgeMode);
 const runCompareBtn=document.querySelector('#runCompare');if(runCompareBtn)runCompareBtn.onclick=runCompare;
 
 document.querySelector('#keepLockedBtn').onclick=()=>{closeLockConflictModal();renderAttrs();};
@@ -1683,11 +1713,11 @@ let astcDecoderPromise=null;
 async function loadGameArtManifests(){
   try{
     [badgeArtManifest,takeoverArtManifest]=await Promise.all([
-      fetch('./assets/badges/manifest.json?v=10.10').then(r=>{
+      fetch('./assets/badges/manifest.json?v=10.11').then(r=>{
         if(!r.ok)throw new Error('Badge art manifest failed');
         return r.json();
       }),
-      fetch('./assets/takeovers/manifest.json?v=10.10').then(r=>{
+      fetch('./assets/takeovers/manifest.json?v=10.11').then(r=>{
         if(!r.ok)throw new Error('Takeover art manifest failed');
         return r.json();
       })
@@ -2142,6 +2172,107 @@ function renderUnlocks(){
 
   bindTapTooltips();
 };
+
+function bronzeRequirementOptions(badge){
+  if(!badge||!badge.Bronze||badge.Bronze==='-')return [];
+  return badge.Bronze.split(/\s+OR\s+/i).map(clause=>{
+    const reqs=[];
+    for(const part of clause.split(/\s+AND\s+/i)){
+      const m=part.trim().match(/^(\d+)\s+(.+)$/);
+      if(!m)continue;
+      const a=nameToAttr[m[2].trim()];
+      if(a)reqs.push({a,need:+m[1]});
+    }
+    return reqs;
+  }).filter(x=>x.length);
+}
+function autoBadgeCategoryWeight(category,mode){
+  if(mode==='defense')return ({Defense:2.4,Rebounding:2.2,Physicals:1.35,Playmaking:1.0,Shooting:.9,Finishing:.85})[category]||1;
+  if(mode==='offense')return ({Finishing:2.25,Shooting:2.4,Playmaking:2.05,Physicals:1.15,Defense:.9,Rebounding:.8})[category]||1;
+  return 1;
+}
+function autoBadgeStateKey(seed){
+  return directAttrs.map(a=>seed[a]||25).join(',');
+}
+function evaluateAutoBadgeState(seed,h,mode){
+  const solved=solveDependencies(seed,h);
+  const overall=directOverallFor(solved,h);
+  if(overall.legalScore>BUILDER_AFFORDABILITY_CEILING+1e-9)return null;
+  let count=0,style=0,tierScore=0;
+  const tierRank={'Bronze':1,'Silver':2,'Gold':3,'Hall of Fame':4};
+  for(const b of badges){
+    const tier=getBadgeTier(b,h,solved);
+    if(!tier)continue;
+    count++;
+    style+=autoBadgeCategoryWeight(b.category,mode);
+    tierScore+=tierRank[tier]||1;
+  }
+  return {seed,ratings:solved,overall,count,style,tierScore};
+}
+function autoBadgeCompare(a,b,mode){
+  if(!a)return 1;if(!b)return -1;
+  // Unique badge count is ALWAYS the primary objective.
+  if(a.count!==b.count)return b.count-a.count;
+  if(mode!=='balanced'&&Math.abs(a.style-b.style)>.0001)return b.style-a.style;
+  // Once badge count (and selected style, when applicable) tie, preserve budget for tweaking.
+  if(Math.abs(a.overall.legalScore-b.overall.legalScore)>.0001)return a.overall.legalScore-b.overall.legalScore;
+  return b.tierScore-a.tierScore;
+}
+function runAutoMaxBadges(mode='balanced'){
+  const btn=document.querySelector('#autoMaxBadges'),status=document.querySelector('#autoBadgeStatus');
+  if(btn){btn.disabled=true;btn.textContent='Finding Max Badges…';}
+  if(status){status.className='autoBadgeStatus';status.textContent='Searching legal badge combinations…';}
+  // Let the UI paint the loading state before the beam search starts.
+  setTimeout(()=>{
+    try{
+      const h=+document.querySelector('#height').value,w=+document.querySelector('#weight').value,wing=+document.querySelector('#wing').value;
+      const caps={};for(const a of directAttrs)caps[a]=betaMaxCap(a,h,w,wing);
+      const eligible=badges.filter(b=>heightAllowed(b.heightRequirement,h)&&bronzeRequirementOptions(b).length);
+      const start={};for(const a of directAttrs)start[a]=25;
+      let beam=[evaluateAutoBadgeState(start,h,mode)].filter(Boolean),best=beam[0];
+      const BEAM_WIDTH=72,MAX_ROUNDS=26;
+      for(let round=0;round<MAX_ROUNDS&&beam.length;round++){
+        const nextMap=new Map();let improved=false;
+        for(const state of beam){
+          if(autoBadgeCompare(state,best,mode)<0)best=state;
+          for(const b of eligible){
+            if(getBadgeTier(b,h,state.ratings))continue;
+            for(const option of bronzeRequirementOptions(b)){
+              let seed={...state.seed},possible=true,changed=false;
+              for(const {a,need} of option){
+                if(need>caps[a]){possible=false;break}
+                if((seed[a]||25)<need){seed[a]=need;changed=true}
+              }
+              if(!possible||!changed)continue;
+              const ev=evaluateAutoBadgeState(seed,h,mode);if(!ev)continue;
+              if(ev.count>state.count)improved=true;
+              const key=autoBadgeStateKey(seed),prev=nextMap.get(key);
+              if(!prev||autoBadgeCompare(ev,prev,mode)<0)nextMap.set(key,ev);
+            }
+          }
+        }
+        if(!nextMap.size)break;
+        beam=[...nextMap.values()].sort((a,b)=>autoBadgeCompare(a,b,mode)).slice(0,BEAM_WIDTH);
+        if(autoBadgeCompare(beam[0],best,mode)<0)best=beam[0];
+        if(!improved&&round>2)break;
+      }
+      if(!best)throw new Error('No legal badge build was found for this body profile.');
+      terminateActiveAttributeDrag();
+      lockedAttrs.clear();lastLockConflicts=[];pendingLockedChange=null;pendingOvrChange=null;
+      manual={...best.seed};ratings={...best.ratings};
+      renderAll();
+      const label=mode[0].toUpperCase()+mode.slice(1);
+      if(status){status.className='autoBadgeStatus good';status.textContent=`${label}: ${best.count} badges • ${best.overall.display} OVR • sliders are ready to tweak`;}
+      showTapTooltip(`Auto Max Badges found ${best.count} badges (${label}).`);
+    }catch(err){
+      console.error('Auto Max Badges failed:',err);
+      if(status){status.className='autoBadgeStatus warn';status.textContent='Auto Max Badges hit an error — your build was left unchanged.';}
+    }finally{
+      if(btn){btn.disabled=false;btn.textContent='Auto Max Badges';}
+    }
+  },30);
+}
+
 function saveBuild(){solve();let list=JSON.parse(localStorage.getItem('2k27-builds')||'[]');let pos=document.querySelector('#position').value,h=+document.querySelector('#height').value,w=+document.querySelector('#weight').value,wing=+document.querySelector('#wing').value;list.unshift({id:Date.now(),name:`${feet(h)} ${pos.replaceAll('_',' ')}`,pos,h,w,wing,ratings:{...ratings},manual:{...manual},locks:[...lockedAttrs]});localStorage.setItem('2k27-builds',JSON.stringify(list.slice(0,30)));refreshComparePickers();alert('Build saved on this device.')}
 function openSavedBuild(id){
   const list=JSON.parse(localStorage.getItem('2k27-builds')||'[]');
@@ -2209,7 +2340,7 @@ async function clearOldBuildLabCaches(){
 }
 hardClearBuildLabCaches().then(clearOldBuildLabCaches).finally(init);
 
-</script><div class="footer">Build Lab v10.10 • Reverse-engineered from the user-supplied NBA 2K HQ client for private build-planning use. Max-potential body caps use the decoded native NBA 2K HQ v1.1.3 tuning. Cap Breaker step math is HQ-validated against the supplied regression build (20/20 visible sequences).</div>
+</script><div class="footer">Build Lab v10.11 • Reverse-engineered from the user-supplied NBA 2K HQ client for private build-planning use. Max-potential body caps use the decoded native NBA 2K HQ v1.1.3 tuning. Cap Breaker step math is HQ-validated against the supplied regression build (20/20 visible sequences).</div>
 <div id="tapTooltip" aria-live="polite"></div>
 <div id="lockConflictModal" role="dialog" aria-modal="true" aria-labelledby="lockConflictTitle">
   <div class="lockModalCard">
