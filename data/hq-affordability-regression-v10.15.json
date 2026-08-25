@@ -1,0 +1,45 @@
+{
+  "source": "User-verified NBA 2K HQ iPhone + Android emulator comparison, 2026-08-25",
+  "purpose": "Second 99 OVR affordability regression used to refine the hidden frontier without attribute-specific patches",
+  "body": {
+    "position": "SG",
+    "heightInches": 78,
+    "weightLb": 212,
+    "wingspanInches": 82
+  },
+  "ratings": {
+    "ShotClose": 75,
+    "DrivingLayup": 75,
+    "DrivingDunk": 91,
+    "StandingDunk": 60,
+    "PostControl": 65,
+    "ShotMidrange": 75,
+    "ShotThree": 85,
+    "ShotFreeThrow": 80,
+    "PassAccuracy": 85,
+    "BallControl": 75,
+    "SpeedWithBall": 80,
+    "InteriorDefense": 80,
+    "PerimeterDefense": 90,
+    "Steal": 70,
+    "Block": 65,
+    "ReboundOffense": 65,
+    "ReboundDefense": 67,
+    "Speed": 84,
+    "Agility": 75,
+    "Strength": 75,
+    "Vertical": 83
+  },
+  "decoded": {
+    "playerType": 5,
+    "knownLegalScore": 98.81779310970667,
+    "firstBlockedSpeed85Score": 98.94176173561522,
+    "calibratedCeiling": 98.88
+  },
+  "expected": {
+    "displayedOverall": 99,
+    "speed84Allowed": true,
+    "speed85Blocked": true
+  },
+  "note": "Paired with the 6'5 / player-type-4 v10.9 regression. v10.15 uses a regression-calibrated height/player-type frontier where directly observed, with 98.75 as the fallback elsewhere."
+}

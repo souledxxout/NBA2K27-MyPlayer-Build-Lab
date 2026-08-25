@@ -21,7 +21,7 @@
 ## v10.3
 - Fixed the remaining takeover-art disappearance during height/weight/wingspan changes.
 - Takeover artwork now caches the successfully rendered 72×72 pixel result and reuses it when slider changes rebuild the takeover list, avoiding blank WebGL/ASTC redraws while preserving click/details behavior.
-# NBA 2K27 Build Lab v10.14 — HQ Cap Breaker Parity
+# NBA 2K27 Build Lab v10.15 — HQ Affordability Frontier
 
 All-position web/PWA build planner based on the user-supplied NBA 2K HQ Android client and public badge/takeover data supplied in the conversation.
 
@@ -400,3 +400,13 @@ All other displayed maxes for this body already matched the supplied 2KHQ screen
 - Badge Token Potential now recomputes after every legal attribute-slider change.
 - Previously the panel could retain values from an earlier attribute state until a body/full render occurred.
 - Current public HQ-engine contribution capture (2026-08-22) remains the token data source; live HQ tuning may move independently of the APK version.
+
+
+## v10.15 — Second HQ affordability regression
+
+- Added the user-verified **6'6" / 212 lb / 6'10" SG** regression from both iPhone HQ and Android HQ.
+- The exact HQ state allows **Speed 84** but blocks **Speed 85** with the remaining attributes unchanged.
+- Replaced the single universal `98.75` guard with an HQ-regression-calibrated **height + player-type affordability frontier** where we have direct boundary evidence.
+- Preserves the original 6'5" regression: **63 Strength / 81 Vertical** remains legal while either next +1 remains blocked.
+- Unknown height/player-type combinations continue to use the conservative 98.75 fallback until we collect direct HQ boundary evidence.
+- Updated the visible site/footer/console version to **v10.15**.
